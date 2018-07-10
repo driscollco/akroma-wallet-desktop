@@ -11,7 +11,7 @@ Please note we have a code of conduct, please follow it in all your interactions
 1. Ensure any packages used for development or build dependencies are included in `package.json`
    prior to pull request creation.
 2. When creating pull request, use the default pull request template.
-   You may copy markdown into pull request comment, which can be found [here](put url here)
+   You may copy markdown into pull request comment, which can be found [here](https://github.com/akroma-project/akroma-wallet-desktop/blob/master/docs/PULL_REQUEST_TEMPLATE/default.md)
    or append `&template=default.md` to the end of the pull request url to automatically
    generate pull request comment with template.
 3. The Pull Request may be merged in once you have the sign-off of one or more developers, or if you 
