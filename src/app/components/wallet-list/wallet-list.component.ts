@@ -56,13 +56,12 @@ export class WalletListComponent implements OnInit {
   }
 
   private async fetchAndHandleWallets() {
-    const allDocs = await this.walletService.db.allDocs({ include_docs: true });
-    this.wallets = allDocs.rows.map(x => x.doc);
+    this.wallets = await this.walletService.getAll() as Wallet[];
 
     const wallets = await this.web3.eth.personal.getAccounts() as string[];
     const uniqueWallets = Array.from(new Set(wallets));
     uniqueWallets.forEach(wallet => {
-      const storedWallet = allDocs.rows.find(x => x.doc.address === wallet);
+      const storedWallet = this.wallets.find(x => x.address === wallet);
       if (!!storedWallet) {
         return;
       }
@@ -73,7 +72,7 @@ export class WalletListComponent implements OnInit {
     const previouslyDeletedWallets = await this.fetchDeletedWalletsForRestore(uniqueWallets);
     this.handleWalletRestore(previouslyDeletedWallets);
 
-    let unstoredWallets = uniqueWallets
+    const unstoredWallets = uniqueWallets
       .filter(x => !this.wallets.map(y => y.address).includes(x))
       .filter(x => !previouslyDeletedWallets.map(y => y.id).includes(x));
     await this.handleUnstoredWallets(unstoredWallets);
@@ -81,13 +80,13 @@ export class WalletListComponent implements OnInit {
   }
 
   private async fetchDeletedWalletsForRestore(addresses: string[]): Promise<any> {
-    const allDocs = await this.walletService.db.allDocs({ include_docs: true, keys: addresses });
-    return allDocs.rows.filter(x => x.value && x.value.deleted);
+    const allWallets = await this.walletService.getAll({ keys: addresses }) as any[];
+    return allWallets.filter(x => x.value && x.value.deleted);
   }
 
   private async handleWalletRestore(walletData: any[]): Promise<void> {
     const theWalletsToRestore = this.mapDocumentsToRestoreWallets(walletData);
-    const result = await this.walletService.db.bulkDocs(theWalletsToRestore);
+    const result = await this.walletService.putMany(theWalletsToRestore) as Wallet[];
     this.wallets.push(...this.mapDocumentsToRestoreWallets(result));
   }
 
@@ -109,13 +108,13 @@ export class WalletListComponent implements OnInit {
         _id: address,
       });
     });
-    await this.walletService.db.bulkDocs(walletsToSave);
+    await this.walletService.putMany(walletsToSave);
     this.wallets.push(...walletsToSave);
   }
 
   private async handleStoredWalletsNotFound(wallets: Wallet[]): Promise<void> {
     wallets.forEach(x => x._deleted = true);
-    await this.walletService.db.bulkDocs(wallets);
+    await this.walletService.putMany(wallets);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -135,15 +134,16 @@ export class WalletListComponent implements OnInit {
       address: newWalletAddress,
       name: this.walletForm.get('name').value,
     };
-    this.walletService.db.put(newWalletObject);
-    this.wallets.push(await this.walletService.db.get(newWalletObject._id));
+    const newWallet = await this.walletService.put(newWalletObject) as Wallet;
+    console.log('newWallet', newWallet);
+    this.wallets.push(newWallet);
     this.walletForm.reset();
   }
 
   async renameWallet(walletForm: FormGroup = this.editWalletForm): Promise<void> {
     this.modalRef.hide();
-    const result = await this.walletService.db.put(walletForm.value);
-    if (result.ok) {
+    const result = await this.walletService.put(walletForm.value);
+    if (!!result) {
       await this.fetchAndHandleWallets();
     }
     this.walletForm.reset();
@@ -173,7 +173,7 @@ export class WalletListComponent implements OnInit {
 
       await this.electronService.fs.unlinkSync(`${keystoreFileDir}/${keystoreFile}`);
       try {
-        const result = await this.walletService.db.remove(wallet._id, wallet._rev);
+        const result = await this.walletService.delete(wallet) as PouchDB.Core.Response;
         if (result.ok) {
           this.wallets = this.wallets.filter(x => x._id !== wallet._id);
           await this.getWalletBalances(this.wallets.map(x => x.address));
