@@ -5,12 +5,6 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { PopoverDirective } from 'ngx-bootstrap/popover';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/observable/of';
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
-import { distinctUntilChanged, mergeMap, retry } from 'rxjs/operators';
-
 import { Wallet } from '../../models/wallet';
 import { clientConstants } from '../../providers/akroma-client.constants';
 import { ElectronService } from '../../providers/electron.service';
