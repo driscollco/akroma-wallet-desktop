@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { TransactionsService } from './transactions.service';
 import { TransactionsStorageService } from './transactions-storage.service';
 import { Transaction } from '../models/transaction';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class TransactionSyncService {
+  syncing: Subject<boolean>;
   private addresses: string[];
 
   constructor(
     private transactionsService: TransactionsService,
     private transactionStorageService: TransactionsStorageService) {
     this.addresses = [];
+    this.syncing = new Subject();
+    this.syncing.next(false);
   }
 
   setAddresses(addresses: string[]): TransactionSyncService {
@@ -18,11 +22,17 @@ export class TransactionSyncService {
     return this;
   }
 
-  startSync(): void {
+  async startSync(): Promise<void> {
+    this.syncing.next(true);
+    const startBlock = await this.getMostRecentBlockFromTransactions();
+    const endBlockNumber = await this.transactionsService.eth.getBlockNumber();
+    for (let i = startBlock; i < endBlockNumber; i++) {
     // todo
+    }
   }
 
   stopSync(): void {
+    this.syncing.next(false);
     // todo
   }
 
