@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SystemSettings } from '../models/system-settings';
 import { ElectronService } from './electron.service';
-import { SettingsPersistenceService } from './settings-persistence.service';
+import { SettingsStorageService } from './settings-storage.service';
 
 @Injectable()
 export class AkromaLoggerService {
@@ -12,7 +12,7 @@ export class AkromaLoggerService {
 
     constructor(
         private electronService: ElectronService,
-        private settingsService: SettingsPersistenceService,
+        private settingsService: SettingsStorageService,
     ) { }
 
     async init(callback: Function) {

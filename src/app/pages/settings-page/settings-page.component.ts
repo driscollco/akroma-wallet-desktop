@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild, HostListener } from '@angular
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SystemSettings } from '../../models/system-settings';
-import { SettingsPersistenceService } from '../../providers/settings-persistence.service';
+import { SettingsStorageService } from '../../providers/settings-storage.service';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class SettingsPageComponent implements OnInit {
   }
 
   constructor(
-    private settingsService: SettingsPersistenceService,
+    private settingsService: SettingsStorageService,
     private fb: FormBuilder,
     private router: Router) {
     this.systemSettingsForm = this.fb.group({

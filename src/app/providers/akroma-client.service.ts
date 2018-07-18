@@ -3,7 +3,7 @@ import { ChildProcess } from 'child_process';
 import * as request from 'request';
 import { clientConstants } from './akroma-client.constants';
 import { ElectronService } from './electron.service';
-import { SettingsPersistenceService } from './settings-persistence.service';
+import { SettingsStorageService } from './settings-storage.service';
 import { Web3Service } from './web3.service';
 import { AkromaLoggerService } from './akroma-logger.service';
 
@@ -35,7 +35,7 @@ export class AkromaClientService {
   constructor(
     private logger: AkromaLoggerService,
     private es: ElectronService,
-    private settingsService: SettingsPersistenceService,
+    private settingsService: SettingsStorageService,
     private web3: Web3Service) {
     this.web3.setProvider(new this.web3.providers.HttpProvider(clientConstants.connection.default));
   }

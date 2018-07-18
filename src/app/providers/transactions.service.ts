@@ -6,7 +6,7 @@ import { Transaction } from '../models/transaction';
 @Injectable()
 export class TransactionsService extends Web3Service {
 
-  async getSingleTransactionByHash(txHash: string): Promise<Transaction> {
+  async getSingleRawTransactionByHash(txHash: string): Promise<Transaction> {
     return this.eth.getTransactionReceipt(txHash);
   }
 

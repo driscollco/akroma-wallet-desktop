@@ -31,10 +31,10 @@ import { WalletDetailPageComponent } from './pages/wallet-detail/wallet-detail-p
 // Services
 import { AkromaClientService } from './providers/akroma-client.service';
 import { ElectronService } from './providers/electron.service';
-import { SettingsPersistenceService } from './providers/settings-persistence.service';
-import { TransactionsPersistenceService } from './providers/transactions-persistence.service';
+import { SettingsStorageService } from './providers/settings-storage.service';
+import { TransactionsStorageService } from './providers/transactions-storage.service';
 import { TransactionsService } from './providers/transactions.service';
-import { WalletPersistenceService } from './providers/wallet-persistence.service';
+import { WalletStorageService } from './providers/wallet-storage.service';
 import { Web3Service } from './providers/web3.service';
 import { AkromaLoggerService } from './providers/akroma-logger.service';
 import { ShowEtherPipe } from './pipes/show-ether.pipe';
@@ -88,9 +88,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ElectronService,
     Web3Service,
     TransactionsService,
-    TransactionsPersistenceService,
-    SettingsPersistenceService,
-    WalletPersistenceService,
+    TransactionsStorageService,
+    SettingsStorageService,
+    WalletStorageService,
   ],
   bootstrap: [AppComponent],
 })

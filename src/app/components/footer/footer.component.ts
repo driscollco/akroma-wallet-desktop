@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { SystemSettings } from '../../models/system-settings';
 import { ElectronService } from '../../providers/electron.service';
-import { SettingsPersistenceService } from '../../providers/settings-persistence.service';
+import { SettingsStorageService } from '../../providers/settings-storage.service';
 import { Web3Service } from '../../providers/web3.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class FooterComponent implements OnInit {
   constructor(
     private web3: Web3Service,
     private electronService: ElectronService,
-    private settingsService: SettingsPersistenceService,
+    private settingsService: SettingsStorageService,
   ) { }
 
   async ngOnInit() {

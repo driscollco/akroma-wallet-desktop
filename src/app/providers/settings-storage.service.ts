@@ -7,7 +7,7 @@ import { ElectronService } from './electron.service';
 import { clientConstants } from './akroma-client.constants';
 
 @Injectable()
-export class SettingsPersistenceService {
+export class SettingsStorageService {
   private _db: PouchDB.Database<SystemSettings>;
 
   get db(): PouchDB.Database<SystemSettings> {

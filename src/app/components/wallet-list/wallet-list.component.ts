@@ -14,8 +14,8 @@ import { distinctUntilChanged, mergeMap, retry } from 'rxjs/operators';
 import { Wallet } from '../../models/wallet';
 import { clientConstants } from '../../providers/akroma-client.constants';
 import { ElectronService } from '../../providers/electron.service';
-import { SettingsPersistenceService } from '../../providers/settings-persistence.service';
-import { WalletPersistenceService } from '../../providers/wallet-persistence.service';
+import { SettingsStorageService } from '../../providers/settings-storage.service';
+import { WalletStorageService } from '../../providers/wallet-storage.service';
 import { Web3Service } from '../../providers/web3.service';
 import { AkromaLoggerService } from '../../providers/akroma-logger.service';
 
@@ -38,8 +38,8 @@ export class WalletListComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private modalService: BsModalService,
     private web3: Web3Service,
-    private walletService: WalletPersistenceService,
-    private settingsService: SettingsPersistenceService,
+    private walletService: WalletStorageService,
+    private settingsService: SettingsStorageService,
     private electronService: ElectronService,
     private logger: AkromaLoggerService) {
     this.web3.setProvider(new this.web3.providers.HttpProvider(clientConstants.connection.default));

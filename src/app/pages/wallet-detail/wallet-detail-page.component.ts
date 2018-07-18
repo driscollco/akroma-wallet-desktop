@@ -4,7 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Transaction } from '../../models/transaction';
 import { Wallet } from '../../models/wallet';
 import { TransactionsService } from '../../providers/transactions.service';
-import { TransactionsPersistenceService } from '../../providers/transactions-persistence.service';
+import { TransactionsStorageService } from '../../providers/transactions-storage.service';
+import { PendingTransactionsStorageService } from '../../providers/pending-transactions-storage.service';
 import { clientConstants } from '../../providers/akroma-client.constants';
 import { AkromaLoggerService } from '../../providers/akroma-logger.service';
 
@@ -25,7 +26,8 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
 
   constructor(private logger: AkromaLoggerService,
               private transactionsService: TransactionsService,
-              private transactionsPersistenceService: TransactionsPersistenceService,
+              private transactionsStorageService: TransactionsStorageService,
+              private pendingTransactionsStorageService: PendingTransactionsStorageService,
               private route: ActivatedRoute) {
     this.transactionsService.setProvider(new this.transactionsService.providers.HttpProvider(clientConstants.connection.default));
     this.destroyed = false;
@@ -85,7 +87,7 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
           if (this.pendingTransactions.length > 0) {
             await this.replacePendingTransactionWithConfirmed(transactions);
           }
-          await this.transactionsPersistenceService.db.bulkDocs(
+          await this.transactionsStorageService.putMany(
             transactions.filter(x => !this.pendingTransactions.map(y => y.hash).includes(x.hash)));
         }
       }
@@ -108,14 +110,13 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
 
   replacePendingTransactionWithConfirmed(transactionsToInsert: Transaction[]) {
     transactionsToInsert.forEach(newTx => {
-      this.transactionsPersistenceService.pending.get(newTx.hash).then(pendingTx => {
+      this.pendingTransactionsStorageService.get(newTx.hash).then((pendingTx: Transaction) => {
         if (pendingTx) {
-          return this.transactionsPersistenceService.db.put({
+          return this.transactionsStorageService.put({
             ...newTx,
-            _id: newTx.hash,
           }).then(putResult => {
-            if (putResult.ok) {
-              return this.transactionsPersistenceService.pending.put({ ...pendingTx, _deleted: true }).then(() => {
+            if (putResult) {
+              return this.transactionsStorageService.put({ ...pendingTx }).then(() => {
               }).catch(err => {
                 this.logger.error('Trouble removing pending transaction' + err);
               });
@@ -131,13 +132,11 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   }
 
   private async refreshTransactions() {
-    const allTxs = await this.transactionsPersistenceService.db.allDocs({ include_docs: true });
-    const allPending = await this.transactionsPersistenceService.pending.allDocs({ include_docs: true });
-    this.transactions = allTxs.rows
-      .map(x => x.doc)
+    const allTxs = await this.transactionsStorageService.getAll() as Transaction[];
+    const allPending = await this.pendingTransactionsStorageService.getAll() as Transaction[];
+    this.transactions = allTxs
       .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase() || x.to.toUpperCase() === this.wallet.address.toUpperCase());
-    this.pendingTransactions = allPending.rows
-      .map(x => x.doc)
+    this.pendingTransactions = allPending
       .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase() || x.to.toUpperCase() === this.wallet.address.toUpperCase());
     this.transactions = [...this.transactions, ...this.pendingTransactions];
   }
