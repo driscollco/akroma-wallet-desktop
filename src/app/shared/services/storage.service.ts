@@ -9,6 +9,16 @@ export interface StorageOperationError {
   context: any;
 }
 
+export interface DocMeta {
+  doc?: PouchDB.Core.ExistingDocument<{} & PouchDB.Core.AllDocsMeta>;
+  id: PouchDB.Core.DocumentId;
+  key: PouchDB.Core.DocumentKey;
+  value: {
+      rev: PouchDB.Core.RevisionId;
+      deleted?: boolean;
+  }
+}
+
 @Injectable()
 export class StorageService<T extends PouchEntity> {
   private idProperty: string;
@@ -45,6 +55,20 @@ export class StorageService<T extends PouchEntity> {
         operation: 'getAll',
         message: 'Items could not be retrieved from storage.',
         context: options,
+      };
+    }
+  }
+
+  async getDeleted(keys: string[]): Promise<DocMeta[] | StorageOperationError> {
+    try {
+      const allDocsResult = await this.db.allDocs({ include_docs: true, keys: keys });
+      return allDocsResult.rows.filter(x => x.value && x.value.deleted);
+    } catch {
+      return {
+        error: true,
+        operation: 'getDeleted',
+        message: 'Deleted items could not be retrieved from storage.',
+        context: keys,
       };
     }
   }

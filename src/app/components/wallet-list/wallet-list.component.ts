@@ -12,6 +12,7 @@ import { SettingsStorageService } from '../../providers/settings-storage.service
 import { WalletStorageService } from '../../providers/wallet-storage.service';
 import { Web3Service } from '../../providers/web3.service';
 import { AkromaLoggerService } from '../../providers/akroma-logger.service';
+import { DocMeta } from '../../shared/services/storage.service';
 
 const electron = window.require('electron');
 
@@ -74,8 +75,7 @@ export class WalletListComponent implements OnInit {
   }
 
   private async fetchDeletedWalletsForRestore(addresses: string[]): Promise<any> {
-    const allWallets = await this.walletService.getAll({ keys: addresses }) as any[];
-    return allWallets.filter(x => x.value && x.value.deleted);
+    return await this.walletService.getDeleted(addresses) as DocMeta[];
   }
 
   private async handleWalletRestore(walletData: any[]): Promise<void> {

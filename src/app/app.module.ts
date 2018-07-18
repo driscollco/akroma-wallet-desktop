@@ -33,6 +33,7 @@ import { AkromaClientService } from './providers/akroma-client.service';
 import { ElectronService } from './providers/electron.service';
 import { SettingsStorageService } from './providers/settings-storage.service';
 import { TransactionsStorageService } from './providers/transactions-storage.service';
+import { PendingTransactionsStorageService } from './providers/pending-transactions-storage.service';
 import { TransactionsService } from './providers/transactions.service';
 import { WalletStorageService } from './providers/wallet-storage.service';
 import { Web3Service } from './providers/web3.service';
@@ -89,6 +90,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     Web3Service,
     TransactionsService,
     TransactionsStorageService,
+    PendingTransactionsStorageService,
     SettingsStorageService,
     WalletStorageService,
   ],
