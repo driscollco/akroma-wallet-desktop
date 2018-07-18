@@ -55,13 +55,13 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
     }, 30000);
   }
 
-  getLastBlockSynced(): number {
-    return parseInt(localStorage.getItem(`lastBlock_${this.wallet.address}`), 10);
-  }
-
   ngOnDestroy() {
     this.destroyed = true;
     clearInterval(this.transactionSyncInterval);
+  }
+
+  getLastBlockSynced(): number {
+    return parseInt(localStorage.getItem(`lastBlock_${this.wallet.address}`), 10);
   }
 
   async syncTransactions(lastBlockNumberSynced: number) {
@@ -85,7 +85,7 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
           const transactionsToInsert = transactions.filter(x => !currentTxHashes.includes(x.hash.toUpperCase()));
           this.logger.debug(`Transactions Found: ${transactionsToInsert}`);
           if (this.pendingTransactions.length > 0) {
-            await this.replacePendingTransactionWithConfirmed(transactions);
+            this.replacePendingTransactionWithConfirmed(transactions);
           }
           await this.transactionsStorageService.putMany(
             transactions.filter(x => !this.pendingTransactions.map(y => y.hash).includes(x.hash)));
@@ -109,25 +109,22 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   }
 
   replacePendingTransactionWithConfirmed(transactionsToInsert: Transaction[]) {
-    transactionsToInsert.forEach(newTx => {
-      this.pendingTransactionsStorageService.get(newTx.hash).then((pendingTx: Transaction) => {
-        if (pendingTx) {
-          return this.transactionsStorageService.put({
-            ...newTx,
-          }).then(putResult => {
-            if (putResult) {
-              return this.transactionsStorageService.put({ ...pendingTx }).then(() => {
-              }).catch(err => {
-                this.logger.error('Trouble removing pending transaction' + err);
-              });
-            }
-          }).catch(err => {
-            this.logger.error('Trouble inserting transaction' + err);
-          });
-        }
-      }).catch(() => {
-          this.logger.error('Pending tx not found by hash ' + newTx.hash);
-        });
+    transactionsToInsert.forEach(async newTx => {
+      const pendingTx = await this.pendingTransactionsStorageService.get(newTx.hash);
+      if (pendingTx.hasOwnProperty('error')) {
+        this.logger.error('Pending tx not found by hash ' + newTx.hash);
+        return;
+      }
+      const resultTx = await this.transactionsStorageService.put({ ...newTx });
+      if (resultTx.hasOwnProperty('error')) {
+        this.logger.error('Trouble inserting transaction' + resultTx);
+        return;
+      }
+      const deletedPendingTx = await this.transactionsStorageService.delete((<Transaction>pendingTx).hash);
+      if (deletedPendingTx.hasOwnProperty('error')) {
+        this.logger.error('Trouble removing pending transaction' + deletedPendingTx);
+        return;
+      }
     });
   }
 

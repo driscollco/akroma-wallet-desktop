@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import PouchDB from 'pouchdb';
 import { Wallet } from '../models/wallet';
 import { StorageService } from '../shared/services/storage.service';
 

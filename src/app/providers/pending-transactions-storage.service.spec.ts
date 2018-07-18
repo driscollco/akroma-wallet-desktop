@@ -5,7 +5,7 @@ import { PendingTransactionsStorageService } from './pending-transactions-storag
 describe('PendingTransactionsStorageService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [PendingTransactionsStorageService]
+      providers: [PendingTransactionsStorageService],
     });
   });
 

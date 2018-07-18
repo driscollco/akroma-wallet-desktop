@@ -7,7 +7,7 @@ import { ProgressbarConfig } from 'ngx-bootstrap/progressbar';
 import { ISubscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
-import { distinctUntilChanged, mergeMap, retry } from 'rxjs/operators';
+import { distinctUntilChanged, mergeMap } from 'rxjs/operators';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
 
