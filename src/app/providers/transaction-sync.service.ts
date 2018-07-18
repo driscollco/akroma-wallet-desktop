@@ -3,18 +3,21 @@ import { TransactionsService } from './transactions.service';
 import { TransactionsStorageService } from './transactions-storage.service';
 import { Transaction } from '../models/transaction';
 import { Subject } from 'rxjs/Subject';
+import { StorageService } from '../shared/services/storage.service';
+import { BlockSync } from '../models/block-sync';
 
 @Injectable()
-export class TransactionSyncService {
+export class TransactionSyncService extends StorageService<BlockSync> {
   syncing: Subject<boolean>;
   private addresses: string[];
 
   constructor(
     private transactionsService: TransactionsService,
     private transactionStorageService: TransactionsStorageService) {
-    this.addresses = [];
-    this.syncing = new Subject();
-    this.syncing.next(false);
+      super("txBlockSync", "currentBlock");
+      this.addresses = [];
+      this.syncing = new Subject();
+      this.syncing.next(false);
   }
 
   setAddresses(addresses: string[]): TransactionSyncService {
@@ -26,8 +29,18 @@ export class TransactionSyncService {
     this.syncing.next(true);
     const startBlock = await this.getMostRecentBlockFromTransactions();
     const endBlockNumber = await this.transactionsService.eth.getBlockNumber();
+    let lastBlockNumberSynced = startBlock;
     for (let i = startBlock; i < endBlockNumber; i++) {
-    // todo
+      lastBlockNumberSynced = i;
+      if (i % 1000 === 0) {
+        const transactions = await this.transactionsService.getTransactionsByAccounts(this.addresses, i - 10, i + 1000);
+        if (transactions.length > 0) {
+          await this.transactionStorageService.putMany(transactions);
+        }
+      }
+      if (i % 10 === 0) {
+        await this.put({ currentBlock: lastBlockNumberSynced });
+      }
     }
   }
 
