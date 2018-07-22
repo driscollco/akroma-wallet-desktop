@@ -8,6 +8,8 @@ import { TransactionsStorageService } from '../../providers/transactions-storage
 import { PendingTransactionsStorageService } from '../../providers/pending-transactions-storage.service';
 import { clientConstants } from '../../providers/akroma-client.constants';
 import { AkromaLoggerService } from '../../providers/akroma-logger.service';
+import { TransactionSyncService } from '../../providers/transaction-sync.service';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-wallet-detail-page',
@@ -22,12 +24,15 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   transactionSyncInterval: any;
   pendingTransactions: Transaction[];
   syncing: boolean;
+  transactionSyncStatusSubscription: ISubscription;
+  pendingTransactionsSubscription: ISubscription;
   wallet: Wallet;
 
   constructor(private logger: AkromaLoggerService,
               private transactionsService: TransactionsService,
               private transactionsStorageService: TransactionsStorageService,
               private pendingTransactionsStorageService: PendingTransactionsStorageService,
+              private transactionSyncService: TransactionSyncService,
               private route: ActivatedRoute) {
     this.transactionsService.setProvider(new this.transactionsService.providers.HttpProvider(clientConstants.connection.default));
     this.destroyed = false;
@@ -35,6 +40,8 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   }
 
   async ngOnInit() {
+    this.startTransactionSyncStatusSubscription();
+    this.startPendingTransactionSubscription();
     const address = this.route.snapshot.params.address;
     const walletBalance = await this.transactionsService.eth.getBalance(address);
     this.wallet = {
@@ -58,6 +65,20 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   ngOnDestroy() {
     this.destroyed = true;
     clearInterval(this.transactionSyncInterval);
+    this.transactionSyncStatusSubscription.unsubscribe();
+    this.pendingTransactionsSubscription.unsubscribe();
+  }
+
+  private startTransactionSyncStatusSubscription(): void {
+    this.transactionSyncStatusSubscription = this.transactionSyncService.syncing
+      .subscribe(status => this.syncing = status);
+  }
+
+  private startPendingTransactionSubscription(): void {
+    this.pendingTransactionsSubscription = this.pendingTransactionsStorageService.currentlyPendingTransactionsSubject
+      .subscribe(pending => {
+        this.pendingTransactions = pending;
+      });
   }
 
   getLastBlockSynced(): number {
@@ -120,7 +141,7 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
         this.logger.error('Trouble inserting transaction' + resultTx);
         return;
       }
-      const deletedPendingTx = await this.transactionsStorageService.delete((<Transaction>pendingTx).hash);
+      const deletedPendingTx = await this.pendingTransactionsStorageService.delete((<Transaction>pendingTx).hash);
       if (deletedPendingTx.hasOwnProperty('error')) {
         this.logger.error('Trouble removing pending transaction' + deletedPendingTx);
         return;

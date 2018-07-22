@@ -100,7 +100,8 @@ export class StorageService<T extends PouchEntity> {
 
   async putMany(items: T[]): Promise<T[] | StorageOperationError> {
     try {
-      const result = await this.db.bulkDocs(items);
+      const writeItems = items.map(item => Object.assign(item, { _id: item[this.idProperty] }));
+      const result = await this.db.bulkDocs(writeItems);
       items.forEach(item => {
         const updatedItem = result.find(x => x.id === item[this.idProperty]);
         item = Object.assign(item, updatedItem);

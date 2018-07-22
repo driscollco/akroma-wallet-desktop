@@ -2,26 +2,27 @@ import { Injectable } from '@angular/core';
 import { TransactionsService } from './transactions.service';
 import { TransactionsStorageService } from './transactions-storage.service';
 import { Transaction } from '../models/transaction';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { StorageService } from '../shared/services/storage.service';
 import { BlockSync } from '../models/block-sync';
+import { PendingTransactionsStorageService } from './pending-transactions-storage.service';
 
 @Injectable()
 export class TransactionSyncService extends StorageService<BlockSync> {
-  syncing: Subject<boolean>;
-  private addresses: string[];
+  syncing: BehaviorSubject<boolean>;
+  private addressesToSync: string[];
 
   constructor(
     private transactionsService: TransactionsService,
-    private transactionStorageService: TransactionsStorageService) {
+    private transactionStorageService: TransactionsStorageService,
+    private pendingTransactionStorageService: PendingTransactionsStorageService) {
       super("txBlockSync", "currentBlock");
-      this.addresses = [];
-      this.syncing = new Subject();
-      this.syncing.next(false);
+      this.addressesToSync = [];
+      this.syncing = new BehaviorSubject(false);
   }
 
-  setAddresses(addresses: string[]): TransactionSyncService {
-    this.addresses = addresses;
+  setAddressesToSync(addresses: string[]): TransactionSyncService {
+    this.addressesToSync = addresses;
     return this;
   }
 
@@ -33,13 +34,18 @@ export class TransactionSyncService extends StorageService<BlockSync> {
     for (let i = startBlock; i < endBlockNumber; i++) {
       lastBlockNumberSynced = i;
       if (i % 1000 === 0) {
-        const transactions = await this.transactionsService.getTransactionsByAccounts(this.addresses, i - 10, i + 1000);
+        const pendingTx = this.pendingTransactionStorageService.currentPendingTransactions;
+        const transactions = await this.transactionsService.getTransactionsByAccounts(this.addressesToSync, i - 10, i + 1000);
         if (transactions.length > 0) {
           await this.transactionStorageService.putMany(transactions);
         }
+        if (pendingTx.length > 0) {
+          this.cleanupPendingTransactionsAfterConfirmation(transactions);
+        }
       }
       if (i % 10 === 0) {
-        await this.put({ currentBlock: lastBlockNumberSynced });
+        // await this.put({ currentBlock: lastBlockNumberSynced });
+        this.put({ currentBlock: lastBlockNumberSynced });
       }
     }
   }
@@ -56,5 +62,9 @@ export class TransactionSyncService extends StorageService<BlockSync> {
       return Math.max(...syncedBlockNumbers);
     }
     return 0;
+  }
+
+  async cleanupPendingTransactionsAfterConfirmation(transactions: Transaction[]): Promise<void> {
+    transactions.forEach(tx => this.pendingTransactionStorageService.delete(tx));
   }
 }

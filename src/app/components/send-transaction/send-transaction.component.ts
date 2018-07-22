@@ -12,6 +12,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { Wallet } from '../../models/wallet';
 import { Web3Service } from '../../providers/web3.service';
+import { PendingTransactionsStorageService } from '../../providers/pending-transactions-storage.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,6 +40,7 @@ export class SendTransactionComponent implements OnChanges {
               private modalService: BsModalService,
               private web3: Web3Service,
               private router: Router,
+              private pendingTransactionsStorageService: PendingTransactionsStorageService,
             ) {
     this.transactionSent = new EventEmitter<any>();
     this.gasPrice$ = Observable.fromPromise(this.web3.eth.getGasPrice());
@@ -82,10 +84,11 @@ export class SendTransactionComponent implements OnChanges {
         value: this.web3.utils.toWei(this.sendForm.value.value.toString(), 'ether'),
       };
       const txHash = await this.web3.eth.personal.sendTransaction(tx, this.passphrase);
-      this.transactionSent.emit({
-        ...tx,
-        hash: txHash,
-      });
+      this.pendingTransactionsStorageService.put({ ...tx, hash: txHash });
+      // this.transactionSent.emit({
+      //   ...tx,
+      //   hash: txHash,
+      // });
       this.buildStockForm();
       this.passphrase = '';
     } catch (error) {
