@@ -11,6 +11,11 @@ export class PendingTransactionsStorageService extends StorageService<Transactio
 
   constructor() {
     super('pendingTransactions', 'hash');
+    this.db.createIndex({
+      index: {
+        fields: ['to', 'from'],
+      },
+    })
     this.currentPendingTransactions = [];
     this.initializeCurrentlyPendingTransactions();
   }

@@ -26,6 +26,8 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   syncing: boolean;
   transactionSyncStatusSubscription: ISubscription;
   pendingTransactionsSubscription: ISubscription;
+  transactionsRetrievalInterval: any;
+  walletBalanceInterval: any;
   wallet: Wallet;
 
   constructor(private logger: AkromaLoggerService,
@@ -34,7 +36,6 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
               private pendingTransactionsStorageService: PendingTransactionsStorageService,
               private transactionSyncService: TransactionSyncService,
               private route: ActivatedRoute) {
-    this.transactionsService.setProvider(new this.transactionsService.providers.HttpProvider(clientConstants.connection.default));
     this.destroyed = false;
     this.syncing = false;
   }
@@ -42,24 +43,26 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   async ngOnInit() {
     this.startTransactionSyncStatusSubscription();
     this.startPendingTransactionSubscription();
+    this.startTransactionsRetrievalInterval();
+    this.startWalletBalanceInterval();
     const address = this.route.snapshot.params.address;
     const walletBalance = await this.transactionsService.eth.getBalance(address);
     this.wallet = {
       address: address,
       balance: this.transactionsService.utils.fromWei(walletBalance, 'ether'),
     };
-    await this.refreshTransactions();
-    this.lastBlockNumberSynced = this.getLastBlockSynced();
-    this.syncTransactions(this.lastBlockNumberSynced);
+    // await this.refreshTransactions();
+    // this.lastBlockNumberSynced = this.getLastBlockSynced();
+    // this.syncTransactions(this.lastBlockNumberSynced);
 
-    this.transactionSyncInterval = setInterval(async () => {
-      if (this.syncing) {
-        return;
-      }
-      await this.refreshTransactions();
-      this.lastBlockNumberSynced = this.getLastBlockSynced();
-      this.syncTransactions(this.lastBlockNumberSynced);
-    }, 30000);
+    // this.transactionSyncInterval = setInterval(async () => {
+    //   if (this.syncing) {
+    //     return;
+    //   }
+    //   await this.refreshTransactions();
+    //   this.lastBlockNumberSynced = this.getLastBlockSynced();
+    //   this.syncTransactions(this.lastBlockNumberSynced);
+    // }, 30000);
   }
 
   ngOnDestroy() {
@@ -67,6 +70,7 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
     clearInterval(this.transactionSyncInterval);
     this.transactionSyncStatusSubscription.unsubscribe();
     this.pendingTransactionsSubscription.unsubscribe();
+    clearInterval(this.transactionsRetrievalInterval);
   }
 
   private startTransactionSyncStatusSubscription(): void {
@@ -81,81 +85,105 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
       });
   }
 
+  private startTransactionsRetrievalInterval() {
+    this.transactionsRetrievalInterval = setInterval(async () => {
+      const foundTransactions = await this.transactionsStorageService.db.find({
+        selector: {
+          $or: [
+            { to: this.wallet.address },
+            { from: this.wallet.address },
+          ],
+        },
+      });
+      this.transactions = foundTransactions.docs;
+    }, 15000);
+  }
+
+  private startWalletBalanceInterval() {
+    this.walletBalanceInterval = setInterval(async () => {
+      const walletBalance = await this.transactionsService.eth.getBalance(this.wallet.address);
+      this.wallet = {
+        ...this.wallet,
+        balance: this.transactionsService.utils.fromWei(walletBalance, 'ether'),
+      };
+    }, 15000);
+  }
+
   getLastBlockSynced(): number {
     return parseInt(localStorage.getItem(`lastBlock_${this.wallet.address}`), 10);
   }
 
-  async syncTransactions(lastBlockNumberSynced: number) {
-    const currentTxHashes = this.transactions.map(x => x.hash.toUpperCase());
-    this.endBlockNumber = await this.transactionsService.eth.getBlockNumber();
-    const start = lastBlockNumberSynced || 0;
+  // async syncTransactions(lastBlockNumberSynced: number) {
+  //   const currentTxHashes = this.transactions.map(x => x.hash.toUpperCase());
+  //   this.endBlockNumber = await this.transactionsService.eth.getBlockNumber();
+  //   const start = lastBlockNumberSynced || 0;
 
-    this.logger.debug('Starting Transaction Sync @ Block' + start);
+  //   this.logger.debug('Starting Transaction Sync @ Block' + start);
 
-    for (let i = start; i < this.endBlockNumber; i++) {
-      if (this.destroyed) {
-        return;
-      }
-      this.syncing = true;
-      this.lastBlockNumberSynced = i;
+  //   for (let i = start; i < this.endBlockNumber; i++) {
+  //     if (this.destroyed) {
+  //       return;
+  //     }
+  //     this.syncing = true;
+  //     this.lastBlockNumberSynced = i;
 
-      if (i % 1000 === 0 || this.pendingTransactions.length > 0) {
-        this.logger.debug('Transaction Sync @ Block #' + i);
-        const transactions = await this.transactionsService.getTransactionsByAccount(this.wallet.address, i - 10, i + 1000);
-        if (transactions.length > 0) {
-          const transactionsToInsert = transactions.filter(x => !currentTxHashes.includes(x.hash.toUpperCase()));
-          this.logger.debug(`Transactions Found: ${transactionsToInsert}`);
-          if (this.pendingTransactions.length > 0) {
-            this.replacePendingTransactionWithConfirmed(transactions);
-          }
-          await this.transactionsStorageService.putMany(
-            transactions.filter(x => !this.pendingTransactions.map(y => y.hash).includes(x.hash)));
-        }
-      }
-      if (i % 100) {
-        localStorage.setItem(`lastBlock_${this.wallet.address}`, i.toString());
-      }
-    }
-    const walletBalance = await this.transactionsService.eth.getBalance(this.wallet.address);
-    this.wallet = {
-      ...this.wallet,
-      balance: this.transactionsService.utils.fromWei(walletBalance, 'ether'),
-    };
-    await this.refreshTransactions();
-    this.syncing = false;
-  }
+  //     if (i % 1000 === 0 || this.pendingTransactions.length > 0) {
+  //       this.logger.debug('Transaction Sync @ Block #' + i);
+  //       const transactions = await this.transactionsService.getTransactionsByAccount(this.wallet.address, i - 10, i + 1000);
+  //       if (transactions.length > 0) {
+  //         const transactionsToInsert = transactions.filter(x => !currentTxHashes.includes(x.hash.toUpperCase()));
+  //         this.logger.debug(`Transactions Found: ${transactionsToInsert}`);
+  //         if (this.pendingTransactions.length > 0) {
+  //           this.replacePendingTransactionWithConfirmed(transactions);
+  //         }
+  //         await this.transactionsStorageService.putMany(
+  //           transactions.filter(x => !this.pendingTransactions.map(y => y.hash).includes(x.hash)));
+  //       }
+  //     }
+  //     if (i % 100) {
+  //       localStorage.setItem(`lastBlock_${this.wallet.address}`, i.toString());
+  //     }
+  //   }
+  //   const walletBalance = await this.transactionsService.eth.getBalance(this.wallet.address);
+  //   this.wallet = {
+  //     ...this.wallet,
+  //     balance: this.transactionsService.utils.fromWei(walletBalance, 'ether'),
+  //   };
+  //   await this.refreshTransactions();
+  //   this.syncing = false;
+  // }
 
-  async onTransactionSent(tx: Transaction) {
-    await this.refreshTransactions();
-  }
+  // async onTransactionSent(tx: Transaction) {
+  //   await this.refreshTransactions();
+  // }
 
-  replacePendingTransactionWithConfirmed(transactionsToInsert: Transaction[]) {
-    transactionsToInsert.forEach(async newTx => {
-      const pendingTx = await this.pendingTransactionsStorageService.get(newTx.hash);
-      if (pendingTx.hasOwnProperty('error')) {
-        this.logger.error('Pending tx not found by hash ' + newTx.hash);
-        return;
-      }
-      const resultTx = await this.transactionsStorageService.put({ ...newTx });
-      if (resultTx.hasOwnProperty('error')) {
-        this.logger.error('Trouble inserting transaction' + resultTx);
-        return;
-      }
-      const deletedPendingTx = await this.pendingTransactionsStorageService.delete((<Transaction>pendingTx).hash);
-      if (deletedPendingTx.hasOwnProperty('error')) {
-        this.logger.error('Trouble removing pending transaction' + deletedPendingTx);
-        return;
-      }
-    });
-  }
+  // replacePendingTransactionWithConfirmed(transactionsToInsert: Transaction[]) {
+  //   transactionsToInsert.forEach(async newTx => {
+  //     const pendingTx = await this.pendingTransactionsStorageService.get(newTx.hash);
+  //     if (pendingTx.hasOwnProperty('error')) {
+  //       this.logger.error('Pending tx not found by hash ' + newTx.hash);
+  //       return;
+  //     }
+  //     const resultTx = await this.transactionsStorageService.put({ ...newTx });
+  //     if (resultTx.hasOwnProperty('error')) {
+  //       this.logger.error('Trouble inserting transaction' + resultTx);
+  //       return;
+  //     }
+  //     const deletedPendingTx = await this.pendingTransactionsStorageService.delete((<Transaction>pendingTx).hash);
+  //     if (deletedPendingTx.hasOwnProperty('error')) {
+  //       this.logger.error('Trouble removing pending transaction' + deletedPendingTx);
+  //       return;
+  //     }
+  //   });
+  // }
 
-  private async refreshTransactions() {
-    const allTxs = await this.transactionsStorageService.getAll() as Transaction[];
-    const allPending = await this.pendingTransactionsStorageService.getAll() as Transaction[];
-    this.transactions = allTxs
-      .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase() || x.to.toUpperCase() === this.wallet.address.toUpperCase());
-    this.pendingTransactions = allPending
-      .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase() || x.to.toUpperCase() === this.wallet.address.toUpperCase());
-    this.transactions = [...this.transactions, ...this.pendingTransactions];
-  }
+  // private async refreshTransactions() {
+  //   const allTxs = await this.transactionsStorageService.getAll() as Transaction[];
+  //   const allPending = await this.pendingTransactionsStorageService.getAll() as Transaction[];
+  //   this.transactions = allTxs
+  //     .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase() || x.to.toUpperCase() === this.wallet.address.toUpperCase());
+  //   this.pendingTransactions = allPending
+  //     .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase() || x.to.toUpperCase() === this.wallet.address.toUpperCase());
+  //   this.transactions = [...this.transactions, ...this.pendingTransactions];
+  // }
 }

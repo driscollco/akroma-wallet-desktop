@@ -8,5 +8,10 @@ export class TransactionsStorageService extends StorageService<Transaction> {
 
   constructor() {
     super('transactions', 'hash');
+    this.db.createIndex({
+      index: {
+        fields: ['to', 'from']
+      },
+    })
   }
 }

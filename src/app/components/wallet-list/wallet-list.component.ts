@@ -13,6 +13,7 @@ import { WalletStorageService } from '../../providers/wallet-storage.service';
 import { Web3Service } from '../../providers/web3.service';
 import { AkromaLoggerService } from '../../providers/akroma-logger.service';
 import { DocMeta } from '../../shared/services/storage.service';
+import { TransactionSyncService } from '../../providers/transaction-sync.service';
 
 const electron = window.require('electron');
 
@@ -36,7 +37,8 @@ export class WalletListComponent implements OnInit {
     private walletService: WalletStorageService,
     private settingsService: SettingsStorageService,
     private electronService: ElectronService,
-    private logger: AkromaLoggerService) {
+    private logger: AkromaLoggerService,
+    private transactionSyncService: TransactionSyncService) {
     this.web3.setProvider(new this.web3.providers.HttpProvider(clientConstants.connection.default));
     this.walletForm = this.formBuilder.group(
       { name: '', passphrase: '', confirmPassphrase: '' },
@@ -48,6 +50,14 @@ export class WalletListComponent implements OnInit {
 
   async ngOnInit() {
     await this.fetchAndHandleWallets();
+    this.transactionSyncService.syncing.subscribe(isSyncing => {
+      if (isSyncing) {
+        return;
+      }
+      this.transactionSyncService
+        .setAddressesToSync(this.wallets.map(x => x.address))
+        .startSync();
+    });
   }
 
   private async fetchAndHandleWallets() {

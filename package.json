@@ -35,6 +35,7 @@
     "e2e": "npm-run-all -p -r pree2e:build pree2e:protractor"
   },
   "dependencies": {
+    "@types/pouchdb-find": "^6.3.3",
     "bignumber.js": "^7.2.1",
     "crypto-browserify": "^3.12.0",
     "install": "^0.11.0",
@@ -47,6 +48,7 @@
     "pouchdb": "^7.0.0",
     "pouchdb-adapter-node-websql": "^7.0.0",
     "pouchdb-browser": "^7.0.0",
+    "pouchdb-find": "^7.0.0",
     "request": "^2.85.0",
     "web3": "^1.0.0-beta.34",
     "websocket": "^1.0.26",

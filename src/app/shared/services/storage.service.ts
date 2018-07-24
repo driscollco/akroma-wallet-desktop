@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import PouchDB from 'pouchdb';
+import PouchDbFind from 'pouchdb-find';
+PouchDB.plugin(PouchDbFind);
+
 import { PouchEntity } from '../../models/pouch-entity';
 
 export interface StorageOperationError {
@@ -7,6 +11,7 @@ export interface StorageOperationError {
   operation: string;
   message: string;
   context: any;
+  exception: any;
 }
 
 export interface DocMeta {
@@ -22,7 +27,7 @@ export interface DocMeta {
 @Injectable()
 export class StorageService<T extends PouchEntity> {
   private idProperty: string;
-  private db: PouchDB.Database<T>;
+  db: PouchDB.Database<T>;
   constructor(storeName: string, idProperty: string) {
     if (!storeName || !idProperty) {
       throw new Error('StorageService Error: storeName and idProperty are required constructor arguments.');
@@ -31,15 +36,17 @@ export class StorageService<T extends PouchEntity> {
     this.db = new PouchDB(storeName);
   }
 
-  async get(item: T | string, options?: PouchDB.Core.GetOptions): Promise<T | StorageOperationError> {
+  async get(item: T | string, options: PouchDB.Core.GetOptions = {}): Promise<T | StorageOperationError> {
     try {
-      return await this.db.get(!!item[this.idProperty] ? item[this.idProperty] : item, options);
-    } catch {
+      const getParameters = !!item[this.idProperty] ? item[this.idProperty] : item;
+      return await this.db.get(getParameters, options);
+    } catch (error) {
       return {
         error: true,
         operation: 'get',
         message: 'Item could not be retrieved from storage.',
         context: item,
+        exception: error,
       };
     }
   }
@@ -47,14 +54,15 @@ export class StorageService<T extends PouchEntity> {
   async getAll(options: PouchDB.Core.AllDocsWithKeyOptions | PouchDB.Core.AllDocsWithKeysOptions
     | PouchDB.Core.AllDocsWithinRangeOptions | PouchDB.Core.AllDocsOptions = {}): Promise<T[] | StorageOperationError> {
     try {
-      const allDocsResult = await this.db.allDocs({ include_docs: true, ...options });
+      const allDocsResult = await this.db.allDocs({ ...options, include_docs: true });
       return allDocsResult.rows.map(x => x.doc);
-    } catch {
+    } catch (error) {
       return {
         error: true,
         operation: 'getAll',
         message: 'Items could not be retrieved from storage.',
         context: options,
+        exception: error,
       };
     }
   }
@@ -63,37 +71,38 @@ export class StorageService<T extends PouchEntity> {
     try {
       const allDocsResult = await this.db.allDocs({ include_docs: true, keys: keys });
       return allDocsResult.rows.filter(x => x.value && x.value.deleted);
-    } catch {
+    } catch (error) {
       return {
         error: true,
         operation: 'getDeleted',
         message: 'Deleted items could not be retrieved from storage.',
         context: keys,
+        exception: error,
       };
     }
   }
 
-  async put(item: T): Promise<T | StorageOperationError> {
+  async put(item: T, options: PouchDB.Core.Options = {}): Promise<T | StorageOperationError> {
     try {
       const getResult = await this.get(item);
       let itemToWrite: T;
       let result: PouchDB.Core.Response;
-      if (!!getResult[this.idProperty]) {
-        itemToWrite = Object.assign(getResult, item);
-        result = await this.db.put(itemToWrite);
+      if (getResult.hasOwnProperty('error')) {
+        itemToWrite = Object.assign(item, { _id: item[this.idProperty] });
       } else {
-        itemToWrite = item;
-        result = await this.db.post(itemToWrite);
+        itemToWrite = Object.assign(getResult, item);
       }
+      result = await this.db.put(itemToWrite, options);
       if (result.ok) {
         return Object.assign({ _id: result.id, _rev: result.rev }, item);
       }
-    } catch {
+    } catch (error) {
       return {
         error: true,
         operation: 'put',
         message: 'Item could not be written to storage.',
         context: item,
+        exception: error,
       };
     }
   }
@@ -107,12 +116,13 @@ export class StorageService<T extends PouchEntity> {
         item = Object.assign(item, updatedItem);
       });
       return items;
-    } catch {
+    } catch (error) {
       return {
         error: true,
         operation: 'putMany',
         message: 'Items could not be written to storage.',
         context: items,
+        exception: error,
       };
     }
   }
@@ -120,12 +130,13 @@ export class StorageService<T extends PouchEntity> {
   async delete(item: T | string): Promise<PouchDB.Core.Response | StorageOperationError> {
     try {
       return await this.db.remove(item[this.idProperty] || item);
-    } catch {
+    } catch (error) {
       return {
         error: true,
         operation: 'delete',
         message: 'Item could not be deleted from storage.',
         context: item,
+        exception: error,
       };
     }
   }

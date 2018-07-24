@@ -6,4 +6,5 @@ export interface BlockSync extends PouchEntity {
     knownStates?: number;
     pulledStates?: number;
     startingBlock?: number;
+    id?: string;
 }

@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { StorageService } from '../shared/services/storage.service';
 import { BlockSync } from '../models/block-sync';
 import { PendingTransactionsStorageService } from './pending-transactions-storage.service';
+import { clientConstants } from './akroma-client.constants';
 
 @Injectable()
 export class TransactionSyncService extends StorageService<BlockSync> {
@@ -16,7 +17,8 @@ export class TransactionSyncService extends StorageService<BlockSync> {
     private transactionsService: TransactionsService,
     private transactionStorageService: TransactionsStorageService,
     private pendingTransactionStorageService: PendingTransactionsStorageService) {
-      super("txBlockSync", "currentBlock");
+      super('txBlockSync', 'id');
+      this.transactionsService.setProvider(new this.transactionsService.providers.HttpProvider(clientConstants.connection.default));
       this.addressesToSync = [];
       this.syncing = new BehaviorSubject(false);
   }
@@ -29,36 +31,43 @@ export class TransactionSyncService extends StorageService<BlockSync> {
   async startSync(): Promise<void> {
     this.syncing.next(true);
     const startBlock = await this.getMostRecentBlockFromTransactions();
+    console.log('Block Sync starts @', startBlock);
     const endBlockNumber = await this.transactionsService.eth.getBlockNumber();
     let lastBlockNumberSynced = startBlock;
     for (let i = startBlock; i < endBlockNumber; i++) {
       lastBlockNumberSynced = i;
       if (i % 1000 === 0) {
+        console.log('At Block', i);
         const pendingTx = this.pendingTransactionStorageService.currentPendingTransactions;
         const transactions = await this.transactionsService.getTransactionsByAccounts(this.addressesToSync, i - 10, i + 1000);
         if (transactions.length > 0) {
-          await this.transactionStorageService.putMany(transactions);
+          this.transactionStorageService.putMany(transactions);
         }
         if (pendingTx.length > 0) {
           this.cleanupPendingTransactionsAfterConfirmation(transactions);
         }
       }
-      if (i % 10 === 0) {
-        // await this.put({ currentBlock: lastBlockNumberSynced });
-        this.put({ currentBlock: lastBlockNumberSynced });
+      if (i % 1000 === 0) {
+        const syncSavedResult = this.put({ currentBlock: lastBlockNumberSynced, id: 'currentBlock' });
+        if (!syncSavedResult.hasOwnProperty('error')) {
+          console.log('Sync saved @', lastBlockNumberSynced);
+        }
       }
     }
   }
 
   stopSync(): void {
     this.syncing.next(false);
-    // todo
   }
 
   async getMostRecentBlockFromTransactions(): Promise<number> {
+    const getResult = await this.get('currentBlock');
+    if (!getResult.hasOwnProperty('error')) {
+      return (getResult as BlockSync).currentBlock;
+    }
     const allTransactions = await this.transactionStorageService.getAll() as Transaction[];
     if (allTransactions.length > 0) {
-      const syncedBlockNumbers = allTransactions.map(x => x.blockNumber);
+      const syncedBlockNumbers = allTransactions.map(x => !!x.blockNumber ? x.blockNumber : 0);
       return Math.max(...syncedBlockNumbers);
     }
     return 0;

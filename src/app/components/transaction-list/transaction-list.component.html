@@ -5,7 +5,16 @@
     <a class="filter-type" [ngClass]="{'selected': filter === 'received'}" (click)="setFilter('received')">Received</a>
   </div>
 
-  <ng-container *ngIf="lastBlockNumberSynced + 10 >= endBlockNumber; else loading">
+  <!-- <ng-container *ngIf="lastBlockNumberSynced + 10 >= endBlockNumber; else loading"> -->
+  <ng-container>
+    <div class="row">
+      <div class="col">
+        <div class="syncing-bar progress bar-background">
+          <div class="progress-bar bar-white" role="progressbar" [ngStyle]="{'width': (lastBlockNumberSynced / endBlockNumber * 100) + '%'}"
+            [attr.aria-valuenow]="lastBlockNumberSynced / endBlockNumber * 100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
     <div *ngFor="let transaction of filteredTransactions | paginate: { itemsPerPage: 5, currentPage: p }; let i = index" class="transactions">
       <div class="transaction">
         <div class="value selectableText">
@@ -43,8 +52,8 @@
   <div class="row">
     <div class="col">
       <div class="syncing-bar progress bar-background">
-          <div class="progress-bar bar-white" role="progressbar" [ngStyle]="{'width': (lastBlockNumberSynced / endBlockNumber * 100) + '%'}"
-            [attr.aria-valuenow]="lastBlockNumberSynced / endBlockNumber * 100" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bar-white" role="progressbar" [ngStyle]="{'width': (lastBlockNumberSynced / endBlockNumber * 100) + '%'}"
+          [attr.aria-valuenow]="lastBlockNumberSynced / endBlockNumber * 100" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
   </div>

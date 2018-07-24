@@ -39,6 +39,7 @@ import { WalletStorageService } from './providers/wallet-storage.service';
 import { Web3Service } from './providers/web3.service';
 import { AkromaLoggerService } from './providers/akroma-logger.service';
 import { ShowEtherPipe } from './pipes/show-ether.pipe';
+import { TransactionSyncService } from './providers/transaction-sync.service';
 
 
 // AoT requires an exported function for factories
@@ -93,6 +94,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PendingTransactionsStorageService,
     SettingsStorageService,
     WalletStorageService,
+    TransactionSyncService,
   ],
   bootstrap: [AppComponent],
 })

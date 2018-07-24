@@ -13,6 +13,7 @@ export class TransactionListComponent implements OnChanges, OnInit {
   @Input() lastBlockNumberSynced: number;
   @Input() endBlockNumber: number;
   @Input() transactions: Transaction[];
+  @Input() pendingTransactions: Transaction[];
   @Input() wallet: Wallet;
 
   filteredTransactions: Transaction[];
@@ -30,6 +31,9 @@ export class TransactionListComponent implements OnChanges, OnInit {
       this.filteredTransactions = [ ...this.transactions ];
       this.filteredTransactions.sort((a: Transaction, b: Transaction) => b.timestamp - a.timestamp);
     }
+    if (!!changes.pendingTransactions && changes.pendingTransactions.currentValue !== changes.pendingTransactions.previousValue) {
+      this.filteredTransactions = [ ...this.pendingTransactions, ...this.filteredTransactions ];
+    }
   }
 
   ngOnInit() {
@@ -39,19 +43,27 @@ export class TransactionListComponent implements OnChanges, OnInit {
     switch (filterType) {
       case 'sent':
         this.filter = filterType;
-        this.filteredTransactions = [ ...this.transactions ]
-          .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase());
+        this.filteredTransactions = [
+          ...this.pendingTransactions,
+          ...this.transactions
+            .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase()),
+        ];
         break;
       case 'received':
-        this.filter = filterType;
-        this.filteredTransactions = [ ...this.transactions ]
-          .filter(x => x.to.toUpperCase() === this.wallet.address.toUpperCase());
+        this.filteredTransactions = [
+          ...this.transactions
+            .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase()),
+          ...this.pendingTransactions,
+        ];
         break;
       default:
         this.filter = 'all';
-        this.filteredTransactions = [ ...this.transactions ];
+        this.filteredTransactions = [ ...this.pendingTransactions, ...this.transactions ];
     }
-    this.filteredTransactions = [ ...this.filteredTransactions ].sort((a: Transaction, b: Transaction) => b.timestamp - a.timestamp);
+    this.filteredTransactions = [
+      ...this.pendingTransactions,
+      ...this.filteredTransactions.sort((a: Transaction, b: Transaction) => b.timestamp - a.timestamp),
+    ];
   }
 
 }
