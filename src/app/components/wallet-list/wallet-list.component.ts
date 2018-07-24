@@ -14,6 +14,7 @@ import { Web3Service } from '../../providers/web3.service';
 import { AkromaLoggerService } from '../../providers/akroma-logger.service';
 import { DocMeta } from '../../shared/services/storage.service';
 import { TransactionSyncService } from '../../providers/transaction-sync.service';
+import { KeyStore } from '../../models/keystore';
 
 const electron = window.require('electron');
 
@@ -68,6 +69,9 @@ export class WalletListComponent implements OnInit {
     uniqueWallets.forEach(wallet => {
       const storedWallet = this.wallets.find(x => x.address === wallet);
       if (!!storedWallet) {
+        if (!storedWallet.keyStore) {
+          this.writeKeyStoreDataToWallet(storedWallet);
+        }
         return;
       }
     });
@@ -138,10 +142,25 @@ export class WalletListComponent implements OnInit {
       address: newWalletAddress,
       name: this.walletForm.get('name').value,
     };
-    const newWallet = await this.walletService.put(newWalletObject) as Wallet;
-    console.log('newWallet', newWallet);
+    let newWallet = await this.walletService.put(newWalletObject) as Wallet;
+    this.writeKeyStoreDataToWallet(newWallet);
     this.wallets.push(newWallet);
     this.walletForm.reset();
+  }
+
+  private async writeKeyStoreDataToWallet(wallet: Wallet): Promise<void> {
+    const file = await this.findWalletFile(wallet);
+    const fileDate = new Date(file.fileName.substring(5, 15));
+    const currentBlock = await this.web3.eth.getBlockNumber();
+    let calculatedBlockStart = 0;
+    if (!!fileDate.getTime()) {
+      const averageBlockTime = 15; // Keep static and over-estimate for good measure
+      const averageBlocksPerDay = (60 * 60 * 24) / averageBlockTime;
+      const daysSinceFileDate = (new Date().getTime() - fileDate.getTime()) / (1000 * 60 * 60 * 24);
+      calculatedBlockStart = daysSinceFileDate * averageBlocksPerDay;
+    }
+    wallet.keyStore = new KeyStore(fileDate, currentBlock - calculatedBlockStart);
+    await this.walletService.put(wallet);
   }
 
   async renameWallet(walletForm: FormGroup = this.editWalletForm): Promise<void> {
@@ -217,13 +236,20 @@ export class WalletListComponent implements OnInit {
   }
 
   async backupWallet(wallet: Wallet): Promise<void> {
+    const keystoreFileResult = await this.findWalletFile(wallet);
+    if (keystoreFileResult.keystoreFile) {
+      electron.shell.showItemInFolder(`${keystoreFileResult.filePath}/${keystoreFileResult.fileName}`);
+    }
+  }
+
+  async findWalletFile(wallet: Wallet): Promise<any> {
     const systemSettings = await this.settingsService.db.get('system');
     const keystoreFileDir = `${systemSettings.clientPath}/data/keystore`;
     const keystoreFileList = await this.electronService.fs.readdirSync(keystoreFileDir);
-    const keystoreFile = keystoreFileList.find(x => x.toLowerCase().includes(wallet.address.replace('0x', '').toLowerCase()));
-    if (keystoreFile) {
-      electron.shell.showItemInFolder(`${keystoreFileDir}/${keystoreFile}`);
-    }
+    return {
+      fileName: keystoreFileList.find(x => x.toLowerCase().includes(wallet.address.replace('0x', '').toLowerCase())),
+      filePath: keystoreFileDir,
+    };
   }
 
   showQrCode(wallet: Wallet, template: TemplateRef<any>) {
