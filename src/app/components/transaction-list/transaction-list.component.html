@@ -3,6 +3,7 @@
     <a class="filter-type" [ngClass]="{'selected': filter === 'all'}" (click)="setFilter('all')">All</a>
     <a class="filter-type" [ngClass]="{'selected': filter === 'sent'}" (click)="setFilter('sent')">Sent</a>
     <a class="filter-type" [ngClass]="{'selected': filter === 'received'}" (click)="setFilter('received')">Received</a>
+    <a class="filter-type"  href="https://akroma.io/en/explorer/address/{{wallet?.address}}" target="blank" allowpopups>Open in Akroma.io Explorer</a>
   </div>
 
   <ng-container *ngIf="lastBlockNumberSynced + 10 >= endBlockNumber; else loading">
