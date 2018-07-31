@@ -23,7 +23,7 @@ export class AkromaLoggerService {
         } catch {
             settings = await this.settingsService.defaultSettings();
         }
-        this.logPath = settings.applicationPath + this.electronService.path.sep + 'akroma.txt';
+        this.logPath = settings.applicationPath + this.electronService.path.sep + 'logs' + this.electronService.path.sep 'akroma.log';
         console.log(`AkromaLoggerService: [logPath]: ${this.logPath}`);
 
         const exists = this.electronService.fs.existsSync(this.logPath);

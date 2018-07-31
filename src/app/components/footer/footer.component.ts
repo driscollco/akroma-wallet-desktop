@@ -38,6 +38,6 @@ export class FooterComponent implements OnInit {
   }
 
   viewLogs() {
-    this.electronService.remote.shell.showItemInFolder(this.settings.applicationPath + this.electronService.path.sep + 'akroma.txt');
+    this.electronService.remote.shell.showItemInFolder(this.settings.applicationPath + this.electronService.path.sep + 'logs' + this.electronService.path.sep + 'akroma.log');
   }
 }
