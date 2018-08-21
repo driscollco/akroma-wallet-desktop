@@ -155,37 +155,52 @@ export class WalletListComponent implements OnInit {
   }
 
   async deleteWallet(wallet: Wallet): Promise<void> {
+    const sep = this.electronService.path.sep;
     const systemSettings = await this.settingsService.db.get('system');
-    const keystoreFileDir = `${systemSettings.clientPath}/data/keystore`;
+    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
     const keystoreFileList = this.electronService.fs.readdirSync(keystoreFileDir);
-    const keystoreFile = keystoreFileList.find(x => x.toLowerCase().includes(wallet.address.replace('0x', '').toLowerCase()));
-    const backupDir = `${systemSettings.clientPath}/Auto-Backup-of-Deleted-Wallets`;
+    const backupDir = `${systemSettings.clientPath}${sep}Auto-Backup-of-Deleted-Wallets${sep}`;
 
     if (!this.electronService.fs.existsSync(backupDir)) {
       this.electronService.fs.mkdirSync(backupDir);
     }
-    if (keystoreFile) {
-      this.modalRef.hide();
 
-      this.electronService.fs.createReadStream(`${keystoreFileDir}/${keystoreFile}`)
-      .pipe(this.electronService.fs.createWriteStream(`${systemSettings.clientPath}/Auto-Backup-of-Deleted-Wallets/${keystoreFile}`));
-      console.log(`${keystoreFileDir}/${keystoreFile} was coppyed to ${backupDir}`);
-
-      await this.electronService.fs.unlinkSync(`${keystoreFileDir}/${keystoreFile}`);
-      try {
-        const result = await this.walletService.db.remove(wallet._id, wallet._rev);
-        if (result.ok) {
-          this.wallets = this.wallets.filter(x => x._id !== wallet._id);
-          await this.getWalletBalances(this.wallets.map(x => x.address));
+    keystoreFileList.map((file, i) => {
+      this.electronService.fs.readJson(keystoreFileDir + file, (err, packageObj) => {
+        if (err) console.error(err)
+        if (wallet.address.replace('0x', '').toLowerCase() === packageObj.address) {
+          console.log(keystoreFileDir + file, backupDir + file)
+          this.electronService.fs.move(keystoreFileDir + file, backupDir + file, { overwrite: true }, err => {
+            this.modalRef.hide();
+            if (err) return console.error(err)
+            this.logger.info(`wallet moved from ${keystoreFileDir}${file}`);
+            this.logger.info(`wallet moved to ${backupDir}${file}`);
+            console.log('success!')
+          })
         }
-      } catch {
+      })
+    }).map((x, i) => { // quick fix before a better system is in place
+      this.refreshWalletDataAfterDelete(wallet)
+    })
+
+  }
+
+  private async refreshWalletDataAfterDelete(wallet: Wallet) {
+    try {
+      const result = await this.walletService.db.remove(wallet._id, wallet._rev);
+      if (result.ok) {
         this.wallets = this.wallets.filter(x => x._id !== wallet._id);
         await this.getWalletBalances(this.wallets.map(x => x.address));
-        this.logger.debug(`Wallet ${wallet.address} not removed from database ` +
-          `because it did not exist, but keystore file has been deleted.`);
       }
+    } catch {
+      this.wallets = this.wallets.filter(x => x._id !== wallet._id);
+      await this.getWalletBalances(this.wallets.map(x => x.address));
+      // this.logger.debug(`Wallet ${wallet.address} not removed from database ` +
+      //   `because it did not exist, keystore file has not been deleted.`);
     }
   }
+
+
 
   async getWalletBalances(addresses: string[]): Promise<void> {
     this.allWalletsBalance = '0';
@@ -213,12 +228,14 @@ export class WalletListComponent implements OnInit {
   }
 
   async backupWallet(wallet: Wallet): Promise<void> {
+    const sep = this.electronService.path.sep;
     const systemSettings = await this.settingsService.db.get('system');
-    const keystoreFileDir = `${systemSettings.clientPath}/data/keystore`;
+    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
     const keystoreFileList = await this.electronService.fs.readdirSync(keystoreFileDir);
+    // manual backup of renamed keystore needs fix
     const keystoreFile = keystoreFileList.find(x => x.toLowerCase().includes(wallet.address.replace('0x', '').toLowerCase()));
     if (keystoreFile) {
-      electron.shell.showItemInFolder(`${keystoreFileDir}/${keystoreFile}`);
+      electron.shell.showItemInFolder(`${keystoreFileDir}${sep}${keystoreFile}`);
     }
   }
 

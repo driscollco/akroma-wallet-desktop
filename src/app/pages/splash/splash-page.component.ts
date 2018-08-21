@@ -18,7 +18,7 @@ import { BlockSync } from '../../models/block-sync';
 
 // such override allows to keep some initial values
 export function getProgressbarConfig(): ProgressbarConfig {
-  return Object.assign(new ProgressbarConfig(), { animate: true, striped: true,  max: 100});
+  return Object.assign(new ProgressbarConfig(), { animate: true, striped: true, max: 100 });
 }
 
 @Component({
@@ -39,8 +39,8 @@ export class SplashComponent implements OnDestroy, OnInit {
   private blockSyncStore: PouchDB.Database<BlockSync>;
 
   constructor(private web3: Web3Service,
-              private router: Router,
-              private clientService: AkromaClientService) {
+    private router: Router,
+    private clientService: AkromaClientService) {
     this.web3.setProvider(new this.web3.providers.HttpProvider(clientConstants.connection.default));
     this.lastPercentageSynced = 0;
     this.clientStatus = '';
@@ -52,18 +52,18 @@ export class SplashComponent implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.clientStatusSubscription = IntervalObservable.create(1000)
-    .pipe(mergeMap((i) => Observable.of(this.clientService.status)))
-    .pipe(distinctUntilChanged())
-    .subscribe((status: string) => {
-      this.clientStatus = status;
-      if (status === statusConstants.DOWNLOADING) {
-        return;
-      }
-      if (status === statusConstants.RUNNING) {
-        this.startSyncingSubscriptions();
-        this.clientStatusSubscription.unsubscribe();
-      }
-    });
+      .pipe(mergeMap((i) => Observable.of(this.clientService.status)))
+      .pipe(distinctUntilChanged())
+      .subscribe((status: string) => {
+        this.clientStatus = status;
+        if (status === statusConstants.DOWNLOADING) {
+          return;
+        }
+        if (status === statusConstants.RUNNING) {
+          this.startSyncingSubscriptions();
+          this.clientStatusSubscription.unsubscribe();
+        }
+      });
   }
 
   private async startSyncingSubscriptions(): Promise<void> {
@@ -87,7 +87,11 @@ export class SplashComponent implements OnDestroy, OnInit {
 
     this.syncingOperationIntervals.push(
       setInterval(async () => {
-        this.isListening = await this.web3.eth.net.isListening();
+        this.isListening = await this.web3.eth.net.isListening()
+          .catch(x => {
+            console.warn(`awaiting system`)
+
+          })
       }, 1000),
       setInterval(async () => {
         let blockNumber;
