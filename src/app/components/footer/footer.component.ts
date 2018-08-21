@@ -40,4 +40,11 @@ export class FooterComponent implements OnInit {
   viewLogs() {
     this.electronService.remote.shell.showItemInFolder(this.settings.applicationPath + this.electronService.path.sep + 'logs' + this.electronService.path.sep + 'akroma.log');
   }
+
+
+  console(){
+
+    console.log(`devTools`)
+    this.electronService.ipcRenderer.send(`console`,`console`)  
+  }
 }

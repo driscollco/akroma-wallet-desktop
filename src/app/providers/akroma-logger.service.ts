@@ -23,6 +23,7 @@ export class AkromaLoggerService {
         } catch {
             settings = await this.settingsService.defaultSettings();
         }
+
         const sep = this.electronService.path.sep
         const logDirPath = settings.applicationPath + sep + 'logs'
         this.logPath = settings.applicationPath + sep + 'logs' + sep + 'akroma.log';

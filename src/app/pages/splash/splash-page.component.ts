@@ -34,6 +34,7 @@ export class SplashComponent implements OnDestroy, OnInit {
   isListening: boolean;
   lastSynced: BlockSync;
   peerCount: number;
+  wallets: any;
   syncingOperationIntervals: NodeJS.Timer[];
   clientStatusSubscription: ISubscription;
   private blockSyncStore: PouchDB.Database<BlockSync>;
@@ -100,7 +101,18 @@ export class SplashComponent implements OnDestroy, OnInit {
           blockNumber = await this.web3.eth.getBlockNumber();
         }
         if (this.lastPercentageSynced >= 98 || (this.peerCount >= 3 && !this.isSyncing && blockNumber !== 0)) {
-          this.router.navigate(['/wallets']);
+          
+          this.wallets = await this.web3.eth.personal.getAccounts().catch(err => {
+
+            console.warn(`retry: checking wallets`)
+          })
+
+          await this.whereToGo(this.wallets, this.router).catch(err => {
+            console.warn(`awaiting whereToGo response`)
+
+          })
+
+
         }
       }, 1000),
       setInterval(async () => {
@@ -137,7 +149,22 @@ export class SplashComponent implements OnDestroy, OnInit {
     return parseInt(hexValue, 10);
   }
 
+
+  async whereToGo(wallets, router) {
+
+    if (wallets[0]) {
+      console.warn(`found wallet data!`)
+      router.navigate(['/this.wallets']);
+    } else {
+
+      console.warn(`No wallets ! Go Create or try importing!`)
+      router.navigate(['/create']);
+    }
+
+  }
+
   ngOnDestroy() {
     this.syncingOperationIntervals.forEach(timer => clearInterval(timer));
+    
   }
 }

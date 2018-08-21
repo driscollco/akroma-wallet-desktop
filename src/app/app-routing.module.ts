@@ -4,8 +4,20 @@ import { WalletListComponent } from './components/wallet-list/wallet-list.compon
 import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 import { SplashComponent } from './pages/splash/splash-page.component';
 import { WalletDetailPageComponent } from './pages/wallet-detail/wallet-detail-page.component';
+import { FromKeystoreComponent} from './pages/import/from-keystore/from-keystore.component';
+import{CreateWalletComponent} from './pages/create-wallet/create-wallet.component';
+
 
 const routes: Routes = [
+
+    {
+        path: 'create',
+        component: CreateWalletComponent,
+    },
+    {
+        path: 'import',
+        component: FromKeystoreComponent,
+    },
     {
         path: 'settings',
         component: SettingsPageComponent,

@@ -24,10 +24,38 @@ function createWindow() {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: 800,
+    width: 600,
     height: 600,
+    minWidth:530,
+    minHeight:600,
     backgroundColor: '#cb2027',
+    titleBarStyle: 'hidden',
+    frame:false
   });
+
+
+
+
+  ipcMain.on('console', (evt, msg) =>{
+    win.webContents.openDevTools();
+    console.log(`console`)
+  
+  })
+
+  ipcMain.on('min', (evt, msg) =>{
+    win.minimize()
+    console.log(`minimize`)
+
+  })
+  ipcMain.on('max', (evt, msg) =>{
+    win.maximize()
+    console.log(`maximize`)
+
+  })
+
+  
+
+
 
   Menu.setApplicationMenu(Menu.buildFromTemplate([
     {

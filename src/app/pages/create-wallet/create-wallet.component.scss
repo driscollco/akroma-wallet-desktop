@@ -1,0 +1,65 @@
+.create-container {
+    position: absolute;
+    width: 445px;
+    left: calc(50% - 383px / 2);
+    top: calc(50% - 635px / 2);
+}
+
+
+h3 {
+    position: relative;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    line-height: 60px;
+    color: aliceblue;
+}
+
+.box{
+    
+    position: relative;
+    height: 80px;
+    width: 100%;
+    margin-bottom: 2px;
+}
+
+.icon-create{
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    width: 100%;
+}
+.icon{   
+    height: 80px;
+    width: 100%; 
+}
+
+.icon-create2 , .icon2{
+    display: none;
+ }
+ 
+ @media only screen and (max-width: 530px){
+    .icon-create , .icon{
+      display: none;
+    }
+ 
+    .icon-create2{
+      display: block;
+      position: relative;
+      margin: 0 auto;
+      width: 97%;
+    }
+
+    .icon2{ 
+        display:block;   
+        height: 80px;
+        width: 100%; 
+    }
+    .create-container{
+        position: absolute;
+        width: 335px;
+        left: calc(50% - 272px / 2);
+        top: calc(50% - 635px / 2);
+    }
+
+ } 

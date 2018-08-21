@@ -19,12 +19,12 @@
           <img src="./assets/images/icons/icon-received.svg" alt="Receive">
           Receive
         </a>
-        <a class="action" [routerLink]="['/wallets']">
-          <img src="./assets/images/icons/icon-wallets.svg" alt="Wallets">
-          Wallets
+        <a class="action" [routerLink]="['/import']">
+          <img src="assets/images/icons/icon-wallet.svg" alt="Wallets">
+          Manage
         </a>
         <a class="action" [routerLink]="['/settings']">
-          <img src="./assets/images/icons/icon-settings.svg" alt="">
+          <img class="" src="./assets/images/icons/icon-settings.svg" alt="">
           Settings
         </a>
       </div>
@@ -56,7 +56,7 @@
               <div class="wallet-name">
                 {{ wallet.name }}
               </div>
-              <div class="wallet-address selectableText">
+              <div class="wallet-address">
                 {{ wallet._id || wallet.address }}
               </div></a>
             </div>

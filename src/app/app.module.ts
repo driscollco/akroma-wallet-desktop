@@ -40,6 +40,12 @@ import { AkromaLoggerService } from './providers/akroma-logger.service';
 import { ShowEtherPipe } from './pipes/show-ether.pipe';
 
 
+import { DragulaModule } from 'ng2-dragula';
+import { FrameActionComponent } from './components/frame-action/frame-action.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { CreateWalletComponent } from './pages/create-wallet/create-wallet.component';
+import { FromKeystoreComponent } from './pages/import/from-keystore/from-keystore.component';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -60,8 +66,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     MastheadComponent,
     FooterComponent,
     ShowEtherPipe,
+    FromKeystoreComponent,
+    FrameActionComponent,
+    SideBarComponent,
+    CreateWalletComponent,
   ],
   imports: [
+    DragulaModule.forRoot(),
     RouterModule,
     BrowserModule,
     FormsModule,
