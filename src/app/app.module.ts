@@ -22,10 +22,10 @@ import { MastheadComponent } from './components/masthead/masthead.component';
 import { SendTransactionComponent } from './components/send-transaction/send-transaction.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { WalletActionsComponent } from './components/wallet-actions/wallet-actions.component';
-import { WalletListComponent } from './components/wallet-list/wallet-list.component';
 import { WalletComponent } from './components/wallet/wallet.component';
-import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
 // Pages
+import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { WalletListComponent } from './pages/wallet-list/wallet-list.component';
 import { SplashComponent } from './pages/splash/splash-page.component';
 import { WalletDetailPageComponent } from './pages/wallet-detail/wallet-detail-page.component';
 // Services
@@ -45,6 +45,7 @@ import { FrameActionComponent } from './components/frame-action/frame-action.com
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { CreateWalletComponent } from './pages/create-wallet/create-wallet.component';
 import { FromKeystoreComponent } from './pages/import/from-keystore/from-keystore.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -70,6 +71,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FrameActionComponent,
     SideBarComponent,
     CreateWalletComponent,
+    PageTitleComponent,
   ],
   imports: [
     DragulaModule.forRoot(),

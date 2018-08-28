@@ -1,13 +1,12 @@
-<app-frame-action></app-frame-action>
-    
-<app-side-bar></app-side-bar>
-
-<router-outlet>
-    
-    
-    
-    
-</router-outlet>
-
-
+<!-- <app-frame-action></app-frame-action> -->
+<table class="hight_100p">
+    <tr class="v-top">
+        <td class="sidebar">
+            <app-side-bar></app-side-bar>
+        </td>
+        <td style="width:100%">
+            <router-outlet></router-outlet>
+        </td>
+    </tr>
+</table>
 <app-footer></app-footer>

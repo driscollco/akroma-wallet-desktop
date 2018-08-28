@@ -1,4 +1,4 @@
-import { BrowserWindow, app, screen, ipcMain, Menu } from 'electron';
+import { app, BrowserWindow, ipcMain, screen } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { AppConfig } from './src/app/app.config';
@@ -24,62 +24,60 @@ function createWindow() {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: 600,
-    height: 600,
-    minWidth:530,
-    minHeight:600,
+    width: 800,
+    height: 800,
+    minWidth: 800,
+    minHeight: 800,
     backgroundColor: '#cb2027',
-    titleBarStyle: 'hidden',
-    frame:false
+    titleBarStyle: 'hiddenInset',
+  });
+  win.setMenu(null);
+
+
+
+  ipcMain.on('console', (evt, msg) => {
+    win.webContents.openDevTools();
+    console.log(`console`);
+  });
+
+  ipcMain.on('min', (evt, msg) => {
+    win.minimize();
+    console.log(`minimize`);
+  });
+
+  ipcMain.on('max', (evt, msg) => {
+    win.maximize();
+    console.log(`maximize`);
   });
 
 
 
 
-  ipcMain.on('console', (evt, msg) =>{
-    win.webContents.openDevTools();
-    console.log(`console`)
-  
-  })
 
-  ipcMain.on('min', (evt, msg) =>{
-    win.minimize()
-    console.log(`minimize`)
-
-  })
-  ipcMain.on('max', (evt, msg) =>{
-    win.maximize()
-    console.log(`maximize`)
-
-  })
-
-  
-
-
-
-  Menu.setApplicationMenu(Menu.buildFromTemplate([
-    {
-      label: 'Edit',
-      submenu: [
-        { role: 'undo' },
-        { role: 'redo' },
-        { type: 'separator' },
-        { role: 'cut' },
-        { role: 'copy' },
-        { role: 'paste' },
-      ],
-    },
-  ]));
+  // Menu.setApplicationMenu(Menu.buildFromTemplate([
+  //   {
+  //     label: 'Edit',
+  //     submenu: [
+  //       { role: 'undo' },
+  //       { role: 'redo' },
+  //       { type: 'separator' },
+  //       { role: 'cut' },
+  //       { role: 'copy' },
+  //       { role: 'paste' },
+  //     ],
+  //   },
+  // ]));
 
   if (serve) {
     require('electron-reload')(__dirname, {
-    electron: require(`${__dirname}/node_modules/electron`)});
+      electron: require(`${__dirname}/node_modules/electron`)
+    });
     win.loadURL('http://localhost:4200');
   } else {
     win.loadURL(url.format({
       pathname: path.join(__dirname, 'dist/index.html'),
       protocol: 'file:',
-      slashes: true
+      slashes: true,
     }));
   }
 

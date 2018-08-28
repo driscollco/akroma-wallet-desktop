@@ -1,11 +1,39 @@
-<nav id="sidebar" class="col-md-2   bg-dark sidebar ">
-  
-  <div class="aka-menu-title" style="-webkit-app-region: drag">
-
-    <img style="-webkit-app-region: drag" src="assets/images/120x120/akroma-logo-color-120x120.png">
-    
-
-
-  </div>
-
-</nav>  
+<table class="table table-striped table-dark table-akroma table-responsive-sm ">
+  <thead>
+    <tr>
+      <th i18n>
+        <a class="action" [routerLink]="['/wallets']">
+          <img src="./assets/images/akroma-logo-on-black.svg" alt="Akroma Logo" style="-webkit-app-region: drag">
+        </a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- <tr>
+      <td>PORTFOLIO</td>
+    </tr> -->
+    <tr>
+      <td>
+        <a class="action" [routerLink]="['/wallets']">
+          WALLETS
+        </a>
+      </td>
+    </tr>
+    <!-- <tr>
+      <td>CONTACTS</td>
+    </tr>
+    <tr>
+      <td>MASTERNODES</td>
+    </tr> -->
+    <tr>
+      <td>
+        <a class="action" [routerLink]="['/settings']">
+          SETTINGS
+        </a>
+      </td>
+    </tr>
+    <!-- <tr>
+      <td>LOGIN</td>
+    </tr> -->
+  </tbody>
+</table>
