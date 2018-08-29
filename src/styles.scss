@@ -154,3 +154,13 @@ $akroma-dark-base: #343a40;
         }
     }
 }
+
+.card-akroma {
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 0 !important;
+
+    a{
+        color: $akroma-white;
+        text-decoration: underline;
+    }
+}
