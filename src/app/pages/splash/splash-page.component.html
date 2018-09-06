@@ -1,22 +1,20 @@
-<div class="container">
-  <h1 class="title">
-    Preparing the Akroma Desktop Wallet.
-    <ng-container *ngIf="isListening">
-      <ng-container *ngIf="isSyncing">
-        <div class="mb-2">
-          <!-- <progressbar class="progress-striped active" [value]="currentPercentage(isSyncing.currentBlock, isSyncing.highestBlock)" type="danger"> -->
-          <progressbar class="progress-striped active" [value]="calculateSyncState(isSyncing)" type="danger">
-            <i>{{ currentPercentage(isSyncing.currentBlock, isSyncing.highestBlock).toFixed(0) }}&#37;</i>
-          </progressbar>
+<!-- <app-frame-action></app-frame-action> -->
+<table class="hight_100p">
+  <tr>
+    <td>
+      <div class="container">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <p>Downloading client. <span *ngIf="state >= 1"> &#x2714; </span> </p>
+            <p>Starting Akroma. <span *ngIf="state >= 2"> &#x2714; </span> </p>
+            <p>Looking for peers. <span *ngIf="state >= 3"> &#x2714; </span> </p>
+            <p>Syncing. <span *ngIf="state >= 4"> &#x2714; </span> </p>
+            <p>Complete. <span *ngIf="state >= 5"> &#x2714; </span> </p>
+          </div>
+          <div class="col"></div>
         </div>
-        <h3 class="title">{{ currentPercentage(isSyncing.currentBlock, isSyncing.highestBlock).toFixed(0) }}&#37;</h3>
-        <h3 class="title">Syncing block: {{ isSyncing.currentBlock }} of {{ isSyncing.highestBlock }}  </h3>
-      </ng-container>
-      <ng-container *ngIf="peerCount">
-        <h3 class="title" *ngIf="peerCount > 0">{{ hexToInt(peerCount) }} Peer{{ hexToInt(peerCount) > 1 ? 's' : '' }} Connected.</h3>
-        <h3 class="title" *ngIf="peerCount === 0">Looking for peers.</h3>
-      </ng-container>
-    </ng-container>
-    <h3 *ngIf="clientStatus == 'downloading'" class="title">Downloading Akroma Client.</h3>
-  </h1>
-</div>
+      </div>
+    </td>
+  </tr>
+</table>

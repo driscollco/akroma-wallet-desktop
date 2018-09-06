@@ -18,7 +18,7 @@ export class TransactionsPersistenceService {
   }
 
   constructor() {
-    this._db = new PouchDB('transactions');
-    this._pending = new PouchDB('pending_transactions');
+    this._db = new PouchDB('http://akroma:akroma@127.0.0.1:5984/transactions');
+    this._pending = new PouchDB('http://akroma:akroma@127.0.0.1:5984/pending_transactions');
   }
 }

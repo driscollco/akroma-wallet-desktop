@@ -1,0 +1,1208 @@
+[2018-09-03 19:30:22.234] [debug] [Starting Akroma client...]
+[2018-09-03 19:30:22.235] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:30:22.236] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 19:31:24.164] [debug] loading default settings in Akroma Client Service
+[2018-09-03 19:31:24.203] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:31:24.205] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 19:31:24.204] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:31:24.206] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 19:31:24.205] [info] [clientBin]: geth.exe
+[2018-09-03 19:31:24.209] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 19:31:24.211] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 19:31:24.214] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 19:31:24.216] [info] [locale]: en-US
+[2018-09-03 19:31:24.207] [info] [os]: win32
+[2018-09-03 19:31:24.208] [info] [arch]: x64
+[2018-09-03 19:31:26.249] [debug] [Starting Akroma client...]
+[2018-09-03 19:31:26.250] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:31:26.251] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 19:31:32.757] [debug] loading default settings in Akroma Client Service
+[2018-09-03 19:31:32.797] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:31:32.798] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:31:32.800] [info] [clientBin]: geth.exe
+[2018-09-03 19:31:32.799] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 19:31:32.801] [info] [os]: win32
+[2018-09-03 19:31:32.801] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 19:31:32.805] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 19:31:32.803] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 19:31:32.806] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 19:31:32.808] [info] [locale]: en-US
+[2018-09-03 19:31:32.802] [info] [arch]: x64
+[2018-09-03 19:31:34.828] [debug] [Starting Akroma client...]
+[2018-09-03 19:31:34.829] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:31:34.829] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 19:38:13.710] [debug] loading default settings in Akroma Client Service
+[2018-09-03 19:38:13.756] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:38:13.757] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:38:13.758] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 19:38:13.761] [info] [os]: win32
+[2018-09-03 19:38:13.758] [info] [clientBin]: geth.exe
+[2018-09-03 19:38:13.759] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 19:38:13.764] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 19:38:13.762] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 19:38:13.766] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 19:38:13.761] [info] [arch]: x64
+[2018-09-03 19:38:13.767] [info] [locale]: en-US
+[2018-09-03 19:38:15.788] [debug] [Starting Akroma client...]
+[2018-09-03 19:38:15.789] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:38:15.789] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 19:38:53.967] [debug] loading default settings in Akroma Client Service
+[2018-09-03 19:38:53.999] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:38:54.000] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:38:54.001] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 19:38:54.003] [info] [clientBin]: geth.exe
+[2018-09-03 19:38:54.003] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 19:38:54.004] [info] [os]: win32
+[2018-09-03 19:38:54.005] [info] [arch]: x64
+[2018-09-03 19:38:54.006] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 19:38:54.009] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 19:38:54.011] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 19:38:54.013] [info] [locale]: en-US
+[2018-09-03 19:38:56.045] [debug] [Starting Akroma client...]
+[2018-09-03 19:38:56.046] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:38:56.046] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 19:41:03.828] [debug] loading default settings in Akroma Client Service
+[2018-09-03 19:41:03.892] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:41:03.893] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:41:03.894] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 19:41:03.895] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 19:41:03.895] [info] [os]: win32
+[2018-09-03 19:41:03.894] [info] [clientBin]: geth.exe
+[2018-09-03 19:41:03.896] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 19:41:03.898] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 19:41:03.896] [info] [arch]: x64
+[2018-09-03 19:41:03.899] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 19:41:03.901] [info] [locale]: en-US
+[2018-09-03 19:41:05.927] [debug] [Starting Akroma client...]
+[2018-09-03 19:41:05.928] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:41:05.928] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 19:44:25.294] [debug] loading default settings in Akroma Client Service
+[2018-09-03 19:44:25.355] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:44:25.356] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 19:44:25.355] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:44:25.358] [info] [os]: win32
+[2018-09-03 19:44:25.357] [info] [clientBin]: geth.exe
+[2018-09-03 19:44:25.359] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 19:44:25.360] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 19:44:25.358] [info] [arch]: x64
+[2018-09-03 19:44:25.364] [info] [locale]: en-US
+[2018-09-03 19:44:25.362] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 19:44:25.357] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 19:44:27.383] [debug] [Starting Akroma client...]
+[2018-09-03 19:44:27.383] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:44:27.384] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 19:45:07.189] [debug] loading default settings in Akroma Client Service
+[2018-09-03 19:45:07.223] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:45:07.224] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:45:07.225] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 19:45:07.226] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 19:45:07.225] [info] [clientBin]: geth.exe
+[2018-09-03 19:45:07.227] [info] [os]: win32
+[2018-09-03 19:45:07.229] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 19:45:07.230] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 19:45:07.232] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 19:45:07.228] [info] [arch]: x64
+[2018-09-03 19:45:07.233] [info] [locale]: en-US
+[2018-09-03 19:45:09.254] [debug] [Starting Akroma client...]
+[2018-09-03 19:45:09.255] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:45:09.255] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 19:46:28.799] [debug] loading default settings in Akroma Client Service
+[2018-09-03 19:46:28.835] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:46:28.837] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 19:46:28.838] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 19:46:28.838] [info] [clientBin]: geth.exe
+[2018-09-03 19:46:28.839] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 19:46:28.840] [info] [os]: win32
+[2018-09-03 19:46:28.841] [info] [arch]: x64
+[2018-09-03 19:46:28.842] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 19:46:28.844] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 19:46:28.845] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 19:46:28.847] [info] [locale]: en-US
+[2018-09-03 19:46:30.870] [debug] [Starting Akroma client...]
+[2018-09-03 19:46:30.871] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 19:46:30.871] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 20:05:14.833] [debug] loading default settings in Akroma Client Service
+[2018-09-03 20:05:14.858] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 20:05:14.859] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 20:05:14.859] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 20:05:14.860] [info] [clientBin]: geth.exe
+[2018-09-03 20:05:14.861] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 20:05:14.861] [info] [os]: win32
+[2018-09-03 20:05:14.862] [info] [arch]: x64
+[2018-09-03 20:05:14.862] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 20:05:14.864] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 20:05:14.866] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 20:05:14.867] [info] [locale]: en-US
+[2018-09-03 20:05:16.883] [debug] [Starting Akroma client...]
+[2018-09-03 20:05:16.884] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 20:05:16.884] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 20:10:42.170] [debug] loading default settings in Akroma Client Service
+[2018-09-03 20:10:42.226] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 20:10:42.228] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-03 20:10:42.227] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-03 20:10:42.229] [info] [clientBin]: geth.exe
+[2018-09-03 20:10:42.229] [info] [akromaNode]: http://localhost:8545
+[2018-09-03 20:10:42.231] [info] [arch]: x64
+[2018-09-03 20:10:42.231] [info] [homedir]: C:\Users\detroitpro
+[2018-09-03 20:10:42.230] [info] [os]: win32
+[2018-09-03 20:10:42.235] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-03 20:10:42.236] [info] [locale]: en-US
+[2018-09-03 20:10:42.233] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-03 20:10:44.252] [debug] [Starting Akroma client...]
+[2018-09-03 20:10:44.253] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-03 20:10:44.253] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-03 20:17:09.220] [debug] loading default settings in Akroma Client Service
+[2018-09-04 09:34:57.450] [debug] loading default settings in Akroma Client Service
+[2018-09-04 09:45:22.094] [debug] loading default settings in Akroma Client Service
+[2018-09-04 09:45:22.153] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 09:45:22.153] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 09:45:22.155] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 09:45:22.155] [info] [clientBin]: geth.exe
+[2018-09-04 09:45:22.156] [info] [os]: win32
+[2018-09-04 09:45:22.154] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 09:45:22.158] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 09:45:22.160] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 09:45:22.157] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 09:45:22.156] [info] [arch]: x64
+[2018-09-04 09:45:24.175] [debug] [Starting Akroma client...]
+[2018-09-04 09:45:24.176] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 09:45:24.176] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 09:45:22.161] [info] [locale]: en-US
+[2018-09-04 09:47:15.890] [debug] loading default settings in Akroma Client Service
+[2018-09-04 10:02:34.256] [debug] loading default settings in Akroma Client Service
+[2018-09-04 10:12:17.217] [debug] loading default settings in Akroma Client Service
+[2018-09-04 10:17:56.003] [debug] loading default settings in Akroma Client Service
+[2018-09-04 10:17:56.160] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 10:17:56.161] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 10:17:56.162] [info] [clientBin]: geth.exe
+[2018-09-04 10:17:56.161] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 10:17:56.164] [info] [os]: win32
+[2018-09-04 10:17:56.163] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 10:17:56.165] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 10:17:56.168] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 10:17:56.166] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 10:17:56.169] [info] [locale]: en-US
+[2018-09-04 10:17:58.189] [debug] [Starting Akroma client...]
+[2018-09-04 10:17:58.189] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 10:17:58.190] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 10:17:56.164] [info] [arch]: x64
+[2018-09-04 10:34:16.683] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:30:31.441] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:34:41.911] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:34:42.246] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:34:42.247] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:34:42.248] [info] [clientBin]: geth.exe
+[2018-09-04 11:34:42.249] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:34:42.248] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:34:42.251] [info] [arch]: x64
+[2018-09-04 11:34:42.252] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:34:42.254] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:34:42.258] [info] [locale]: en-US
+[2018-09-04 11:34:42.256] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:34:42.250] [info] [os]: win32
+[2018-09-04 11:34:44.681] [debug] [Starting Akroma client...]
+[2018-09-04 11:34:44.682] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:34:44.683] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:35:39.042] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:35:39.246] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:35:39.246] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:35:39.247] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:35:39.248] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:35:39.247] [info] [clientBin]: geth.exe
+[2018-09-04 11:35:39.250] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:35:39.251] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:35:39.249] [info] [os]: win32
+[2018-09-04 11:35:39.253] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:35:39.254] [info] [locale]: en-US
+[2018-09-04 11:35:39.249] [info] [arch]: x64
+[2018-09-04 11:35:41.275] [debug] [Starting Akroma client...]
+[2018-09-04 11:35:41.275] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:35:41.276] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:37:22.955] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:37:23.167] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:37:23.169] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:37:23.168] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:37:23.168] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:37:23.171] [info] [arch]: x64
+[2018-09-04 11:37:23.169] [info] [clientBin]: geth.exe
+[2018-09-04 11:37:23.171] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:37:23.170] [info] [os]: win32
+[2018-09-04 11:37:23.173] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:37:23.174] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:37:23.176] [info] [locale]: en-US
+[2018-09-04 11:37:25.198] [debug] [Starting Akroma client...]
+[2018-09-04 11:37:25.199] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:37:25.200] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:42:20.267] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:42:20.608] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:42:20.609] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:42:20.612] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:42:20.610] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:42:20.612] [info] [os]: win32
+[2018-09-04 11:42:20.611] [info] [clientBin]: geth.exe
+[2018-09-04 11:42:20.614] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:42:20.615] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:42:20.617] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:42:20.619] [info] [locale]: en-US
+[2018-09-04 11:42:20.613] [info] [arch]: x64
+[2018-09-04 11:42:22.662] [debug] [Starting Akroma client...]
+[2018-09-04 11:42:22.663] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:42:22.664] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:43:25.273] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:43:25.529] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:43:25.531] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:43:25.531] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:43:25.532] [info] [clientBin]: geth.exe
+[2018-09-04 11:43:25.532] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:43:25.533] [info] [os]: win32
+[2018-09-04 11:43:25.534] [info] [arch]: x64
+[2018-09-04 11:43:25.534] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:43:25.536] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:43:25.538] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:43:25.540] [info] [locale]: en-US
+[2018-09-04 11:43:27.560] [debug] [Starting Akroma client...]
+[2018-09-04 11:43:27.561] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:43:27.561] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:44:06.145] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:44:06.499] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:44:06.499] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:44:06.501] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:44:06.501] [info] [clientBin]: geth.exe
+[2018-09-04 11:44:06.500] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:44:06.503] [info] [arch]: x64
+[2018-09-04 11:44:06.504] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:44:06.506] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:44:06.508] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:44:06.510] [info] [locale]: en-US
+[2018-09-04 11:44:06.502] [info] [os]: win32
+[2018-09-04 11:44:08.535] [debug] [Starting Akroma client...]
+[2018-09-04 11:44:08.535] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:44:08.536] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:44:31.623] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:44:31.888] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:44:31.889] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:44:31.891] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:44:31.890] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:44:31.892] [info] [arch]: x64
+[2018-09-04 11:44:31.893] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:44:31.895] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:44:31.897] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:44:31.898] [info] [locale]: en-US
+[2018-09-04 11:44:31.892] [info] [os]: win32
+[2018-09-04 11:44:31.890] [info] [clientBin]: geth.exe
+[2018-09-04 11:44:33.920] [debug] [Starting Akroma client...]
+[2018-09-04 11:44:33.921] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:44:33.922] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:45:23.344] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:45:23.686] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:45:23.687] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:45:23.687] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:45:23.688] [info] [clientBin]: geth.exe
+[2018-09-04 11:45:23.688] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:45:23.689] [info] [os]: win32
+[2018-09-04 11:45:23.690] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:45:23.692] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:45:23.690] [info] [arch]: x64
+[2018-09-04 11:45:23.694] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:45:23.695] [info] [locale]: en-US
+[2018-09-04 11:45:25.712] [debug] [Starting Akroma client...]
+[2018-09-04 11:45:25.713] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:45:25.714] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:46:04.113] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:46:04.376] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:46:04.377] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:46:04.378] [info] [clientBin]: geth.exe
+[2018-09-04 11:46:04.376] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:46:04.379] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:46:04.379] [info] [os]: win32
+[2018-09-04 11:46:04.381] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:46:04.382] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:46:04.385] [info] [locale]: en-US
+[2018-09-04 11:46:04.383] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:46:04.380] [info] [arch]: x64
+[2018-09-04 11:46:06.409] [debug] [Starting Akroma client...]
+[2018-09-04 11:46:06.409] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:46:06.410] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:47:05.816] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:47:06.111] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:47:06.113] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:47:06.112] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:47:06.113] [info] [clientBin]: geth.exe
+[2018-09-04 11:47:06.114] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:47:06.115] [info] [arch]: x64
+[2018-09-04 11:47:06.116] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:47:06.117] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:47:06.119] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:47:06.115] [info] [os]: win32
+[2018-09-04 11:47:06.121] [info] [locale]: en-US
+[2018-09-04 11:47:08.139] [debug] [Starting Akroma client...]
+[2018-09-04 11:47:08.139] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:47:08.140] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:47:23.400] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:47:23.709] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:47:23.711] [info] [clientBin]: geth.exe
+[2018-09-04 11:47:23.711] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:47:23.710] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:47:23.710] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:47:23.715] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:47:23.714] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:47:23.717] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:47:23.719] [info] [locale]: en-US
+[2018-09-04 11:47:23.712] [info] [os]: win32
+[2018-09-04 11:47:23.713] [info] [arch]: x64
+[2018-09-04 11:47:25.742] [debug] [Starting Akroma client...]
+[2018-09-04 11:47:25.743] [info] [program]: C:\Users\detroitpro\.akroma\geth.exe
+[2018-09-04 11:47:25.744] [info] [dataDir]: C:\Users\detroitpro\.akroma\data
+[2018-09-04 11:48:11.658] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:52:06.996] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:54:54.137] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:54:56.098] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:54:56.100] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:54:56.099] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:54:56.100] [info] [clientBin]: geth.exe
+[2018-09-04 11:54:56.101] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:54:56.102] [info] [arch]: x64
+[2018-09-04 11:54:56.103] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:54:56.104] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:54:56.102] [info] [os]: win32
+[2018-09-04 11:54:56.107] [info] [locale]: en-US
+[2018-09-04 11:54:56.106] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:56:20.933] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:56:21.464] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:56:21.465] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:56:21.466] [info] [clientBin]: geth.exe
+[2018-09-04 11:56:21.466] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:56:21.465] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:56:21.468] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:56:21.467] [info] [os]: win32
+[2018-09-04 11:56:21.469] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:56:21.472] [info] [locale]: en-US
+[2018-09-04 11:56:21.471] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:56:21.467] [info] [arch]: x64
+[2018-09-04 11:58:37.009] [debug] loading default settings in Akroma Client Service
+[2018-09-04 11:58:37.813] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:58:37.814] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 11:58:37.815] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 11:58:37.816] [info] [clientBin]: geth.exe
+[2018-09-04 11:58:37.816] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 11:58:37.818] [info] [os]: win32
+[2018-09-04 11:58:37.819] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 11:58:37.824] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 11:58:37.822] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 11:58:37.826] [info] [locale]: en-US
+[2018-09-04 11:58:37.818] [info] [arch]: x64
+[2018-09-04 12:01:04.092] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:01:04.886] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:01:04.887] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:01:04.888] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:01:04.892] [info] [os]: win32
+[2018-09-04 12:01:04.893] [info] [arch]: x64
+[2018-09-04 12:01:04.894] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:01:04.896] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:01:04.898] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:01:04.900] [info] [locale]: en-US
+[2018-09-04 12:01:04.891] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:01:04.889] [info] [clientBin]: geth.exe
+[2018-09-04 12:02:35.456] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:02:36.319] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:02:36.320] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:02:36.320] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:02:36.321] [info] [clientBin]: geth.exe
+[2018-09-04 12:02:36.322] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:02:36.323] [info] [os]: win32
+[2018-09-04 12:02:36.324] [info] [arch]: x64
+[2018-09-04 12:02:36.327] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:02:36.325] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:02:36.329] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:02:36.331] [info] [locale]: en-US
+[2018-09-04 12:05:53.239] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:05:54.366] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:05:54.367] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:05:54.368] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:05:54.369] [info] [clientBin]: geth.exe
+[2018-09-04 12:05:54.370] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:05:54.371] [info] [arch]: x64
+[2018-09-04 12:05:54.372] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:05:54.373] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:05:54.370] [info] [os]: win32
+[2018-09-04 12:05:54.376] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:05:54.377] [info] [locale]: en-US
+[2018-09-04 12:06:23.731] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:06:24.889] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:06:24.890] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:06:24.891] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:06:24.892] [info] [clientBin]: geth.exe
+[2018-09-04 12:06:24.893] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:06:24.894] [info] [os]: win32
+[2018-09-04 12:06:24.894] [info] [arch]: x64
+[2018-09-04 12:06:24.895] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:06:24.896] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:06:24.898] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:06:24.899] [info] [locale]: en-US
+[2018-09-04 12:10:06.869] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:10:08.126] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:10:08.128] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:10:08.130] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:10:08.128] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:10:08.129] [info] [clientBin]: geth.exe
+[2018-09-04 12:10:08.132] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:10:08.131] [info] [arch]: x64
+[2018-09-04 12:10:08.134] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:10:08.136] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:10:08.131] [info] [os]: win32
+[2018-09-04 12:10:08.137] [info] [locale]: en-US
+[2018-09-04 12:11:13.328] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:11:14.666] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:11:14.669] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:11:14.670] [info] [os]: win32
+[2018-09-04 12:11:14.671] [info] [arch]: x64
+[2018-09-04 12:11:14.672] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:11:14.674] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:11:14.675] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:11:14.667] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:11:14.677] [info] [locale]: en-US
+[2018-09-04 12:11:14.668] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:11:14.669] [info] [clientBin]: geth.exe
+[2018-09-04 12:11:33.995] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:11:35.219] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:11:35.220] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:11:35.222] [info] [os]: win32
+[2018-09-04 12:11:35.223] [info] [arch]: x64
+[2018-09-04 12:11:35.224] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:11:35.226] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:11:35.227] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:11:35.229] [info] [locale]: en-US
+[2018-09-04 12:11:35.222] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:11:35.220] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:11:35.221] [info] [clientBin]: geth.exe
+[2018-09-04 12:12:37.838] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:12:39.324] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:12:39.326] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:12:39.327] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:12:39.328] [info] [clientBin]: geth.exe
+[2018-09-04 12:12:39.328] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:12:39.329] [info] [os]: win32
+[2018-09-04 12:12:39.330] [info] [arch]: x64
+[2018-09-04 12:12:39.331] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:12:39.333] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:12:39.335] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:12:39.337] [info] [locale]: en-US
+[2018-09-04 12:12:51.631] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:12:52.870] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:12:52.870] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:12:52.871] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:12:52.872] [info] [clientBin]: geth.exe
+[2018-09-04 12:12:52.873] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:12:52.875] [info] [arch]: x64
+[2018-09-04 12:12:52.876] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:12:52.878] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:12:52.874] [info] [os]: win32
+[2018-09-04 12:12:52.882] [info] [locale]: en-US
+[2018-09-04 12:12:52.880] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:15:32.711] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:15:34.116] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:15:34.117] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:15:34.119] [info] [clientBin]: geth.exe
+[2018-09-04 12:15:34.118] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:15:34.119] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:15:34.120] [info] [arch]: x64
+[2018-09-04 12:15:34.121] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:15:34.122] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:15:34.123] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:15:34.126] [info] [locale]: en-US
+[2018-09-04 12:15:34.120] [info] [os]: win32
+[2018-09-04 12:16:19.516] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:16:21.284] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:16:21.285] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:16:21.286] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:16:21.288] [info] [os]: win32
+[2018-09-04 12:16:21.289] [info] [arch]: x64
+[2018-09-04 12:16:21.289] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:16:21.291] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:16:21.293] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:16:21.295] [info] [locale]: en-US
+[2018-09-04 12:16:21.286] [info] [clientBin]: geth.exe
+[2018-09-04 12:16:21.287] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:16:28.141] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:16:29.522] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:16:29.523] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:16:29.524] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:16:29.525] [info] [clientBin]: geth.exe
+[2018-09-04 12:16:29.525] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:16:29.526] [info] [os]: win32
+[2018-09-04 12:16:29.527] [info] [arch]: x64
+[2018-09-04 12:16:29.527] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:16:29.530] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:16:29.531] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:16:29.533] [info] [locale]: en-US
+[2018-09-04 12:23:34.485] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:23:36.247] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:23:36.248] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:23:36.248] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:23:36.248] [info] [os]: win32
+[2018-09-04 12:23:36.248] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:23:36.248] [info] [clientBin]: geth.exe
+[2018-09-04 12:23:36.249] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:23:36.251] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:23:36.251] [info] [locale]: en-US
+[2018-09-04 12:23:36.248] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:23:36.248] [info] [arch]: x64
+[2018-09-04 12:24:29.257] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:24:30.863] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:24:30.864] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:24:30.863] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:24:30.864] [info] [os]: win32
+[2018-09-04 12:24:30.864] [info] [arch]: x64
+[2018-09-04 12:24:30.864] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:24:30.865] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:24:30.864] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:24:30.866] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:24:30.867] [info] [locale]: en-US
+[2018-09-04 12:24:30.864] [info] [clientBin]: geth.exe
+[2018-09-04 12:24:38.010] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:24:39.496] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:24:39.496] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:24:39.496] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:24:39.496] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:24:39.496] [info] [os]: win32
+[2018-09-04 12:24:39.496] [info] [clientBin]: geth.exe
+[2018-09-04 12:24:39.497] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:24:39.498] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:24:39.499] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:24:39.500] [info] [locale]: en-US
+[2018-09-04 12:24:39.497] [info] [arch]: x64
+[2018-09-04 12:32:10.954] [debug] loading default settings in Akroma Client Service
+[2018-09-04 12:32:12.745] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:32:12.745] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 12:32:12.745] [info] [clientBin]: geth.exe
+[2018-09-04 12:32:12.745] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 12:32:12.745] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 12:32:12.746] [info] [os]: win32
+[2018-09-04 12:32:12.746] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 12:32:12.748] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 12:32:12.747] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 12:32:12.749] [info] [locale]: en-US
+[2018-09-04 12:32:12.746] [info] [arch]: x64
+[2018-09-04 13:55:02.912] [debug] loading default settings in Akroma Client Service
+[2018-09-04 13:57:31.146] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:00:49.134] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:00:54.842] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:00:54.843] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:00:54.844] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:00:54.844] [info] [clientBin]: geth.exe
+[2018-09-04 14:00:54.846] [info] [arch]: x64
+[2018-09-04 14:00:54.843] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:00:54.848] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:00:54.845] [info] [os]: win32
+[2018-09-04 14:00:54.847] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:00:54.850] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:00:54.852] [info] [locale]: en-US
+[2018-09-04 14:17:44.445] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:17:51.663] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:17:51.664] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:17:51.665] [info] [clientBin]: geth.exe
+[2018-09-04 14:17:51.665] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:17:51.667] [info] [arch]: x64
+[2018-09-04 14:17:51.664] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:17:51.669] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:17:51.671] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:17:51.672] [info] [locale]: en-US
+[2018-09-04 14:17:51.668] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:17:51.666] [info] [os]: win32
+[2018-09-04 14:19:47.253] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:19:54.832] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:19:54.833] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:19:54.835] [info] [clientBin]: geth.exe
+[2018-09-04 14:19:54.834] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:19:54.837] [info] [arch]: x64
+[2018-09-04 14:19:54.835] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:19:54.839] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:19:54.838] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:19:54.841] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:19:54.843] [info] [locale]: en-US
+[2018-09-04 14:19:54.836] [info] [os]: win32
+[2018-09-04 14:21:34.180] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:21:40.004] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:21:40.004] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:21:40.006] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:21:40.007] [info] [os]: win32
+[2018-09-04 14:21:40.004] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:21:40.008] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:21:40.010] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:21:40.011] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:21:40.013] [info] [locale]: en-US
+[2018-09-04 14:21:40.006] [info] [clientBin]: geth.exe
+[2018-09-04 14:21:40.007] [info] [arch]: x64
+[2018-09-04 14:24:45.284] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:24:58.850] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:25:05.245] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:25:05.246] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:25:05.247] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:25:05.247] [info] [clientBin]: geth.exe
+[2018-09-04 14:25:05.248] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:25:05.249] [info] [os]: win32
+[2018-09-04 14:25:05.249] [info] [arch]: x64
+[2018-09-04 14:25:05.250] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:25:05.251] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:25:05.253] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:25:05.254] [info] [locale]: en-US
+[2018-09-04 14:28:18.652] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:28:25.818] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:28:25.819] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:28:25.820] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:28:25.821] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:28:25.820] [info] [clientBin]: geth.exe
+[2018-09-04 14:28:25.821] [info] [os]: win32
+[2018-09-04 14:28:25.822] [info] [arch]: x64
+[2018-09-04 14:28:25.822] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:28:25.824] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:28:25.826] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:28:25.827] [info] [locale]: en-US
+[2018-09-04 14:31:27.595] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:31:35.034] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:31:35.035] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:31:35.036] [info] [clientBin]: geth.exe
+[2018-09-04 14:31:35.037] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:31:35.035] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:31:35.038] [info] [os]: win32
+[2018-09-04 14:31:35.042] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:31:35.039] [info] [arch]: x64
+[2018-09-04 14:31:35.044] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:31:35.046] [info] [locale]: en-US
+[2018-09-04 14:31:35.040] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:32:35.409] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:32:43.335] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:32:43.336] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:32:43.337] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:32:43.337] [info] [clientBin]: geth.exe
+[2018-09-04 14:32:43.338] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:32:43.339] [info] [os]: win32
+[2018-09-04 14:32:43.340] [info] [arch]: x64
+[2018-09-04 14:32:43.340] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:32:43.342] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:32:43.344] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:32:43.345] [info] [locale]: en-US
+[2018-09-04 14:35:41.363] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:35:48.700] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:35:48.701] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:35:48.703] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:35:48.702] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:35:48.704] [info] [arch]: x64
+[2018-09-04 14:35:48.705] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:35:48.707] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:35:48.703] [info] [clientBin]: geth.exe
+[2018-09-04 14:35:48.708] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:35:48.704] [info] [os]: win32
+[2018-09-04 14:35:48.709] [info] [locale]: en-US
+[2018-09-04 14:38:29.294] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:38:36.626] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:38:36.628] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:38:36.628] [info] [clientBin]: geth.exe
+[2018-09-04 14:38:36.629] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:38:36.629] [info] [os]: win32
+[2018-09-04 14:38:36.630] [info] [arch]: x64
+[2018-09-04 14:38:36.631] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:38:36.632] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:38:36.634] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:38:36.635] [info] [locale]: en-US
+[2018-09-04 14:38:36.627] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:39:39.355] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:39:47.232] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:39:47.232] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:39:47.234] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:39:47.233] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:39:47.235] [info] [os]: win32
+[2018-09-04 14:39:47.233] [info] [clientBin]: geth.exe
+[2018-09-04 14:39:47.236] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:39:47.237] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:39:47.240] [info] [locale]: en-US
+[2018-09-04 14:39:47.239] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:39:47.235] [info] [arch]: x64
+[2018-09-04 14:40:37.672] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:40:45.840] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:40:45.841] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:40:45.842] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:40:45.843] [info] [clientBin]: geth.exe
+[2018-09-04 14:40:45.843] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:40:45.844] [info] [os]: win32
+[2018-09-04 14:40:45.845] [info] [arch]: x64
+[2018-09-04 14:40:45.846] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:40:45.848] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:40:45.850] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:40:45.852] [info] [locale]: en-US
+[2018-09-04 14:41:26.284] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:41:34.116] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:41:34.118] [info] [clientBin]: geth.exe
+[2018-09-04 14:41:34.117] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:41:34.118] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:41:34.119] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:41:34.120] [info] [os]: win32
+[2018-09-04 14:41:34.121] [info] [arch]: x64
+[2018-09-04 14:41:34.121] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:41:34.123] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:41:34.125] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:41:34.127] [info] [locale]: en-US
+[2018-09-04 14:43:57.767] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:44:06.268] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:44:06.268] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:44:06.269] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:44:06.269] [info] [clientBin]: geth.exe
+[2018-09-04 14:44:06.270] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:44:06.271] [info] [os]: win32
+[2018-09-04 14:44:06.271] [info] [arch]: x64
+[2018-09-04 14:44:06.272] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:44:06.274] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:44:06.276] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:44:06.277] [info] [locale]: en-US
+[2018-09-04 14:45:03.445] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:45:11.829] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:45:11.831] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:45:11.830] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:45:11.832] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:45:11.833] [info] [os]: win32
+[2018-09-04 14:45:11.831] [info] [clientBin]: geth.exe
+[2018-09-04 14:45:11.835] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:45:11.837] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:45:11.841] [info] [locale]: en-US
+[2018-09-04 14:45:11.838] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:45:11.834] [info] [arch]: x64
+[2018-09-04 14:45:28.382] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:45:36.374] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:45:36.375] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:45:36.377] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:45:36.376] [info] [clientBin]: geth.exe
+[2018-09-04 14:45:36.377] [info] [os]: win32
+[2018-09-04 14:45:36.375] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:45:36.380] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:45:36.382] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:45:36.378] [info] [arch]: x64
+[2018-09-04 14:45:36.379] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:45:36.384] [info] [locale]: en-US
+[2018-09-04 14:45:52.375] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:46:00.298] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:46:00.299] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:46:00.300] [info] [clientBin]: geth.exe
+[2018-09-04 14:46:00.301] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:46:00.299] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:46:00.302] [info] [arch]: x64
+[2018-09-04 14:46:00.303] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:46:00.301] [info] [os]: win32
+[2018-09-04 14:46:00.305] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:46:00.306] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:46:00.308] [info] [locale]: en-US
+[2018-09-04 14:46:26.313] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:46:33.788] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:46:33.789] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:46:33.790] [info] [clientBin]: geth.exe
+[2018-09-04 14:46:33.791] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:46:33.792] [info] [arch]: x64
+[2018-09-04 14:46:33.793] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:46:33.795] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:46:33.797] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:46:33.799] [info] [locale]: en-US
+[2018-09-04 14:46:33.790] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:46:33.792] [info] [os]: win32
+[2018-09-04 14:46:50.647] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:47:12.192] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:47:28.058] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:47:47.738] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:48:05.676] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:48:24.662] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:48:31.923] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:48:31.924] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:48:31.925] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:48:31.925] [info] [clientBin]: geth.exe
+[2018-09-04 14:48:31.926] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:48:31.927] [info] [arch]: x64
+[2018-09-04 14:48:31.927] [info] [os]: win32
+[2018-09-04 14:48:31.928] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:48:31.930] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:48:31.931] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:48:31.932] [info] [locale]: en-US
+[2018-09-04 14:51:16.520] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:51:24.914] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:51:24.916] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:51:24.917] [info] [os]: win32
+[2018-09-04 14:51:24.915] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:51:24.918] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:51:24.920] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:51:24.916] [info] [clientBin]: geth.exe
+[2018-09-04 14:51:24.921] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:51:24.918] [info] [arch]: x64
+[2018-09-04 14:51:24.923] [info] [locale]: en-US
+[2018-09-04 14:51:24.915] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:51:47.934] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:51:55.434] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:51:55.436] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:51:55.437] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:51:55.435] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:51:55.438] [info] [os]: win32
+[2018-09-04 14:51:55.436] [info] [clientBin]: geth.exe
+[2018-09-04 14:51:55.439] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:51:55.441] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:51:55.444] [info] [locale]: en-US
+[2018-09-04 14:51:55.442] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:51:55.439] [info] [arch]: x64
+[2018-09-04 14:52:13.579] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:52:21.184] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:52:21.186] [info] [clientBin]: geth.exe
+[2018-09-04 14:52:21.187] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:52:21.187] [info] [os]: win32
+[2018-09-04 14:52:21.185] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:52:21.186] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:52:21.190] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:52:21.188] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:52:21.191] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:52:21.193] [info] [locale]: en-US
+[2018-09-04 14:52:21.188] [info] [arch]: x64
+[2018-09-04 14:54:34.123] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:54:42.081] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:54:42.082] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:54:42.083] [info] [clientBin]: geth.exe
+[2018-09-04 14:54:42.082] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:54:42.084] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:54:42.085] [info] [os]: win32
+[2018-09-04 14:54:42.086] [info] [arch]: x64
+[2018-09-04 14:54:42.087] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:54:42.091] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:54:42.089] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:54:42.093] [info] [locale]: en-US
+[2018-09-04 14:55:48.186] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:55:57.084] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:55:57.085] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:55:57.086] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:55:57.087] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:55:57.088] [info] [arch]: x64
+[2018-09-04 14:55:57.086] [info] [clientBin]: geth.exe
+[2018-09-04 14:55:57.089] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:55:57.090] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:55:57.093] [info] [locale]: en-US
+[2018-09-04 14:55:57.088] [info] [os]: win32
+[2018-09-04 14:55:57.092] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:57:08.640] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:57:16.949] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:57:16.951] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:57:16.950] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:57:16.952] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:57:16.953] [info] [os]: win32
+[2018-09-04 14:57:16.954] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:57:16.956] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:57:16.957] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:57:16.959] [info] [locale]: en-US
+[2018-09-04 14:57:16.951] [info] [clientBin]: geth.exe
+[2018-09-04 14:57:16.953] [info] [arch]: x64
+[2018-09-04 14:58:03.831] [debug] loading default settings in Akroma Client Service
+[2018-09-04 14:58:12.206] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:58:12.207] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 14:58:12.208] [info] [clientBin]: geth.exe
+[2018-09-04 14:58:12.209] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 14:58:12.211] [info] [arch]: x64
+[2018-09-04 14:58:12.212] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 14:58:12.213] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 14:58:12.215] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 14:58:12.217] [info] [locale]: en-US
+[2018-09-04 14:58:12.208] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 14:58:12.210] [info] [os]: win32
+[2018-09-04 14:59:19.104] [debug] Starting Transaction Sync @ Block185999
+[2018-09-04 14:59:19.105] [debug] Transaction Sync @ Block #186000
+[2018-09-04 14:59:30.178] [debug] Transaction Sync @ Block #187000
+[2018-09-04 14:59:42.206] [debug] Transaction Sync @ Block #188000
+[2018-09-04 14:59:52.864] [debug] Transaction Sync @ Block #189000
+[2018-09-04 15:00:03.742] [debug] Transaction Sync @ Block #190000
+[2018-09-04 15:00:14.839] [debug] Transaction Sync @ Block #191000
+[2018-09-04 15:00:25.222] [debug] Starting Transaction Sync @ Block190999
+[2018-09-04 15:00:25.223] [debug] Transaction Sync @ Block #191000
+[2018-09-04 15:00:36.440] [debug] Starting Transaction Sync @ Block190999
+[2018-09-04 15:00:36.441] [debug] Transaction Sync @ Block #191000
+[2018-09-04 15:00:49.054] [debug] Transaction Sync @ Block #192000
+[2018-09-04 15:01:00.519] [debug] Transaction Sync @ Block #193000
+[2018-09-04 15:01:11.156] [debug] Transaction Sync @ Block #194000
+[2018-09-04 15:01:22.827] [debug] Transaction Sync @ Block #195000
+[2018-09-04 15:01:35.022] [debug] Transaction Sync @ Block #196000
+[2018-09-04 15:01:45.614] [debug] Transaction Sync @ Block #197000
+[2018-09-04 15:01:56.210] [debug] Transaction Sync @ Block #198000
+[2018-09-04 15:02:06.620] [debug] Transaction Sync @ Block #199000
+[2018-09-04 15:02:18.538] [debug] Transaction Sync @ Block #200000
+[2018-09-04 15:02:29.604] [debug] Transaction Sync @ Block #201000
+[2018-09-04 15:02:42.844] [debug] Transaction Sync @ Block #202000
+[2018-09-04 15:02:53.676] [debug] Transaction Sync @ Block #203000
+[2018-09-04 15:03:04.882] [debug] Transaction Sync @ Block #204000
+[2018-09-04 15:03:15.519] [debug] Transaction Sync @ Block #205000
+[2018-09-04 15:03:25.621] [debug] Transaction Sync @ Block #206000
+[2018-09-04 15:03:35.975] [debug] Transaction Sync @ Block #207000
+[2018-09-04 15:03:46.501] [debug] Transaction Sync @ Block #208000
+[2018-09-04 15:03:56.891] [debug] Transaction Sync @ Block #209000
+[2018-09-04 15:04:07.385] [debug] Transaction Sync @ Block #210000
+[2018-09-04 15:04:18.354] [debug] Transaction Sync @ Block #211000
+[2018-09-04 15:04:29.970] [debug] Transaction Sync @ Block #212000
+[2018-09-04 15:04:41.279] [debug] Transaction Sync @ Block #213000
+[2018-09-04 15:04:52.234] [debug] Transaction Sync @ Block #214000
+[2018-09-04 15:05:03.660] [debug] Transaction Sync @ Block #215000
+[2018-09-04 15:05:14.467] [debug] Transaction Sync @ Block #216000
+[2018-09-04 15:05:24.745] [debug] Transaction Sync @ Block #217000
+[2018-09-04 15:05:35.769] [debug] Transaction Sync @ Block #218000
+[2018-09-04 15:05:46.820] [debug] Transaction Sync @ Block #219000
+[2018-09-04 15:05:57.844] [debug] Transaction Sync @ Block #220000
+[2018-09-04 15:06:08.825] [debug] Transaction Sync @ Block #221000
+[2018-09-04 15:06:20.834] [debug] Transaction Sync @ Block #222000
+[2018-09-04 15:06:32.782] [debug] Transaction Sync @ Block #223000
+[2018-09-04 15:06:44.382] [debug] Transaction Sync @ Block #224000
+[2018-09-04 15:06:57.959] [debug] Transaction Sync @ Block #225000
+[2018-09-04 15:07:09.108] [debug] Transaction Sync @ Block #226000
+[2018-09-04 15:07:20.771] [debug] Transaction Sync @ Block #227000
+[2018-09-04 15:07:33.609] [debug] Transaction Sync @ Block #228000
+[2018-09-04 15:07:45.246] [debug] Transaction Sync @ Block #229000
+[2018-09-04 15:07:58.128] [debug] Transaction Sync @ Block #230000
+[2018-09-04 15:08:10.812] [debug] Transaction Sync @ Block #231000
+[2018-09-04 15:08:22.808] [debug] Transaction Sync @ Block #232000
+[2018-09-04 15:08:35.944] [debug] Transaction Sync @ Block #233000
+[2018-09-04 15:08:48.498] [debug] Transaction Sync @ Block #234000
+[2018-09-04 15:08:59.861] [debug] Transaction Sync @ Block #235000
+[2018-09-04 15:09:15.066] [debug] Transaction Sync @ Block #236000
+[2018-09-04 15:09:35.674] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:10:00.070] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:10:08.911] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:10:08.912] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:10:08.915] [info] [os]: win32
+[2018-09-04 15:10:08.915] [info] [arch]: x64
+[2018-09-04 15:10:08.914] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:10:08.916] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:10:08.917] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:10:08.919] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:10:08.920] [info] [locale]: en-US
+[2018-09-04 15:10:08.913] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:10:08.913] [info] [clientBin]: geth.exe
+[2018-09-04 15:13:43.038] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:13:53.675] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:13:53.676] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:13:53.678] [info] [clientBin]: geth.exe
+[2018-09-04 15:13:53.677] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:13:53.679] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:13:53.680] [info] [os]: win32
+[2018-09-04 15:13:53.680] [info] [arch]: x64
+[2018-09-04 15:13:53.681] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:13:53.683] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:13:53.684] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:13:53.686] [info] [locale]: en-US
+[2018-09-04 15:14:55.435] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:15:05.315] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:15:05.317] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:15:05.316] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:15:05.317] [info] [clientBin]: geth.exe
+[2018-09-04 15:15:05.318] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:15:05.319] [info] [os]: win32
+[2018-09-04 15:15:05.319] [info] [arch]: x64
+[2018-09-04 15:15:05.320] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:15:05.322] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:15:05.323] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:15:05.325] [info] [locale]: en-US
+[2018-09-04 15:21:13.064] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:21:22.008] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:21:22.009] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:21:22.011] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:21:22.009] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:21:22.011] [info] [os]: win32
+[2018-09-04 15:21:22.010] [info] [clientBin]: geth.exe
+[2018-09-04 15:21:22.014] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:21:22.013] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:21:22.016] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:21:22.017] [info] [locale]: en-US
+[2018-09-04 15:21:22.012] [info] [arch]: x64
+[2018-09-04 15:23:14.484] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:23:23.826] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:23:23.826] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:23:23.828] [info] [clientBin]: geth.exe
+[2018-09-04 15:23:23.828] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:23:23.827] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:23:23.830] [info] [arch]: x64
+[2018-09-04 15:23:23.830] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:23:23.832] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:23:23.833] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:23:23.835] [info] [locale]: en-US
+[2018-09-04 15:23:23.829] [info] [os]: win32
+[2018-09-04 15:24:28.736] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:24:37.185] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:24:37.185] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:24:37.185] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:24:37.195] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:24:37.195] [info] [os]: win32
+[2018-09-04 15:24:37.194] [info] [clientBin]: geth.exe
+[2018-09-04 15:24:37.199] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:24:37.200] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:24:37.196] [info] [arch]: x64
+[2018-09-04 15:24:37.202] [info] [locale]: en-US
+[2018-09-04 15:24:37.197] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:27:11.350] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:27:20.155] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:27:20.157] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:27:20.156] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:27:20.158] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:27:20.159] [info] [os]: win32
+[2018-09-04 15:27:20.157] [info] [clientBin]: geth.exe
+[2018-09-04 15:27:20.160] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:27:20.162] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:27:20.164] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:27:20.166] [info] [locale]: en-US
+[2018-09-04 15:27:20.159] [info] [arch]: x64
+[2018-09-04 15:28:23.271] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:28:32.115] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:28:32.115] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:28:32.115] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:28:32.123] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:28:32.122] [info] [clientBin]: geth.exe
+[2018-09-04 15:28:32.125] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:28:32.124] [info] [os]: win32
+[2018-09-04 15:28:32.127] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:28:32.128] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:28:32.129] [info] [locale]: en-US
+[2018-09-04 15:28:32.124] [info] [arch]: x64
+[2018-09-04 15:29:37.025] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:29:45.858] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:29:45.859] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:29:45.861] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:29:45.859] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:29:45.862] [info] [os]: win32
+[2018-09-04 15:29:45.862] [info] [arch]: x64
+[2018-09-04 15:29:45.860] [info] [clientBin]: geth.exe
+[2018-09-04 15:29:45.863] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:29:45.868] [info] [locale]: en-US
+[2018-09-04 15:29:45.865] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:29:45.866] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:30:53.428] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:31:02.282] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:31:02.282] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:31:02.286] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:31:02.287] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:31:02.286] [info] [clientBin]: geth.exe
+[2018-09-04 15:31:02.288] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:31:02.288] [info] [arch]: x64
+[2018-09-04 15:31:02.290] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:31:02.291] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:31:02.293] [info] [locale]: en-US
+[2018-09-04 15:31:02.287] [info] [os]: win32
+[2018-09-04 15:32:37.582] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:32:47.021] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:32:47.022] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:32:47.023] [info] [clientBin]: geth.exe
+[2018-09-04 15:32:47.023] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:32:47.025] [info] [arch]: x64
+[2018-09-04 15:32:47.024] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:32:47.028] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:32:47.026] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:32:47.031] [info] [locale]: en-US
+[2018-09-04 15:32:47.025] [info] [os]: win32
+[2018-09-04 15:32:47.029] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:33:41.036] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:33:50.945] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:33:50.946] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:33:50.946] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:33:50.947] [info] [clientBin]: geth.exe
+[2018-09-04 15:33:50.948] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:33:50.948] [info] [os]: win32
+[2018-09-04 15:33:50.949] [info] [arch]: x64
+[2018-09-04 15:33:50.950] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:33:50.951] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:33:50.953] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:33:50.954] [info] [locale]: en-US
+[2018-09-04 15:35:48.783] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:35:57.105] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:35:57.105] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:35:57.107] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:35:57.106] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:35:57.108] [info] [os]: win32
+[2018-09-04 15:35:57.108] [info] [arch]: x64
+[2018-09-04 15:35:57.107] [info] [clientBin]: geth.exe
+[2018-09-04 15:35:57.112] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:35:57.109] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:35:57.110] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:35:57.113] [info] [locale]: en-US
+[2018-09-04 15:39:39.132] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:39:48.783] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:39:48.784] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:39:48.785] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:39:48.785] [info] [clientBin]: geth.exe
+[2018-09-04 15:39:48.786] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:39:48.787] [info] [os]: win32
+[2018-09-04 15:39:48.788] [info] [arch]: x64
+[2018-09-04 15:39:48.789] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:39:48.790] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:39:48.792] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:39:48.793] [info] [locale]: en-US
+[2018-09-04 15:42:43.142] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:43:07.016] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:43:30.289] [debug] loading default settings in Akroma Client Service
+[2018-09-04 15:43:38.431] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:43:38.432] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 15:43:38.433] [info] [clientBin]: geth.exe
+[2018-09-04 15:43:38.432] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 15:43:38.433] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 15:43:38.434] [info] [os]: win32
+[2018-09-04 15:43:38.435] [info] [arch]: x64
+[2018-09-04 15:43:38.435] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 15:43:38.437] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 15:43:38.438] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 15:43:38.440] [info] [locale]: en-US
+[2018-09-04 16:11:27.235] [debug] loading default settings in Akroma Client Service
+[2018-09-04 16:11:38.363] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 16:11:38.364] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 16:11:38.367] [info] [os]: win32
+[2018-09-04 16:11:38.365] [info] [clientBin]: geth.exe
+[2018-09-04 16:11:38.366] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 16:11:38.368] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 16:11:38.369] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 16:11:38.371] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-04 16:11:38.367] [info] [arch]: x64
+[2018-09-04 16:11:38.372] [info] [locale]: en-US
+[2018-09-04 16:11:38.364] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 16:13:17.827] [debug] loading default settings in Akroma Client Service
+[2018-09-04 16:13:28.219] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 16:13:28.220] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-04 16:13:28.220] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-04 16:13:28.222] [info] [akromaNode]: http://localhost:8545
+[2018-09-04 16:13:28.222] [info] [os]: win32
+[2018-09-04 16:13:28.221] [info] [clientBin]: geth.exe
+[2018-09-04 16:13:28.225] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-04 16:13:28.224] [info] [homedir]: C:\Users\detroitpro
+[2018-09-04 16:13:28.228] [info] [locale]: en-US
+[2018-09-04 16:13:28.223] [info] [arch]: x64
+[2018-09-04 16:13:28.227] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-05 09:25:39.869] [debug] loading default settings in Akroma Client Service
+[2018-09-05 09:26:11.533] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-05 09:26:11.534] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-05 09:26:11.535] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-05 09:26:11.537] [info] [akromaNode]: http://localhost:8545
+[2018-09-05 09:26:11.536] [info] [clientBin]: geth.exe
+[2018-09-05 09:26:11.539] [info] [homedir]: C:\Users\detroitpro
+[2018-09-05 09:26:11.538] [info] [os]: win32
+[2018-09-05 09:26:11.543] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-05 09:26:11.541] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-05 09:26:11.544] [info] [locale]: en-US
+[2018-09-05 09:26:11.538] [info] [arch]: x64
+[2018-09-05 09:56:32.119] [debug] loading default settings in Akroma Client Service
+[2018-09-05 09:57:04.352] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-05 09:57:04.353] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-05 09:57:04.353] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-05 09:57:04.355] [info] [os]: win32
+[2018-09-05 09:57:04.356] [info] [arch]: x64
+[2018-09-05 09:57:04.356] [info] [homedir]: C:\Users\detroitpro
+[2018-09-05 09:57:04.354] [info] [akromaNode]: http://localhost:8545
+[2018-09-05 09:57:04.359] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-05 09:57:04.361] [info] [locale]: en-US
+[2018-09-05 09:57:04.354] [info] [clientBin]: geth.exe
+[2018-09-05 09:57:04.358] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-05 09:58:43.111] [debug] loading default settings in Akroma Client Service
+[2018-09-05 10:01:32.384] [debug] loading default settings in Akroma Client Service
+[2018-09-05 10:03:12.541] [debug] loading default settings in Akroma Client Service
+[2018-09-05 10:05:58.156] [debug] loading default settings in Akroma Client Service
+[2018-09-05 10:06:30.351] [info] [saved settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-05 10:06:30.352] [info] [settings]: {"clientPath":"C:\\Users\\detroitpro\\.akroma","syncMode":"fast","akromaNode":"http://localhost:8545","_id":"system","_rev":"9-c787d2878ad6446cb17c404c7eae6c56"}
+[2018-09-05 10:06:30.352] [info] [clientPath]: C:\Users\detroitpro\.akroma
+[2018-09-05 10:06:30.354] [info] [akromaNode]: http://localhost:8545
+[2018-09-05 10:06:30.355] [info] [os]: win32
+[2018-09-05 10:06:30.353] [info] [clientBin]: geth.exe
+[2018-09-05 10:06:30.356] [info] [homedir]: C:\Users\detroitpro
+[2018-09-05 10:06:30.359] [info] [userData]: C:\Users\detroitpro\AppData\Roaming\akroma
+[2018-09-05 10:06:30.355] [info] [arch]: x64
+[2018-09-05 10:06:30.374] [debug] [Downloading Akroma client...]
+[2018-09-05 10:06:30.358] [info] [appPath]: C:\Users\detroitpro\projects\akroma-wallet-desktop
+[2018-09-05 10:06:30.361] [info] [locale]: en-US

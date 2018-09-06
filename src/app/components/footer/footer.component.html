@@ -1,15 +1,21 @@
 <div class="container-fluid footer">
   <div class="row">
-    <div class="col">
+    <div class="col-sm-9">
       <ul class="list-inline">
         <li class="list-inline-item">
-          Connected: {{ (listening$ | async) || false }}
+          Connected: {{ this.importService.connected || false }}
         </li>
         <li class="list-inline-item">
-          Peers: {{ (peerCount$ | async) || 0 }}
+          Peers: {{ this.importService.peerCount || 0 }}
         </li>
         <li class="list-inline-item">
-          Block height: {{ (blockNumber$ | async) || 0 }}
+          Height: {{ this.importService.blockNumber || 0 }}
+        </li>
+        <li class="list-inline-item">
+          Percent: {{ this.importService.percentComplete.toFixed(2) || 0 }}
+        </li>
+        <li class="list-inline-item">
+          Status: {{ this.importService.status }}
         </li>
       </ul>
     </div>
@@ -22,4 +28,4 @@
       </ul>
     </div>
   </div>
-</div> 
+</div>

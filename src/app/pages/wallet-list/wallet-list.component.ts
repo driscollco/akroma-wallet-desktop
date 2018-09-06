@@ -1,23 +1,16 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { PopoverDirective } from 'ngx-bootstrap/popover';
-
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
-import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
-import { distinctUntilChanged, mergeMap, retry } from 'rxjs/operators';
-
 import { Wallet } from '../../models/wallet';
-import { clientConstants } from '../../providers/akroma-client.constants';
+import { AkromaLoggerService } from '../../providers/akroma-logger.service';
 import { ElectronService } from '../../providers/electron.service';
 import { SettingsPersistenceService } from '../../providers/settings-persistence.service';
 import { WalletPersistenceService } from '../../providers/wallet-persistence.service';
 import { Web3Service } from '../../providers/web3.service';
-import { AkromaLoggerService } from '../../providers/akroma-logger.service';
 
 const electron = window.require('electron');
 
@@ -42,7 +35,6 @@ export class WalletListComponent implements OnInit {
     private settingsService: SettingsPersistenceService,
     private electronService: ElectronService,
     private logger: AkromaLoggerService) {
-    this.web3.setProvider(new this.web3.providers.HttpProvider(clientConstants.connection.default));
     this.walletForm = this.formBuilder.group(
       { name: '', passphrase: '', confirmPassphrase: '' },
       { validator: this.passphraseMatchValidator },
@@ -73,7 +65,7 @@ export class WalletListComponent implements OnInit {
     const previouslyDeletedWallets = await this.fetchDeletedWalletsForRestore(uniqueWallets);
     this.handleWalletRestore(previouslyDeletedWallets);
 
-    let unstoredWallets = uniqueWallets
+    const unstoredWallets = uniqueWallets
       .filter(x => !this.wallets.map(y => y.address).includes(x))
       .filter(x => !previouslyDeletedWallets.map(y => y.id).includes(x));
     await this.handleUnstoredWallets(unstoredWallets);
@@ -167,22 +159,21 @@ export class WalletListComponent implements OnInit {
 
     keystoreFileList.map((file, i) => {
       this.electronService.fs.readJson(keystoreFileDir + file, (err, packageObj) => {
-        if (err) console.error(err)
+        if (err) { console.error(err); }
         if (wallet.address.replace('0x', '').toLowerCase() === packageObj.address) {
-          console.log(keystoreFileDir + file, backupDir + file)
-          this.electronService.fs.move(keystoreFileDir + file, backupDir + file, { overwrite: true }, err => {
+          console.log(keystoreFileDir + file, backupDir + file);
+          this.electronService.fs.move(keystoreFileDir + file, backupDir + file, { overwrite: true }, error => {
             this.modalRef.hide();
-            if (err) return console.error(err)
+            if (error) { return console.error(error); }
             this.logger.info(`wallet moved from ${keystoreFileDir}${file}`);
             this.logger.info(`wallet moved to ${backupDir}${file}`);
-            console.log('success!')
-          })
+            console.log('success!');
+          });
         }
-      })
+      });
     }).map((x, i) => { // quick fix before a better system is in place
-      this.refreshWalletDataAfterDelete(wallet)
-    })
-
+      this.refreshWalletDataAfterDelete(wallet);
+    });
   }
 
   private async refreshWalletDataAfterDelete(wallet: Wallet) {

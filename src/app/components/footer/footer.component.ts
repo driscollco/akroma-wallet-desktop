@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Observable } from 'rxjs/Observable';
-
 import { SystemSettings } from '../../models/system-settings';
 import { ElectronService } from '../../providers/electron.service';
+import { ImportService } from '../../providers/import.service';
 import { SettingsPersistenceService } from '../../providers/settings-persistence.service';
-import { Web3Service } from '../../providers/web3.service';
 
 @Component({
   selector: 'app-footer',
@@ -13,15 +10,12 @@ import { Web3Service } from '../../providers/web3.service';
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  blockNumber$: Observable<number>;
-  listening$: Observable<boolean>;
-  peerCount$: Observable<number>;
   private settings: SystemSettings;
 
   constructor(
-    private web3: Web3Service,
     private electronService: ElectronService,
     private settingsService: SettingsPersistenceService,
+    public importService: ImportService,
   ) { }
 
   async ngOnInit() {
@@ -30,21 +24,20 @@ export class FooterComponent implements OnInit {
     } catch {
       this.settings = await this.settingsService.defaultSettings();
     }
-    setInterval(() => {
-      this.blockNumber$ = Observable.fromPromise(this.web3.eth.getBlockNumber());
-      this.listening$ = Observable.fromPromise(this.web3.eth.net.isListening());
-      this.peerCount$ = Observable.fromPromise(this.web3.eth.net.getPeerCount());
-    }, 5000);
+    // setInterval(() => {
+    //   this.blockNumber = this.importService.blockNumber;
+    //   this.listening = this.importService.connected;
+    //   this.peerCount = this.importService.peerCount;
+    //   this.importStatus = this.importService.status;
+    // }, 1000);
   }
 
   viewLogs() {
     this.electronService.remote.shell.showItemInFolder(this.settings.applicationPath + this.electronService.path.sep + 'logs' + this.electronService.path.sep + 'akroma.log');
   }
 
-
-  console(){
-
-    console.log(`devTools`)
-    this.electronService.ipcRenderer.send(`console`,`console`)  
+  console() {
+    console.log(`devTools`);
+    this.electronService.ipcRenderer.send(`console`, `console`);
   }
 }

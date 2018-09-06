@@ -16,7 +16,6 @@ export class AkromaLoggerService {
     ) { }
 
     async init(callback: Function) {
-        console.log('settings service!');
         let settings;
         try {
             settings = await this.settingsService.db.get('system');
@@ -24,8 +23,8 @@ export class AkromaLoggerService {
             settings = await this.settingsService.defaultSettings();
         }
 
-        const sep = this.electronService.path.sep
-        const logDirPath = settings.applicationPath + sep + 'logs'
+        const sep = this.electronService.path.sep;
+        const logDirPath = settings.applicationPath + sep + 'logs';
         this.logPath = settings.applicationPath + sep + 'logs' + sep + 'akroma.log';
         console.log(`AkromaLoggerService: [logPath]: ${this.logPath}`);
 
@@ -34,8 +33,8 @@ export class AkromaLoggerService {
             console.warn(`AkromaLoggerService: log file does not exist`);
             this.electronService.fs.ensureDir(logDirPath, err => {
                 console.log(`creating log folder`);
-                if(err){console.error(`Error: `,err)}
-            })
+                if (err) { console.error(`Error: `, err); }
+            });
             // tslint:disable-next-line:max-line-length
             this.electronService.fs.appendFile(this.logPath, this.format('Created log file', new Date(), 'debug'), () => this.noop);
         }

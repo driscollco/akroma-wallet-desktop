@@ -9,31 +9,13 @@ import { WalletListComponent } from './pages/wallet-list/wallet-list.component';
 
 
 const routes: Routes = [
-
-    {
-        path: 'create',
-        component: CreateWalletComponent,
-    },
-    {
-        path: 'import',
-        component: FromKeystoreComponent,
-    },
-    {
-        path: 'settings',
-        component: SettingsPageComponent,
-    },
-    {
-        path: 'wallet/:address',
-        component: WalletDetailPageComponent,
-    },
-    {
-        path: 'wallets',
-        component: WalletListComponent,
-    },
-    {
-        path: '',
-        component: SplashComponent,
-    },
+    { path: 'create', component: CreateWalletComponent, pathMatch: 'full' },
+    { path: 'import', component: FromKeystoreComponent, pathMatch: 'full' },
+    { path: 'settings', component: SettingsPageComponent, pathMatch: 'full' },
+    //  { path: 'wallet/:address', component: WalletDetailPageComponent, pathMatch: 'full' },
+    { path: 'wallet', component: WalletDetailPageComponent, pathMatch: 'full' },
+    { path: 'wallets', component: WalletListComponent, pathMatch: 'full' },
+    { path: '', component: SplashComponent, pathMatch: 'full' },
     { path: '**', redirectTo: 'wallets' },
 ];
 

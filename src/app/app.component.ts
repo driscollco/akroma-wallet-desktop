@@ -4,6 +4,7 @@ import { AppConfig } from './app.config';
 import { AkromaClientService } from './providers/akroma-client.service';
 import { AkromaLoggerService } from './providers/akroma-logger.service';
 import { ElectronService } from './providers/electron.service';
+import { ImportService } from './providers/import.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent {
     public electronService: ElectronService,
     // tslint:disable-next-line
     private translate: TranslateService,
+    private importService: ImportService,
     private akromaClientService: AkromaClientService) {
 
     translate.setDefaultLang('en');
@@ -25,7 +27,7 @@ export class AppComponent {
       console.log('Mode electron');
       console.log('Electron ipcRenderer', electronService.ipcRenderer);
       console.log('NodeJS childProcess', electronService.childProcess);
-      this.logger.init(cb => this.akromaClientService.initialize(res => {
+      this.logger.init(async cb => await this.akromaClientService.initialize(res => {
         logger.info('[os]: ' + electronService.os.platform);
         logger.info('[arch]: ' + electronService.os.arch);
         logger.info('[homedir]: ' + electronService.os.homedir);
@@ -33,8 +35,12 @@ export class AppComponent {
         logger.info('[userData]: ' + electronService.remote.app.getPath('userData'));
         logger.info('[locale]: ' + electronService.remote.app.getLocale());
         this.akromaClientService.downloadClient(success => {
+          console.log('download client complete');
           if (success) {
-            this.akromaClientService.startClient();
+            this.akromaClientService.startClient(async c => {
+              console.log('start client complete');
+              await this.importService.StartSync();
+            });
           }
         });
       }),

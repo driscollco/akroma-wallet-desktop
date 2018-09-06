@@ -40,33 +40,30 @@ export class AkromaClientService {
     this.web3.setProvider(new this.web3.providers.HttpProvider(clientConstants.connection.default));
   }
 
+  // This is called first. Then download is called (as the callback)
   async initialize(callback: Function) {
     let settings;
     try {
       this.client = clientConstants.clients.akroma.platforms[this.es.os.platform()][this.es.os.arch()];
       settings = await this.settingsService.db.get('system');
-      this.logger.debug('loading default settings in Akroma Client Service');
-      settings = await this.settingsService.defaultSettings();
-      this.logger.info('[saved settings]: ' + JSON.stringify(settings));
     } catch {
-      this.logger.debug('loading default settings in Akroma Client Service');
       settings = await this.settingsService.defaultSettings();
-      this.logger.info('[saved settings]: ' + JSON.stringify(settings));
     }
-
+    // this.web3.setProvider(new this.web3.providers.HttpProvider(settings.akromaNode));
     this.logger.info('[settings]: ' + JSON.stringify(settings));
     this.logger.info('[clientPath]: ' + settings.clientPath);
     this.logger.info('[clientBin]: ' + this.client.bin);
+    this.logger.info('[akromaNode]: ' + settings.akromaNode);
     this.clientPath = settings.clientPath;
     this.clientBin = this.client.bin;
     this.syncMode = settings.syncMode;
     callback();
   }
 
+  // Called as called back from initialize, then startClient is called (as the callback)
   downloadClient(callback?: Function): void {
     if (this.akromaClientExists()) {
       callback(true);
-      return;
     }
 
     this._status = statusConstants.DOWNLOADING;
@@ -97,12 +94,13 @@ export class AkromaClientService {
     });
   }
 
-  async startClient() {
+  async startClient(callback?: Function) {
     try {
       const isListening = await this.web3.eth.net.isListening();
       if (isListening) {
         this._status = statusConstants.RUNNING;
-        return;
+        console.log('using running geth');
+        callback(true);
       }
     } catch {
       // tslint:disable-next-line:no-console
@@ -124,7 +122,7 @@ export class AkromaClientService {
       this._process = clientProcess;
       this.es.ipcRenderer.send('client:start', this.clientProcess.pid);
       this._status = statusConstants.RUNNING;
-      return clientProcess;
+      callback(true);
     }
   }
 

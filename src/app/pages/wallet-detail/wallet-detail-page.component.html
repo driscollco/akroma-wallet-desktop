@@ -1,52 +1,17 @@
 <div class="container-fluid">
-  <!-- <app-masthead></app-masthead> -->
   <div class="row">
     <div class="col">
-      <ul class="nav nav-akroma">
-        <!-- <li class="nav-item">
-          <a class="nav-link" (click)="openModal(createWalletModal)">
-            <img src="./assets/images/icons/icon-new-wallet.svg" alt="new-wallet"> New Wallet
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/import']">
-            <img src="./assets/images/icons/icon-wallet.svg" alt="Import"> Import
-          </a>
-        </li> -->
-      </ul>
     </div>
     <div class="col">
       <app-page-title [title]="'WALLET'"></app-page-title>
     </div>
   </div>
-
   <div class="row">
-    <div class="col-sm">
-
-      <div class="card card-akroma text-white bg-dark">
-        <div class="card-header">Send</div>
-        <div class="card-body">
-          <form [formGroup]="sendForm">
-            <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-              </div>
-            </div>
-            <div class="form-group text-right">
-              <input type="submit" value="CREATE MASTERNODE" class="btn btn-akroma on-form text-white" />
-            </div>
-          </form>
-      </div>
+    <div class="col col-md-5 col-sm-12">
+      <app-send-transaction *ngIf="wallet" [wallet]="wallet" (transactionSent)="onTransactionSent($event)"></app-send-transaction>
     </div>
-
-    <!-- <app-wallet [wallet]="wallet"></app-wallet>
-      <app-wallet-actions (send)="sendTransaction.openModal(sendTransaction.passphraseModal)"></app-wallet-actions>
-      -->
-      <app-send-transaction #sendTransaction [wallet]="wallet" (transactionSent)="onTransactionSent($event)"></app-send-transaction>
+    <div class="col col-md-7 col-sm-12">
+      <app-transaction-list [address]="address"></app-transaction-list>
+    </div>
   </div>
-  <div class="col-sm">
-    <app-transaction-list [lastBlockNumberSynced]="lastBlockNumberSynced" [endBlockNumber]="endBlockNumber" [transactions]="transactions" [wallet]="wallet"></app-transaction-list>
-  </div>
-</div>
 </div>

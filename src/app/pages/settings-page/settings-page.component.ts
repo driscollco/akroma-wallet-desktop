@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SystemSettings } from '../../models/system-settings';
@@ -29,8 +29,10 @@ export class SettingsPageComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router) {
     this.systemSettingsForm = this.fb.group({
-      clientPath: '',
-      syncMode: '',
+      clientPath: [''],
+      syncMode: [''],
+      akromaNode: ['http://localhost:8545'],
+      _rev: '',
       _id: 'system',
     });
   }
@@ -38,7 +40,13 @@ export class SettingsPageComponent implements OnInit {
   async ngOnInit() {
     const storedSettings = await this.settingsService.db.get('system');
     if (!!storedSettings) {
-      this.systemSettingsForm = this.fb.group(storedSettings);
+      this.systemSettingsForm = this.fb.group({
+        clientPath: [storedSettings.clientPath],
+        syncMode: [storedSettings.syncMode],
+        akromaNode: [storedSettings.akromaNode],
+        _rev: storedSettings._rev,
+        _id: 'system',
+      });
     }
   }
 
@@ -51,7 +59,8 @@ export class SettingsPageComponent implements OnInit {
   }
 
   async onSubmit() {
-    const result = await this.settingsService.db.put(this.systemSettingsForm.value);
+    console.log('saving');
+    const result = await this.settingsService.db.put(this.systemSettingsForm.value, { });
     if (result.ok) {
       this.onRevert();
     }

@@ -12,6 +12,6 @@ export class WalletPersistenceService {
   }
 
   constructor() {
-    this._db = new PouchDB('wallets');
+    this._db = new PouchDB('http://akroma:akroma@127.0.0.1:5984/wallets');
   }
 }

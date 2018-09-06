@@ -1,40 +1,40 @@
-<ng-container *ngIf="sendForm">
-  <form [formGroup]="sendForm" class="send-transaction">
-    <div class="amount" [ngStyle]="{'background-color': amountSelected ? 'rgba(255, 255, 255, 0.3)' : 'rgba(255, 255, 255, 0.2)'}">
-      <input 
-        class="value form-input"
-        type="number"
-        formControlName="value"
-        placeholder="0.00">
-      <div class="unit-badge">AKA</div>
-    </div>
-    <div class="transaction-field from">
-      <div class="left-column">From</div>
-      <div class="right-column selectableText">
-        {{ wallet.address }}
+<div class="card card-akroma text-white bg-dark">
+  <div class="card-header">Send</div>
+  <div class="card-body">
+    <form [formGroup]="sendForm">
+      <div class="form-group row">
+        <label for="value" class="col-sm-2 col-form-label">Amount</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control form-control-akroma" formControlName="value" id="value" placeholder="0.00">
+        </div>
       </div>
-    </div>
-    <div class="transaction-field to">
-      <div class="left-column">To</div>
-      <div class="right-column">
-        <input
-          type="text"
-          class="form-input"
-          formControlName="to"
-          placeholder="0xa97c13374fb513375133743F13379CD7413379A16">
+      <div class="form-group row">
+        <label for="from" class="col-sm-2 col-form-label">From</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control form-control-akroma" formControlName="from" id="from" readonly>
+        </div>
       </div>
-    </div>
-    <div class="transaction-field data">
-      <div class="left-column">Data</div>
-      <div class="right-column">
-        <input
-          type="text"
-          class="form-input"
-          formControlName="data"
-          placeholder="0x982f33f1fbda359d198ea5a310993bb5a328fa830aBCdfA562b9022e">
+      <div class="form-group row">
+        <label for="to" class="col-sm-2 col-form-label">To</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control form-control-akroma" formControlName="to" id="to" value="" placeholder="">
+        </div>
       </div>
-    </div>
-    <div class="transaction-field gas-limit">
+      <div class="form-group row">
+        <label for="data" class="col-sm-2 col-form-label">Data</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control form-control-akroma" formControlName="data" id="data" value="" placeholder="">
+          <small class="form-text text-muted">Optional</small>
+        </div>
+      </div>
+      <div class="form-group text-right">
+        <input type="button" (click)="openModal(sendTransactionPassphrase)" value="SEND" class="btn btn-akroma on-form text-white" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="transaction-field gas-limit">
       <div class="left-column">Gas Limit</div>
       <div class="right-column">21000</div>
     </div>
@@ -45,20 +45,16 @@
     <div class="transaction-field network-fee">
       <div class="left-column">Network Fee</div>
       <div class="right-column">{{ (gasPrice$ | async) | showEther }}</div>
-    </div>
-  </form>
-</ng-container>
+    </div> -->
 
 <ng-template #sendTransactionPassphrase>
-  <ng-container *ngIf="!modalRef.content">
-    <div class="modal-body">
-      <div class="form-row">
-        <div class="form-group col">
-          <label for="passphrase">Wallet Passphrase</label>
-          <input type="password" id="passphrase" class="form-control" [(ngModel)]="passphrase" (onEnter)="sendTransaction()">
-        </div>
+  <div class="modal-body">
+    <div class="form-row">
+      <div class="form-group col">
+        <label for="passphrase">Wallet Passphrase</label>
+        <input type="password" id="passphrase" class="form-control" [(ngModel)]="passphrase" (onEnter)="sendTransaction()">
       </div>
-      <button type="submit" class="btn btn-primary" (click)="sendTransaction()">Send</button>
     </div>
-  </ng-container>
+    <button type="submit" class="btn btn-primary" (click)="sendTransaction()">Send</button>
+  </div>
 </ng-template>

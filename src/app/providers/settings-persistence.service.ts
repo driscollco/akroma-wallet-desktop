@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-
 import PouchDB from 'pouchdb';
-
 import { SystemSettings } from '../models/system-settings';
-import { ElectronService } from './electron.service';
 import { clientConstants } from './akroma-client.constants';
+import { ElectronService } from './electron.service';
+
+
 
 @Injectable()
 export class SettingsPersistenceService {
@@ -16,7 +16,7 @@ export class SettingsPersistenceService {
 
   constructor(
     private es: ElectronService) {
-    this._db = new PouchDB('settings');
+    this._db = new PouchDB('http://akroma:akroma@127.0.0.1:5984/settings');
   }
 
   async defaultSettings(): Promise<any> {
@@ -26,6 +26,7 @@ export class SettingsPersistenceService {
       clientPath: this.es.path.join(this.es.os.homedir + client.extract_path),
       applicationPath: this.es.remote.app.getPath('userData'),
       syncMode: 'fast',
+      akromaNode: 'http://localhost:8545',
     };
 
     try {

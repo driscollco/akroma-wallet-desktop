@@ -34,6 +34,7 @@ import { ElectronService } from './providers/electron.service';
 import { SettingsPersistenceService } from './providers/settings-persistence.service';
 import { TransactionsPersistenceService } from './providers/transactions-persistence.service';
 import { TransactionsService } from './providers/transactions.service';
+import { ImportService } from './providers/import.service';
 import { WalletPersistenceService } from './providers/wallet-persistence.service';
 import { Web3Service } from './providers/web3.service';
 import { AkromaLoggerService } from './providers/akroma-logger.service';
@@ -101,6 +102,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ElectronService,
     Web3Service,
     TransactionsService,
+    ImportService,
     TransactionsPersistenceService,
     SettingsPersistenceService,
     WalletPersistenceService,

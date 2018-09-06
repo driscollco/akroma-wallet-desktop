@@ -1,7 +1,8 @@
-import { app, BrowserWindow, ipcMain, screen } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { AppConfig } from './src/app/app.config';
+
 
 
 let clientPid;
@@ -12,15 +13,10 @@ serve = args.some(val => val === '--serve');
 try {
   require('dotenv').config();
 } catch {
-  console.log('asar');
+  console.error('unable to load config');
 }
 
 function createWindow() {
-
-  const electronScreen = screen;
-  const size = electronScreen.getPrimaryDisplay().workAreaSize;
-
-  // Create the browser window.
   win = new BrowserWindow({
     x: 0,
     y: 0,
@@ -32,8 +28,6 @@ function createWindow() {
     titleBarStyle: 'hiddenInset',
   });
   win.setMenu(null);
-
-
 
   ipcMain.on('console', (evt, msg) => {
     win.webContents.openDevTools();
@@ -50,27 +44,9 @@ function createWindow() {
     console.log(`maximize`);
   });
 
-
-
-
-
-  // Menu.setApplicationMenu(Menu.buildFromTemplate([
-  //   {
-  //     label: 'Edit',
-  //     submenu: [
-  //       { role: 'undo' },
-  //       { role: 'redo' },
-  //       { type: 'separator' },
-  //       { role: 'cut' },
-  //       { role: 'copy' },
-  //       { role: 'paste' },
-  //     ],
-  //   },
-  // ]));
-
   if (serve) {
     require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/node_modules/electron`)
+      electron: require(`${__dirname}/node_modules/electron`),
     });
     win.loadURL('http://localhost:4200');
   } else {
