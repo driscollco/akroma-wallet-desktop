@@ -1,7 +1,67 @@
-<div class="container">
-  <app-masthead></app-masthead>
+<div class="container-fluid">
   <div class="row">
+    <div class="col">
+      <app-page-title [title]="'SETTINGS'"></app-page-title>
+    </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <form id="settings-form" [formGroup]="systemSettingsForm" (ngSubmit)="onSubmit()">
+        <table class="table table-striped table-dark table-akroma table-responsive-sm ">
+          <thead>
+            <tr>
+              <th class="w-25" i18n>Item</th>
+              <th i18n>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DIRECTORY</td>
+              <td>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control form-control-akroma" id="data-directory-path" formControlName="clientPath">
+                  <div class="input-group-append">
+                    <button class="btn btn-akroma" type="button" (click)="directoryInput.click()">Choose</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>SYNC MODE</td>
+              <td>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="syncMode" id="light-sync" formControlName="syncMode" value="light">
+                  <label class="form-check-label" for="light-sync">Light</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="syncMode" id="fast-sync" formControlName="syncMode" value="fast" checked>
+                  <label class="form-check-label" for="fast-sync">Fast</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="syncMode" id="full-sync" formControlName="syncMode" value="full">
+                  <label class="form-check-label" for="full-sync">Full</label>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <span class="float-right">
+                  <input type="submit" [disabled]="systemSettingsForm.pristine" value="SAVE" class="btn btn-akroma text-white" />
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- 
+
+
   <form id="settings-form" [formGroup]="systemSettingsForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-md-6">
@@ -24,23 +84,18 @@
           <div class="col">
             <label for="syncMode">Blockchain Sync Mode</label>
             <div class="form-check">
-              <input class="form-check-input form-control" type="radio" name="syncMode" id="light-sync" formControlName="syncMode" value="light"
-                checked>
+              <input class="form-check-input form-control" type="radio" name="syncMode" id="light-sync" formControlName="syncMode" value="light" checked>
               <label class="form-check-label" for="light-sync">
                 Light
               </label>
             </div>
             <div class="form-check">
               <input class="form-check-input form-control" type="radio" name="syncMode" id="fast-sync" formControlName="syncMode" value="fast">
-              <label class="form-check-label" for="fast-sync">
-                Fast
-              </label>
+              <label class="form-check-label" for="fast-sync">Fast</label>
             </div>
             <div class="form-check disabled">
               <input class="form-check-input form-control" type="radio" name="syncMode" id="full-sync" formControlName="syncMode" value="full">
-              <label class="form-check-label" for="full-sync">
-                Full
-              </label>
+              <label class="form-check-label" for="full-sync">Full</label>
             </div>
           </div>
         </div>
@@ -53,5 +108,5 @@
       </div>
     </div>
   </form>
-</div>
-<input type="file" #directoryInput class="form-control-file form-control" (change)="onDirectoryPathChange($event)" id="data-directory-path-file-button" style="visibility: hidden;" webkitdirectory directory multiple hidden>
+</div> -->
+  <input type="file" #directoryInput class="form-control-file form-control" (change)="onDirectoryPathChange($event)" id="data-directory-path-file-button" style="visibility: hidden;" webkitdirectory directory multiple hidden>

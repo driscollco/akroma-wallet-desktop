@@ -1,16 +1,25 @@
 
-app-side-bar{
-    position: absolute;
-    top: 0;
-    left: 0;
+// app-side-bar{
+//     position: absolute;
+//     top: 0;
+//     left: 0;
     
-        height: 100%;
-        background-color: blue;
+//         height: 100%;
+//         //background-color: blue;
     
+//     }
+    
+    
+    .sidebar {
+        padding-left: 0px;
+        padding-right: 0px;
+        background-color: black;
+        -ms-flex: 0 0 230px;
+        flex: 0 0 230px;
+        width: 230px;
+        max-width: 230px;
+        min-width: 230px;
     }
-    
-    
-    
     
     
     

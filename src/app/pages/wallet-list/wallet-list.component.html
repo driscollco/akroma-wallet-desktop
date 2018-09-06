@@ -1,6 +1,137 @@
-<div class="container">
-  <app-masthead></app-masthead>
-  <div class="row foo">
+<!-- <app-masthead></app-masthead> -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <ul class="nav nav-akroma">
+        <li class="nav-item">
+          <a class="nav-link" (click)="openModal(createWalletModal)">
+            <img src="./assets/images/icons/icon-new-wallet.svg" alt="new-wallet"> New Wallet
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/import']">
+            <img src="./assets/images/icons/icon-wallet.svg" alt="Import"> Import
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <app-page-title [title]="'WALLETS'"></app-page-title>
+    </div>
+  </div>
+  <!-- <div class="row pt-3 pb-3">
+    
+  </div> -->
+  <ng-container *ngIf="wallets">
+    <table class="table table-striped table-dark table-akroma table-responsive-sm ">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Balance</th>
+          <th scope="col">Actions</th>
+          <th scope="col">Recieve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let wallet of wallets">
+          <th scope="row">
+            <a [routerLink]="['/wallet', wallet.address]">
+              {{ wallet.name }}
+            </a>
+          </th>
+          <td class="selectableText">{{ wallet._id || wallet.address }}</td>
+          <td>{{ wallet.balance }}</td>
+          <td>
+            <button id="wallet-context" #pop="bs-popover" [popover]="walletContextButton" [popoverContext]="{ wallet: wallet }" placement="left" [outsideClick]="true">
+              <div class="wallet-ellipsis">
+                <div class="wallet-ellipsis-icon">
+                  <img src="./assets/images/icons/icon-ellipsis.svg" alt="options">
+                </div>
+              </div>
+            </button>
+          </td>
+          <td>
+            <div class="wallet-qr-small">
+              <div class="wallet-qr-icon">
+                <a (click)="showQrCode(wallet, qrReceiveModal)" style="text-decoration: none; cursor: pointer">
+                  <img src="./assets/images/icons/icon-qr-white.svg" alt="qr-code">
+                </a>
+              </div>
+            </div>
+            <ng-template #qrReceiveModal>
+              <div class="modal-header">
+                <span class="qr-wallet-name">{{wallet.name }}</span>
+                <span class="qr-wallet-address">{{wallet.address}}</span>
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-body">
+                    <ngx-qrcode [qrc-value]="modalRef.content.wallet.address" qrc-class="aclass" qrc-errorCorrectionLevel="L">
+                    </ngx-qrcode>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <div class="row">
+    <div class="col">
+      <div class="total-wallets-value">
+        {{ allWalletsBalance }} AKA
+        <img *ngIf="allWalletsBalanceLoading" src="./assets/images/akroma-loading.png" alt="loading wallets balance" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+
+<div class="row" *ngIf="wallets">
+  <div class="col">
+    <div class="row" *ngFor="let wallet of wallets">
+      <div class="col">
+        <div class="wallet-row">
+          <div class="wallet-square">
+            <div class="wallet-icon">
+              <img src="./assets/images/icons/icon-wallet.svg" alt="wallet">
+            </div>
+          </div>
+          <div class="wallet-detail">
+            <a [routerLink]="['/wallet', wallet.address]" style="text-decoration: none">
+              <div class="wallet-name">
+                {{ wallet.name }}
+              </div>
+              <div class="wallet-address">
+                {{ wallet._id || wallet.address }}
+              </div></a>
+          </div>
+          <div class="wallet-right-control">
+            <button id="wallet-context" #pop="bs-popover" [popover]="walletContextButton" [popoverContext]="{ wallet: wallet }" placement="left" [outsideClick]="true">
+              <div class="wallet-ellipsis">
+                <div class="wallet-ellipsis-icon">
+                  <img src="./assets/images/icons/icon-ellipsis.svg" alt="options">
+                </div>
+              </div>
+            </button>
+            <div class="wallet-qr-small">
+              <div class="wallet-qr-icon">
+                <a (click)="showQrCode(wallet, qrReceiveModal)" style="text-decoration: none; cursor: pointer">
+                  <img src="./assets/images/icons/icon-qr-white.svg" alt="qr-code">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!--   
+  <div class="row">
     <div class="col">
       <div class="wallet-values-actions">
         <div class="total-wallets-value">
@@ -95,8 +226,7 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> -->
 
 <!-- template for create wallet modal -->
 <ng-template #createWalletModal>
@@ -184,8 +314,7 @@
     <p>
       It is recommended that you backup your wallet before deleting, would you like to do this?
     </p>
-    <button type="button" class="btn btn-primary" (click)="backupWallet(modalRef.content.wallet)">Backup</button> 
+    <button type="button" class="btn btn-primary" (click)="backupWallet(modalRef.content.wallet)">Backup</button>
     <button type="button" class="btn btn-danger" (click)="deleteWallet(modalRef.content.wallet)">Delete</button>
   </div>
 </ng-template>
-

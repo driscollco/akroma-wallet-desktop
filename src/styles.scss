@@ -1,72 +1,156 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
 
-  background: url(./assets/images/explorer-bg-blocks.jpg) no-repeat center fixed;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-
-  box-sizing: border-box;
-  font-family: 'Work Sans', sans-serif;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: url(./assets/images/explorer-bg-blocks.jpg) no-repeat center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
 }
 
-
-div, p, img, a .unselectable {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+div,
+p,
+img,
+a .unselectable {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .selectableText {
-  -moz-user-select: text;
-  -webkit-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 
 /* in-flight clone */
+
 .gu-mirror {
-  position: fixed !important;
-  margin: 0 !important;
-  z-index: 9999 !important;
-  opacity: 0.8;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
-  filter: alpha(opacity=80);
-  pointer-events: none;
-}
-/* high-performance display:none; helper */
-.gu-hide {
-  left: -9999px !important;
-}
-/* added to mirrorContainer (default = body) while dragging */
-.gu-unselectable {
-  -webkit-user-select: none !important;
-  -moz-user-select: none !important;
-  -ms-user-select: none !important;
-  user-select: none !important;
-}
-/* added to the source element while its mirror is dragged */
-.gu-transit {
-  opacity: 0.3;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
-  filter: alpha(opacity=30);
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    pointer-events: none;
 }
 
+/* high-performance display:none; helper */
+
+.gu-hide {
+    left: -9999px !important;
+}
+
+/* added to mirrorContainer (default = body) while dragging */
+
+.gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* added to the source element while its mirror is dragged */
+
+.gu-transit {
+    opacity: 0.3;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+}
 
 // 
-app-from-keystore, app-wallet-list{
-
-  position: absolute;
-  top: 25%;   
-  width:calc(100% - 63px);
-  margin-left: 63px;
-  height: 70%;
-  // border: 1em solid gold; 
+app-from-keystore,
+app-wallet-list {
+    // position: absolute;
+    // top: 25%;
+    // width: calc(100% - 63px);
+    // margin-left: 63px;
+    // height: 70%; // border: 1em solid gold; 
 }
 
+.hight_100p {
+    height: 100%;
+}
 
+.v-top {
+    vertical-align: top;
+}
+
+$akroma-gold-darker: #E25D00;
+$akroma-gold-dark: #F17100;
+$akroma-gold-base: #FFA600;
+$akroma-red-darker: #AF0000;
+$akroma-red-dark: #CF0000;
+$akroma-red-base: #F10000;
+$akroma-purple-darker: #930077;
+$akroma-purple-dark: #C2009D;
+$akroma-purple-base: #AA0087;
+$akroma-gray-darker: #CCCCCC;
+$akroma-gray-dark: #E6E6E6;
+$akroma-white: #FFFFFF;
+$akroma-dark: #1A1A1A;
+$akroma-dark-base: #343a40;
+.table-akroma {
+    // text-transform: uppercase;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
+    &.table-dark {
+        a,
+        a:visited {
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover,
+        a.active {
+            text-decoration: underline;
+            opacity: 0.60;
+        }
+    }
+}
+
+.btn-akroma {
+    border-radius: 0;
+    background-color: $akroma-dark-base !important;
+    color: white;
+    text-transform: uppercase;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.25);
+    &.on-form {
+        background-color: $akroma-dark !important;
+    }
+}
+
+.form-control-akroma {
+    border: 1px solid #fbfbfb;
+    border-radius: 0;
+}
+
+.nav-akroma {
+    a.nav-link,
+    a.nav-link:visited {
+        text-decoration: none;
+        color: #fff;
+    }
+    a.nav-link:hover,
+    a.nav-link:active {
+        cursor: pointer;
+        color: #fff;
+        text-decoration: underline;
+    }
+    .nav-item {
+        color: #fff;
+        border-bottom: 2px solid white;
+
+        .nav-link {
+            img {
+                height:24px;
+            }
+        }
+    }
+}
