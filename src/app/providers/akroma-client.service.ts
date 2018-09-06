@@ -96,14 +96,13 @@ export class AkromaClientService {
 
   async startClient(callback?: Function) {
     try {
-      const isListening = await this.web3.eth.net.isListening();
-      if (isListening) {
+      const listening = await this.web3.eth.net.isListening();
+      if (listening) {
         this._status = statusConstants.RUNNING;
-        console.log('using running geth');
+        console.log('using running akroma');
         callback(true);
       }
     } catch {
-      // tslint:disable-next-line:no-console
       this.logger.debug('[Starting Akroma client...]');
       const program = this.clientPath + this.es.path.sep + this.clientBin;
       const dataDir = this.clientPath + this.es.path.sep + 'data';

@@ -35,10 +35,8 @@ export class AppComponent {
         logger.info('[userData]: ' + electronService.remote.app.getPath('userData'));
         logger.info('[locale]: ' + electronService.remote.app.getLocale());
         this.akromaClientService.downloadClient(success => {
-          console.log('download client complete');
           if (success) {
             this.akromaClientService.startClient(async c => {
-              console.log('start client complete');
               await this.importService.StartSync();
             });
           }

@@ -16,14 +16,17 @@ export class ImportService implements OnDestroy, OnInit {
         _id: 'akroma-sync-state',
         currentBlock: 0, // last block saved
     };
+    intervals: NodeJS.Timer[];
+    // transaction syncing
     lastBlockNumberSynced: number;
-    syncingOperationIntervals: NodeJS.Timer[];
     running: boolean;
     isPaused: boolean;
     index: number;
     BATCH_SIZE = 1000;
+    // blockchain syncing
     blockNumber: number;
     connected: boolean;
+    syncing: boolean;
     peerCount: number;
     status = 'starting....';
     constructor(
@@ -32,7 +35,7 @@ export class ImportService implements OnDestroy, OnInit {
         this.transactions = new PouchDB('http://akroma:akroma@127.0.0.1:5984/akroma-tx');
         this.blocks = new PouchDB('http://akroma:akroma@127.0.0.1:5984/akroma-blocks');
         this.syncState = new PouchDB('http://akroma:akroma@127.0.0.1:5984/akroma-sync');
-        this.syncingOperationIntervals = [];
+        this.intervals = [];
         this.ensureIndexes();
     }
 
@@ -73,30 +76,32 @@ export class ImportService implements OnDestroy, OnInit {
     // }
 
     public PauseSync() {
-        this.syncingOperationIntervals.forEach(timer => clearInterval(timer));
-        this.syncingOperationIntervals = [];
+        this.intervals.forEach(timer => clearInterval(timer));
+        this.intervals = [];
         this.isPaused = true;
     }
 
     public StartSync() {
-        this.syncingOperationIntervals.push(
+        this.intervals.push(
             setInterval(() => {
                 this.web3Service.eth.getBlockNumber()
                     .then(s => { this.blockNumber = s; })
                     .catch(console.error);
-
                 this.web3Service.eth.net.isListening()
                     .then(s => { this.connected = s; })
+                    .catch(console.error);
+                this.web3Service.eth.isSyncing()
+                    .then(s => { this.syncing = s; })
                     .catch(console.error);
                 this.web3Service.eth.net.getPeerCount()
                     .then(s => { this.peerCount = s; })
                     .catch(console.error);
             }, 5000));
-        this.syncingOperationIntervals.push(
+        this.intervals.push(
             setInterval(async () => {
                 await this.executeSync();
             }, 2000));
-        this.syncingOperationIntervals.push(
+        this.intervals.push(
             setInterval(async () => {
                 await this.saveSyncState();
             }, 5000));
@@ -107,8 +112,12 @@ export class ImportService implements OnDestroy, OnInit {
         return (this.lastSyncState.currentBlock / this.blockNumber * 100);
     }
 
-    public get displayTransactions() {
+    public get displayTransactions(): boolean {
         return this.percentComplete > 99;
+    }
+
+    public get blockchainSynced(): boolean {
+        return this.peerCount >= 3 && this.connected && !this.syncing && this.blockNumber >= 1500000;
     }
 
     private async executeSync() {
@@ -168,7 +177,7 @@ export class ImportService implements OnDestroy, OnInit {
                 toSave.currentBlock = this.lastSyncState.currentBlock;
                 await this.syncState.put(toSave);
             }
-            console.warn(`unable to save sync state ${error}`);
+            console.warn(`unable to save sync state ${error.name}`);
         }
         this.lastSyncState = await this.getSyncState();
     }
@@ -246,6 +255,6 @@ export class ImportService implements OnDestroy, OnInit {
     }
 
     ngOnDestroy() {
-        this.syncingOperationIntervals.forEach(timer => clearInterval(timer));
+        this.intervals.forEach(timer => clearInterval(timer));
     }
 }
