@@ -32,7 +32,7 @@
       <tbody>
         <tr *ngFor="let wallet of wallets">
           <th scope="row">
-            <a [routerLink]="['/wallet']">
+            <a [routerLink]="['/wallet', wallet.address]">
               {{ wallet.name }}
             </a>
           </th>
