@@ -70,7 +70,7 @@ function createWindow() {
   });
 
   // Listen on event, sent when angular is officially listening
-  // see splash-page.component.ts
+  // see splash.component.ts
   ipcMain.on('client:start', (event, arg) => {
     if (!clientPid) {
       clientPid = arg;

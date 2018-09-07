@@ -12,7 +12,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { Wallet } from '../../models/wallet';
 import { Web3Service } from '../../providers/web3.service';
-import { AkromaLoggerService } from '../../providers/akroma-logger.service';
+import { LoggerService } from '../../providers/logger.service';
 
 @Component({
   // changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,7 +41,7 @@ export class SendTransactionComponent implements OnChanges, OnInit {
     private modalService: BsModalService,
     private web3: Web3Service,
     private router: Router,
-    private logger: AkromaLoggerService,
+    private logger: LoggerService,
   ) {
     this.transactionSent = new EventEmitter<any>();
     this.gasPrice$ = Observable.fromPromise(this.web3.eth.getGasPrice());

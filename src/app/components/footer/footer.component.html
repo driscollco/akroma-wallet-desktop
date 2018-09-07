@@ -3,19 +3,22 @@
     <div class="col-sm-9">
       <ul class="list-inline">
         <li class="list-inline-item">
-          Connected: {{ this.importService.connected || false }}
+          Connected: {{ this.web3Service.connected || false }}
         </li>
         <li class="list-inline-item">
-          Peers: {{ this.importService.peerCount || 0 }}
+          Peers: {{ this.web3Service.peerCount || 0 }}
         </li>
         <li class="list-inline-item">
-          Height: {{ this.importService.blockNumber || 0 }}
+          Height: {{ this.web3Service.blockNumber || 0 }}
         </li>
-        <li class="list-inline-item">
+          <!-- <li class="list-inline-item">
           Percent: {{ this.importService.percentComplete.toFixed(2) || 0 }}
-        </li>
-        <li class="list-inline-item">
+        </li> -->
+          <!-- <li class="list-inline-item">
           Status: {{ this.importService.status }}
+        </li> -->
+        <li class="list-inline-item" *ngIf='settings'>
+          Transaction Sync: {{ settings?.transactionSource }}
         </li>
       </ul>
     </div>

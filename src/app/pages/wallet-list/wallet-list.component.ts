@@ -6,11 +6,13 @@ import { PopoverDirective } from 'ngx-bootstrap/popover';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
 import { Wallet } from '../../models/wallet';
-import { AkromaLoggerService } from '../../providers/akroma-logger.service';
 import { ElectronService } from '../../providers/electron.service';
-import { SettingsPersistenceService } from '../../providers/settings-persistence.service';
-import { WalletPersistenceService } from '../../providers/wallet-persistence.service';
+import { LoggerService } from '../../providers/logger.service';
+import { SettingsService } from '../../providers/settings.service';
+import { WalletService } from '../../providers/wallet.service';
 import { Web3Service } from '../../providers/web3.service';
+import { Subscription } from 'rxjs';
+import { SystemSettings } from '../../models/system-settings';
 
 const electron = window.require('electron');
 
@@ -27,14 +29,16 @@ export class WalletListComponent implements OnInit {
   @ViewChild('pop') pop: PopoverDirective;
   walletForm: FormGroup;
   wallets: Wallet[];
+  private settings: SystemSettings;
+  private settingsSub: Subscription;
 
   constructor(private formBuilder: FormBuilder,
     private modalService: BsModalService,
     private web3: Web3Service,
-    private walletService: WalletPersistenceService,
-    private settingsService: SettingsPersistenceService,
+    private walletService: WalletService,
+    private settingsService: SettingsService,
     private electronService: ElectronService,
-    private logger: AkromaLoggerService) {
+    private logger: LoggerService) {
     this.walletForm = this.formBuilder.group(
       { name: '', passphrase: '', confirmPassphrase: '' },
       { validator: this.passphraseMatchValidator },
@@ -148,10 +152,9 @@ export class WalletListComponent implements OnInit {
 
   async deleteWallet(wallet: Wallet): Promise<void> {
     const sep = this.electronService.path.sep;
-    const systemSettings = await this.settingsService.db.get('system');
-    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
+    const keystoreFileDir = `${this.settings.clientPath}${sep}data${sep}keystore${sep}`;
     const keystoreFileList = this.electronService.fs.readdirSync(keystoreFileDir);
-    const backupDir = `${systemSettings.clientPath}${sep}Auto-Backup-of-Deleted-Wallets${sep}`;
+    const backupDir = `${this.settings.clientPath}${sep}Auto-Backup-of-Deleted-Wallets${sep}`;
 
     if (!this.electronService.fs.existsSync(backupDir)) {
       this.electronService.fs.mkdirSync(backupDir);
@@ -220,8 +223,7 @@ export class WalletListComponent implements OnInit {
 
   async backupWallet(wallet: Wallet): Promise<void> {
     const sep = this.electronService.path.sep;
-    const systemSettings = await this.settingsService.db.get('system');
-    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
+    const keystoreFileDir = `${this.settings.clientPath}${sep}data${sep}keystore${sep}`;
     const keystoreFileList = await this.electronService.fs.readdirSync(keystoreFileDir);
     // manual backup of renamed keystore needs fix
     const keystoreFile = keystoreFileList.find(x => x.toLowerCase().includes(wallet.address.replace('0x', '').toLowerCase()));

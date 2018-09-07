@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs/Subscription';
 import { SystemSettings } from '../../../models/system-settings';
 import { ElectronService } from '../../../providers/electron.service';
-import { SettingsPersistenceService } from '../../../providers/settings-persistence.service';
+import { SettingsService } from '../../../providers/settings.service';
 import { Web3Service } from '../../../providers/web3.service';
 
 
@@ -38,7 +38,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
 
   keystoreFolder: KeystoreData[] = [];
   importFolder: KeystoreData[] = [];
-
+  private settingsSub: Subscription;
   @HostListener('document:keydown.escape', ['$event'])
   escapeFromSettingsPage(event: KeyboardEvent) {
     setTimeout(() => {
@@ -51,7 +51,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
     public dragulaService: DragulaService,
     private router: Router,
     private web3: Web3Service,
-    private settingsService: SettingsPersistenceService,
+    private settingsService: SettingsService,
     public electronService: ElectronService,
 
   ) {
@@ -90,22 +90,14 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
       }
     })
 
-  }//constructor
+  }
+  //constructor
 
 
 
   async ngOnInit() {
 
-    try {
-      console.warn(`system path`)
-      this.settings = await this.settingsService.db.get('system');
-      this.getPaths();
-
-    } catch {
-      console.warn(`default path`)
-      this.settings = await this.settingsService.defaultSettings();
-      this.getPaths();
-    }
+    this.settingsSub = this.settingsService.settings.subscribe(settings => this.settings = settings);
 
     this.backupToDocuments(this.documentsAkromaBackupDirName, this.akromaDeletedWalletsDirName, this.akromaDataKeystoreDirName, this.desktopAkromaDirName)
 

@@ -2,17 +2,17 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Transaction } from '../../models/transaction';
 import { Wallet } from '../../models/wallet';
-import { clientConstants } from '../../providers/akroma-client.constants';
-import { AkromaLoggerService } from '../../providers/akroma-logger.service';
-import { ImportService } from '../../providers/import.service';
-import { TransactionsPersistenceService } from '../../providers/transactions-persistence.service';
-import { TransactionsService } from '../../providers/transactions.service';
+import { LoggerService } from '../../providers/logger.service';
+import { TransactionRemoteService } from '../../providers/transaction.remote.service';
+import { TransactionService } from '../../providers/transaction.service';
+import { TransactionSyncService } from '../../providers/transaction.sync.service';
+import { Web3Service } from '../../providers/web3.service';
 
 
 @Component({
-  selector: 'app-wallet-detail-page',
-  templateUrl: './wallet-detail-page.component.html',
-  styleUrls: ['./wallet-detail-page.component.scss'],
+  selector: 'app-wallet-detail',
+  templateUrl: './wallet-detail.component.html',
+  styleUrls: ['./wallet-detail.component.scss'],
 })
 export class WalletDetailPageComponent implements OnDestroy, OnInit {
   destroyed: boolean;
@@ -25,13 +25,13 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   wallet: Wallet;
   address: string;
   constructor(
-    private logger: AkromaLoggerService,
-    private transactionsService: TransactionsService,
-    private transactionsPersistenceService: TransactionsPersistenceService,
-    private importService: ImportService,
+    private logger: LoggerService,
+    private web3Service: Web3Service,
+    private transactionsService: TransactionService,
+    private transactionsPersistenceService: TransactionRemoteService,
+    private importService: TransactionSyncService,
     private route: ActivatedRoute,
     private router: Router) {
-    this.transactionsService.setProvider(new this.transactionsService.providers.HttpProvider(clientConstants.connection.default));
     this.destroyed = false;
     this.syncing = false;
   }
@@ -40,10 +40,10 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
     // const address = '0x41014cd8Ba3247a5299405dbB99A8D4aD21EE5F6';
     this.address = '0x09033F3fF86F889602A57ED2c434B9D85642A0e2';
     // const address = this.route.snapshot.params.address;
-    const walletBalance = await this.transactionsService.eth.getBalance(this.address);
+    const balance = await this.web3Service.getBalance(this.address);
     this.wallet = {
       address: this.address,
-      balance: this.transactionsService.utils.fromWei(walletBalance, 'ether'),
+      balance: balance,
     };
 
     // await this.refreshTransactions();

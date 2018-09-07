@@ -4,8 +4,13 @@ import PouchDB from 'pouchdb';
 
 import { Transaction } from '../models/transaction';
 
+/**
+ * TransactionRemoteService communicates with akroma explorer (currently akroma.io but will soon be light client to explorer.akroma.io network)
+ * Users can decide to use TransactionSyncService or TransactionRemoveService via settings.
+ */
+
 @Injectable()
-export class TransactionsPersistenceService {
+export class TransactionRemoteService {
   private _db: PouchDB.Database<Transaction>;
   private _pending: PouchDB.Database<Transaction>;
 

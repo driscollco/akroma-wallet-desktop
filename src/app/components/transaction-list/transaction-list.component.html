@@ -1,7 +1,7 @@
 <div class="transaction-list">
 
 
-  <ng-container *ngIf="this.importService.displayTransactions; else loading">
+  <ng-container *ngIf="this.transactionsService.displayTransactions; else loading">
     <div class="filters">
       <a class="filter-type" [ngClass]="{'selected': filter === 'all'}" (click)="setFilter('all')">All</a>
       <a class="filter-type" [ngClass]="{'selected': filter === 'sent'}" (click)="setFilter('sent')">Sent</a>
@@ -43,13 +43,13 @@
   <div id="loading">
     <img id="loading-img" src="./assets/images/akroma-loading.png" alt="loading">
     <p>Transaction sync in progress...</p>
-    <h3 class="title">{{ this.importService.lastBlockNumberSynced }} of {{ this.importService.blockNumber }} </h3>
+    <!-- <h3 class="title">{{ this.transactionsService.lastBlockNumberSynced }} of {{ this.transactionsService.blockNumber }} </h3> -->
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col">
       <div class="syncing-bar progress bar-background">
-        <div class="progress-bar bar-white" role="progressbar" [ngStyle]="{'width': (this.importService.percentComplete) + '%'}" [attr.aria-valuenow]="this.importService.percentComplete" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bar-white" role="progressbar" [ngStyle]="{'width': (this.transactionsService.percentComplete) + '%'}" [attr.aria-valuenow]="this.importService.percentComplete" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
-  </div>
+  </div> -->
 </ng-template>

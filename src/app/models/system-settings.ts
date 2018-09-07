@@ -6,5 +6,5 @@ export interface SystemSettings extends PouchEntity {
     // this is the location of the akroma wallet applications storage
     applicationPath: string;
     syncMode: string;
-    akromaNode: string;
+    transactionSource: string;
 }

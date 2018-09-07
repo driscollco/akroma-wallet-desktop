@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AkromaTx } from '../../models/akroma-tx';
 import { Transaction } from '../../models/transaction';
 import { Wallet } from '../../models/wallet';
-import { ImportService } from '../../providers/import.service';
+import { TransactionService } from '../../providers/transaction.service';
 
 
 @Component({
@@ -11,13 +11,11 @@ import { ImportService } from '../../providers/import.service';
   styleUrls: ['./transaction-list.component.scss'],
 })
 export class TransactionListComponent implements OnInit {
-  // @Input() lastBlockNumberSynced: number;
-  // @Input() endBlockNumber: number;
   @Input() address: string;
-  @Input() transactions: Transaction[];
-  @Input() wallet: Wallet;
+  @Input() transactions: Transaction[]; // TODO: remove me.
+  @Input() wallet: Wallet; // TODO: remove me.
 
-  filteredTransactions: Transaction[];
+  filteredTransactions: AkromaTx[]; // TODO: rename me.
   filter: string;
   timestamp: string = new Date().toLocaleDateString();
   page: number;
@@ -28,7 +26,7 @@ export class TransactionListComponent implements OnInit {
   tx: AkromaTx[];
 
   constructor(
-    public importService: ImportService,
+    public transactionsService: TransactionService,
   ) {
     this.page = 1;
     this.filter = 'all';
@@ -41,30 +39,30 @@ export class TransactionListComponent implements OnInit {
   //   }
   // }
 
-  ngOnInit() {
-    this.syncing = this.importService.displayTransactions;
-    this.lastBlockNumberSynced = this.importService.lastBlockNumberSynced;
-    this.endBlockNumber = this.importService.blockNumber;
-    // this.tx = this.importService.transactions;
+  async ngOnInit() {
+    this.syncing = this.transactionsService.displayTransactions;
+    this.lastBlockNumberSynced = this.transactionsService.lastBlockNumberSynced;
+    this.endBlockNumber = 0; // this.transactionsService.blockNumber;
+    this.filteredTransactions = await this.transactionsService.getTransactionsForAddress(this.address);
   }
 
-  setFilter(filterType: string) {
-    switch (filterType) {
-      case 'sent':
-        this.filter = filterType;
-        this.filteredTransactions = [ ...this.transactions ]
-          .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase());
-        break;
-      case 'received':
-        this.filter = filterType;
-        this.filteredTransactions = [ ...this.transactions ]
-          .filter(x => x.to.toUpperCase() === this.wallet.address.toUpperCase());
-        break;
-      default:
-        this.filter = 'all';
-        this.filteredTransactions = [ ...this.transactions ];
-    }
-    this.filteredTransactions = [ ...this.filteredTransactions ].sort((a: Transaction, b: Transaction) => b.timestamp - a.timestamp);
-  }
+  // setFilter(filterType: string) {
+  //   switch (filterType) {
+  //     case 'sent':
+  //       this.filter = filterType;
+  //       this.filteredTransactions = [ ...this.transactions ]
+  //         .filter(x => x.from.toUpperCase() === this.wallet.address.toUpperCase());
+  //       break;
+  //     case 'received':
+  //       this.filter = filterType;
+  //       this.filteredTransactions = [ ...this.transactions ]
+  //         .filter(x => x.to.toUpperCase() === this.wallet.address.toUpperCase());
+  //       break;
+  //     default:
+  //       this.filter = 'all';
+  //       this.filteredTransactions = [ ...this.transactions ];
+  //   }
+  //   this.filteredTransactions = [ ...this.filteredTransactions ].sort((a: Transaction, b: Transaction) => b.timestamp - a.timestamp);
+  // }
 
 }

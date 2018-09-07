@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from './app.config';
 import { AkromaClientService } from './providers/akroma-client.service';
-import { AkromaLoggerService } from './providers/akroma-logger.service';
 import { ElectronService } from './providers/electron.service';
-import { ImportService } from './providers/import.service';
+import { LoggerService } from './providers/logger.service';
+import { TransactionSyncService } from './providers/transaction.sync.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +13,11 @@ import { ImportService } from './providers/import.service';
 })
 export class AppComponent {
   constructor(
-    private logger: AkromaLoggerService,
+    private logger: LoggerService,
     public electronService: ElectronService,
     // tslint:disable-next-line
     private translate: TranslateService,
-    private importService: ImportService,
+    private importService: TransactionSyncService,
     private akromaClientService: AkromaClientService) {
 
     translate.setDefaultLang('en');
@@ -27,7 +27,7 @@ export class AppComponent {
       console.log('Mode electron');
       console.log('Electron ipcRenderer', electronService.ipcRenderer);
       console.log('NodeJS childProcess', electronService.childProcess);
-      this.logger.init(async cb => await this.akromaClientService.initialize(res => {
+      this.logger.init(cb => this.akromaClientService.initialize(res => {
         logger.info('[os]: ' + electronService.os.platform);
         logger.info('[arch]: ' + electronService.os.arch);
         logger.info('[homedir]: ' + electronService.os.homedir);
@@ -36,8 +36,8 @@ export class AppComponent {
         logger.info('[locale]: ' + electronService.remote.app.getLocale());
         this.akromaClientService.downloadClient(success => {
           if (success) {
-            this.akromaClientService.startClient(async c => {
-              await this.importService.StartSync();
+            this.akromaClientService.startClient(c => {
+              this.importService.startSync();
             });
           }
         });

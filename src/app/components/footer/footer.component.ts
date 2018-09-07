@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SystemSettings } from '../../models/system-settings';
 import { ElectronService } from '../../providers/electron.service';
-import { ImportService } from '../../providers/import.service';
-import { SettingsPersistenceService } from '../../providers/settings-persistence.service';
+import { SettingsService } from '../../providers/settings.service';
+import { TransactionService } from '../../providers/transaction.service';
+import { Web3Service } from '../../providers/web3.service';
 
 @Component({
   selector: 'app-footer',
@@ -10,30 +11,25 @@ import { SettingsPersistenceService } from '../../providers/settings-persistence
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-  private settings: SystemSettings;
+  public settings: SystemSettings;
+  public web3: Web3Service;
 
   constructor(
     private electronService: ElectronService,
-    private settingsService: SettingsPersistenceService,
-    public importService: ImportService,
-  ) { }
+    private settingsService: SettingsService,
+    public web3Service: Web3Service,
+    public transactionService: TransactionService,
+  ) {
+  }
 
-  async ngOnInit() {
-    try {
-      this.settings = await this.settingsService.db.get('system');
-    } catch {
-      this.settings = await this.settingsService.defaultSettings();
-    }
-    // setInterval(() => {
-    //   this.blockNumber = this.importService.blockNumber;
-    //   this.listening = this.importService.connected;
-    //   this.peerCount = this.importService.peerCount;
-    //   this.importStatus = this.importService.status;
-    // }, 1000);
+  ngOnInit() {
+    this.settingsService.settings
+      .subscribe(settings => this.settings = settings);
   }
 
   viewLogs() {
-    this.electronService.remote.shell.showItemInFolder(this.settings.applicationPath + this.electronService.path.sep + 'logs' + this.electronService.path.sep + 'akroma.log');
+    // this.electronService.remote.shell.showItemInFolder(this._settings.applicationPath + this.electronService.path.sep + 'logs' + this.electronService.path.sep + 'akroma.log');
+    console.log('logs.');
   }
 
   console() {

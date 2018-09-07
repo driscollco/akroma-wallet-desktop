@@ -8,13 +8,13 @@ import { distinctUntilChanged, mergeMap } from 'rxjs/operators';
 import { ISubscription } from 'rxjs/Subscription';
 import { BlockSync } from '../../models/block-sync';
 import { AkromaClientService, statusConstants } from '../../providers/akroma-client.service';
-import { ImportService } from '../../providers/import.service';
+import { TransactionSyncService } from '../../providers/transaction.sync.service';
 import { Web3Service } from '../../providers/web3.service';
 
 @Component({
-  selector: 'app-splash-page',
-  templateUrl: './splash-page.component.html',
-  styleUrls: ['./splash-page.component.scss'],
+  selector: 'app-splash',
+  templateUrl: './splash.component.html',
+  styleUrls: ['./splash.component.scss'],
 })
 export class SplashComponent implements OnDestroy, OnInit {
   lastPercentageSynced: number;
@@ -30,7 +30,7 @@ export class SplashComponent implements OnDestroy, OnInit {
     private router: Router,
     private clientService: AkromaClientService,
     private web3Service: Web3Service,
-    private importService: ImportService,
+    private transactionSyncService: TransactionSyncService,
   ) {
     this.intervals = [];
   }
@@ -53,7 +53,7 @@ export class SplashComponent implements OnDestroy, OnInit {
   private async startSyncingSubscriptions(): Promise<void> {
     this.intervals.push(
       setInterval(async () => {
-        const blockchainSynced = this.importService.blockchainSynced;
+        const blockchainSynced = this.transactionSyncService.blockchainSynced;
         if (blockchainSynced) {
           const wallets = await this.web3Service.eth.personal.getAccounts();
           await this.navigate(wallets);
@@ -75,6 +75,8 @@ export class SplashComponent implements OnDestroy, OnInit {
    * remove timers when navigating away from page.
    */
   ngOnDestroy() {
+    console.log('clear timers');
     this.intervals.forEach(timer => clearInterval(timer));
+    this.intervals = [];
   }
 }

@@ -40,6 +40,7 @@
     "@types/pouchdb-upsert": "^2.2.4",
     "bignumber.js": "^7.2.1",
     "crypto-browserify": "^3.12.0",
+    "fs-extra": "^5.0.0",
     "install": "^0.11.0",
     "ng2-dragula": "^2.0.2",
     "ng2-search-filter": "^0.4.7",
@@ -51,12 +52,12 @@
     "pouchdb": "^6.4.3",
     "pouchdb-adapter-node-websql": "^6.4.3",
     "pouchdb-browser": "^6.4.3",
+    "pouchdb-find": "6.4.3",
     "pouchdb-upsert": "^2.2.0",
     "request": "^2.85.0",
     "web3": "^1.0.0-beta.35",
     "websocket": "^1.0.26",
-    "websql": "^0.4.4",
-    "fs-extra": "^5.0.0"
+    "websql": "^0.4.4"
   },
   "devDependencies": {
     "@angular/cli": "1.7.4",

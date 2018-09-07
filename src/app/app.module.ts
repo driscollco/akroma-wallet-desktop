@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 // NG Translate
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DragulaModule } from 'ng2-dragula';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { PopoverModule, ProgressbarModule } from 'ngx-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -18,35 +19,34 @@ import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FrameActionComponent } from './components/frame-action/frame-action.component';
 import { MastheadComponent } from './components/masthead/masthead.component';
+import { PageTitleComponent } from './components/page-title/page-title.component';
 import { SendTransactionComponent } from './components/send-transaction/send-transaction.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
 import { WalletActionsComponent } from './components/wallet-actions/wallet-actions.component';
 import { WalletComponent } from './components/wallet/wallet.component';
+import { CreateWalletComponent } from './pages/create-wallet/create-wallet.component';
+import { FromKeystoreComponent } from './pages/import/from-keystore/from-keystore.component';
 // Pages
-import { SettingsPageComponent } from './pages/settings-page/settings-page.component';
+import { SettingsPageComponent } from './pages/settings/settings.component';
+import { SplashComponent } from './pages/splash/splash.component';
+import { WalletDetailPageComponent } from './pages/wallet-detail/wallet-detail.component';
 import { WalletListComponent } from './pages/wallet-list/wallet-list.component';
-import { SplashComponent } from './pages/splash/splash-page.component';
-import { WalletDetailPageComponent } from './pages/wallet-detail/wallet-detail-page.component';
+import { ShowEtherPipe } from './pipes/show-ether.pipe';
 // Services
 import { AkromaClientService } from './providers/akroma-client.service';
 import { ElectronService } from './providers/electron.service';
-import { SettingsPersistenceService } from './providers/settings-persistence.service';
-import { TransactionsPersistenceService } from './providers/transactions-persistence.service';
-import { TransactionsService } from './providers/transactions.service';
-import { ImportService } from './providers/import.service';
-import { WalletPersistenceService } from './providers/wallet-persistence.service';
+import { LoggerService } from './providers/logger.service';
+import { SettingsService } from './providers/settings.service';
+import { TransactionRemoteService } from './providers/transaction.remote.service';
+import { TransactionService } from './providers/transaction.service';
+import { TransactionSyncService } from './providers/transaction.sync.service';
+import { WalletService } from './providers/wallet.service';
 import { Web3Service } from './providers/web3.service';
-import { AkromaLoggerService } from './providers/akroma-logger.service';
-import { ShowEtherPipe } from './pipes/show-ether.pipe';
 
 
-import { DragulaModule } from 'ng2-dragula';
-import { FrameActionComponent } from './components/frame-action/frame-action.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { CreateWalletComponent } from './pages/create-wallet/create-wallet.component';
-import { FromKeystoreComponent } from './pages/import/from-keystore/from-keystore.component';
-import { PageTitleComponent } from './components/page-title/page-title.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -98,14 +98,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     AkromaClientService,
-    AkromaLoggerService,
+    LoggerService,
     ElectronService,
     Web3Service,
-    TransactionsService,
-    ImportService,
-    TransactionsPersistenceService,
-    SettingsPersistenceService,
-    WalletPersistenceService,
+    TransactionService,
+    TransactionSyncService,
+    TransactionRemoteService,
+    SettingsService,
+    WalletService,
   ],
   bootstrap: [AppComponent],
 })
