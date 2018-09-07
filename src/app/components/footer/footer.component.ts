@@ -22,9 +22,8 @@ export class FooterComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
-    this.settingsService.settings
-      .subscribe(settings => this.settings = settings);
+  async ngOnInit() {
+    this.settings = await this.settingsService.getSettings();
   }
 
   viewLogs() {

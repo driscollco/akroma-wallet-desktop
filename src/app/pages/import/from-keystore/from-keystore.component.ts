@@ -38,7 +38,6 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
 
   keystoreFolder: KeystoreData[] = [];
   importFolder: KeystoreData[] = [];
-  private settingsSub: Subscription;
   @HostListener('document:keydown.escape', ['$event'])
   escapeFromSettingsPage(event: KeyboardEvent) {
     setTimeout(() => {
@@ -97,7 +96,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
 
-    this.settingsSub = this.settingsService.settings.subscribe(settings => this.settings = settings);
+    this.settings = await this.settingsService.getSettings();
 
     this.backupToDocuments(this.documentsAkromaBackupDirName, this.akromaDeletedWalletsDirName, this.akromaDataKeystoreDirName, this.desktopAkromaDirName)
 

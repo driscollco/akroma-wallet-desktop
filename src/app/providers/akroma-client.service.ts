@@ -45,21 +45,17 @@ export class AkromaClientService {
   }
 
   // This is called first. Then download is called (as the callback)
-  initialize(callback: Function) {
+  async initialize(callback: Function) {
     this.client = clientConstants.clients.akroma.platforms[this.es.os.platform()][this.es.os.arch()];
-    this.settingsSub = this.settingsService.settings
-      .subscribe(settings => {
-        this.settings = settings;
-        this.logger.info('[settings]: ' + JSON.stringify(settings));
-        this.logger.info('[clientPath]: ' + settings.clientPath);
-        this.logger.info('[clientBin]: ' + this.client.bin);
-        this.logger.info('[transactionSource]: ' + settings.transactionSource);
-        this.clientPath = settings.clientPath;
-        this.clientBin = this.client.bin;
-        this.syncMode = settings.syncMode;
-        callback();
-      });
-    // this.web3.setProvider(new this.web3.providers.HttpProvider(settings.akromaNode));
+    this.settings = await this.settingsService.getSettings();
+    this.logger.info('[settings]: ' + JSON.stringify(this.settings));
+    this.logger.info('[clientPath]: ' + this.settings.clientPath);
+    this.logger.info('[clientBin]: ' + this.client.bin);
+    this.logger.info('[transactionSource]: ' + this.settings.transactionSource);
+    this.clientPath = this.settings.clientPath;
+    this.clientBin = this.client.bin;
+    this.syncMode = this.settings.syncMode;
+    callback();
   }
 
   // Called as called back from initialize, then startClient is called (as the callback)

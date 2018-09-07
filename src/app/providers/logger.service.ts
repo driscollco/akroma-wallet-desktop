@@ -6,15 +6,12 @@ import { SettingsService } from './settings.service';
 @Injectable()
 export class LoggerService {
     logPath: string;
-    private _settings: SystemSettings;
     noop() { }
 
     constructor(
         private electronService: ElectronService,
         private settingsService: SettingsService,
     ) {
-        this.settingsService.settings
-            .subscribe(settings => this._settings = settings);
     }
 
     async init(callback: Function): Promise<void> {

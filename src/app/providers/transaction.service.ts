@@ -22,16 +22,15 @@ export class TransactionService implements OnDestroy {
     private transactionRemoteService: TransactionRemoteService,
   ) {
     this._intervals = [];
-    this.settingsService.settings
-      .subscribe(settings => {
+    this._intervals.push(
+      setInterval(async () => {
+        const settings = await this.settingsService.getSettings();
         this._remote = settings.transactionSource === 'remote';
-      });
-
+      }, 2000));
     this._intervals.push(
       setInterval(() => {
         this.lastBlockNumberSynced = this.transactionSyncService.lastBlockNumberSynced;
       }, 2000));
-
   }
 
   ngOnDestroy() {

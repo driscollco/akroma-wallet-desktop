@@ -43,16 +43,16 @@ export class TransactionSyncService implements OnDestroy {
         this._syncState = new PouchDB('http://akroma:akroma@127.0.0.1:5984/akroma-sync');
         this._intervals = [];
         // this.ensureIndexes();
-        this.settingsService.settings
-            .subscribe(settings => {
-                if (settings.transactionSource === 'remote') {
-                    console.log('remote source. disable sync');
-                    this.pauseSync();
-                } else {
-                    console.log('local source. enable');
-                    this.startSync();
-                }
-            });
+        // this.settingsService.settings
+        //     .subscribe(settings => {
+        //         if (settings.transactionSource === 'remote') {
+        //             console.log('remote source. disable sync');
+        //             this.pauseSync();
+        //         } else {
+        //             console.log('local source. enable');
+        //             this.startSync();
+        //         }
+        //     });
     }
 
     /**

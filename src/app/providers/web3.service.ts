@@ -50,7 +50,7 @@ export class Web3Service extends (Web3 as { new(): any; }) {
 
     connectIpc() {
         // TODO: should this be a subscription?
-        this.settingsService.settings.subscribe(s => {
+        this.settingsService.getSettings().then(s => {
             this.setProvider(this.providers.IpcProvider(`${s.clientPath}/data/geth.ipc`, this.electronService.net));
         });
     }
