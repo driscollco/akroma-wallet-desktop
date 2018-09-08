@@ -6,7 +6,7 @@ import { Web3Service } from './web3.service';
 
 const pg = (<any>window).require('pg');
 /**
- * TransactionSyncService syncs all the transactions from the akroma blockchain to a local couchdb instance.
+ * TransactionSyncService syncs all the transactions from the akroma blockchain to a local postgres instance.
  * Users can decide to use TransactionSyncService or TransactionRemoveService via settings.
  */
 
@@ -47,7 +47,7 @@ export class TransactionSyncSQLService implements OnDestroy {
         this._intervals.push(
             setInterval(async () => {
                 await this.executeSync();
-            }, 2000));
+            }, 5000));
         this.isPaused = false;
     }
 
@@ -103,17 +103,18 @@ export class TransactionSyncSQLService implements OnDestroy {
         await this.getBlock(this.lastBlockNumberSynced);
     }
 
-    // only called when sync first starts, we get the last block we know, then go back 100 blocks (to handle reorgs)
+    // only called when sync first starts, we get the last block we know, then go back 10 blocks (to handle reorgs)
     private async getSyncState(): Promise<number> {
         const res = await this._client.query('SELECT num FROM aka.blocks ORDER BY num DESC LIMIT 1;');
         if (res.rows[0]) {
-            console.log(`found ${res.rows[0].num}`);
+            console.log(`synced total: ${res.rows[0].num}`);
             const last = Number(res.rows[0].num);
-            if (last > 100) {
-                console.log(`returning ${last - 100}`);
-                return last - 100;
-            }
-            return 0;
+            return last;
+            // if (last > 10) { // TODO: logic to handle reorgs but not part of initial sync.
+            //     console.log(`returning ${last - 10}`);
+            //     return last - 10;
+            // }
+            // return 0;
         }
         return 0;
     }
@@ -144,7 +145,7 @@ export class TransactionSyncSQLService implements OnDestroy {
     }
 
     private async writeBlock(block: Block): Promise<boolean> {
-        console.info('SyncSQLService: saving block %s', block.number);
+        // console.info('SyncSQLService: saving block %s', block.number);
 
         // tslint:disable-next-line:max-line-length
         const text = `INSERT INTO aka.blocks
@@ -161,6 +162,8 @@ export class TransactionSyncSQLService implements OnDestroy {
             // console.log(res);
             return true;
         } catch (err) {
+            console.error('unable to save block');
+            console.log(block);
             console.error(err.stack);
             return false;
         }
@@ -183,6 +186,9 @@ export class TransactionSyncSQLService implements OnDestroy {
                 const res = await this._client.query(text, values);
                 // console.log('transaction: ' + res);
             } catch (err) {
+                console.error('unable to save tx');
+                console.log(tx);
+                console.log(err);
                 console.error(err.stack);
             }
         });

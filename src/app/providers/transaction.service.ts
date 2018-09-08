@@ -2,8 +2,8 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AkromaTx } from '../models/akroma-tx';
 import { SettingsService } from './settings.service';
 import { TransactionRemoteService } from './transaction.remote.service';
-import { TransactionSyncService } from './transaction.sync.service';
 import { TransactionSyncSQLService } from './transaction.sync.SQL.service';
+import { Web3Service } from './web3.service';
 
 /**
  * TransactionService is an abstraction on TransactionSyncService and TransactionRemoveService
@@ -19,9 +19,9 @@ export class TransactionService implements OnDestroy {
   private _remote: boolean;
   constructor(
     private settingsService: SettingsService,
-    private transactionSyncService: TransactionSyncService,
     private transactionRemoteService: TransactionRemoteService,
     private transactionSyncSQLService: TransactionSyncSQLService,
+    private web3Service: Web3Service,
   ) {
     this._intervals = [];
     this._intervals.push(
@@ -31,8 +31,13 @@ export class TransactionService implements OnDestroy {
       }, 2000));
     this._intervals.push(
       setInterval(() => {
-        this.lastBlockNumberSynced = this.transactionSyncService.lastBlockNumberSynced;
+        this.lastBlockNumberSynced = this.transactionSyncSQLService.lastBlockNumberSynced;
       }, 2000));
+  }
+
+  public get percentComplete() {
+    const p = (this.lastBlockNumberSynced / this.web3Service.blockNumber * 100);
+    return p;
   }
 
   ngOnDestroy() {
@@ -43,7 +48,7 @@ export class TransactionService implements OnDestroy {
     if (this._remote) {
       return true;
     }
-    return this.transactionSyncService.displayTransactions;
+    return this.transactionSyncSQLService.displayTransactions;
   }
 
   public async getTransactionsForAddress(address: string): Promise<AkromaTx[]> {
@@ -62,7 +67,7 @@ export class TransactionService implements OnDestroy {
 
   public async getLocalTransactionsForAddress(address: string): Promise<AkromaTx[]> {
     // get transactions from remote api.
-    return await this.transactionSyncService.getTransactionsForAddress(address);
+    return await this.transactionSyncSQLService.getTransactionsForAddress(address);
   }
 
   // async getSingleTransactionByHash(txHash: string): Promise<Transaction> {

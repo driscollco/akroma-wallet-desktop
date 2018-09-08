@@ -5,7 +5,6 @@ import { Wallet } from '../../models/wallet';
 import { LoggerService } from '../../providers/logger.service';
 import { TransactionRemoteService } from '../../providers/transaction.remote.service';
 import { TransactionService } from '../../providers/transaction.service';
-import { TransactionSyncService } from '../../providers/transaction.sync.service';
 import { Web3Service } from '../../providers/web3.service';
 
 
@@ -29,7 +28,6 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
     private web3Service: Web3Service,
     private transactionsService: TransactionService,
     private transactionsPersistenceService: TransactionRemoteService,
-    private importService: TransactionSyncService,
     private route: ActivatedRoute,
     private router: Router) {
     this.destroyed = false;
