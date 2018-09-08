@@ -99,15 +99,15 @@ export class TransactionSyncService implements OnDestroy {
 
     public startSync() {
         console.log('start sync called.');
-        this._intervals.push(
-            setInterval(async () => {
-                await this.executeSync();
-            }, 2000));
-        this._intervals.push(
-            setInterval(async () => {
-                await this.saveSyncState();
-            }, 5000));
-        this.isPaused = false;
+        // this._intervals.push(
+        //     setInterval(async () => {
+        //         await this.executeSync();
+        //     }, 2000));
+        // this._intervals.push(
+        //     setInterval(async () => {
+        //         await this.saveSyncState();
+        //     }, 5000));
+        // this.isPaused = false;
     }
 
     /**

@@ -36,10 +36,12 @@
     "e2e": "npm-run-all -p -r pree2e:build pree2e:protractor"
   },
   "dependencies": {
+    "@types/pg": "^7.4.10",
     "@types/pouchdb-core": "^6.4.2",
     "@types/pouchdb-upsert": "^2.2.4",
     "bignumber.js": "^7.2.1",
     "crypto-browserify": "^3.12.0",
+    "dns": "^0.2.2",
     "fs-extra": "^5.0.0",
     "install": "^0.11.0",
     "ng2-dragula": "^2.0.2",
@@ -49,6 +51,8 @@
     "ngx-qrcode2": "0.0.9",
     "node-pre-gyp": "^0.10.0",
     "npm": "^6.0.1",
+    "pg": "^7.4.3",
+    "pg-native": "^3.0.0",
     "pouchdb": "^6.4.3",
     "pouchdb-adapter-node-websql": "^6.4.3",
     "pouchdb-browser": "^6.4.3",

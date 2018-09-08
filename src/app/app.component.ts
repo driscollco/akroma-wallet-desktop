@@ -4,7 +4,7 @@ import { AppConfig } from './app.config';
 import { AkromaClientService } from './providers/akroma-client.service';
 import { ElectronService } from './providers/electron.service';
 import { LoggerService } from './providers/logger.service';
-import { TransactionSyncService } from './providers/transaction.sync.service';
+import { TransactionSyncSQLService } from './providers/transaction.sync.SQL.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent {
     public electronService: ElectronService,
     // tslint:disable-next-line
     private translate: TranslateService,
-    private importService: TransactionSyncService,
+    private syncSQLService: TransactionSyncSQLService,
     private akromaClientService: AkromaClientService) {
 
     translate.setDefaultLang('en');
@@ -37,7 +37,7 @@ export class AppComponent {
         this.akromaClientService.downloadClient(success => {
           if (success) {
             this.akromaClientService.startClient(c => {
-              this.importService.startSync();
+              this.syncSQLService.startSync();
             });
           }
         });

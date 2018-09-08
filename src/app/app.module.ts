@@ -45,6 +45,7 @@ import { TransactionService } from './providers/transaction.service';
 import { TransactionSyncService } from './providers/transaction.sync.service';
 import { WalletService } from './providers/wallet.service';
 import { Web3Service } from './providers/web3.service';
+import { TransactionSyncSQLService } from './providers/transaction.sync.SQL.service';
 
 
 
@@ -106,6 +107,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TransactionRemoteService,
     SettingsService,
     WalletService,
+    TransactionSyncSQLService,
   ],
   bootstrap: [AppComponent],
 })

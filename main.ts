@@ -3,7 +3,20 @@ import * as path from 'path';
 import * as url from 'url';
 import { AppConfig } from './src/app/app.config';
 
+// const client = new Client({
+//   user: 'akroma',
+//   host: 'localhost',
+//   database: 'akroma',
+//   password: 'akroma',
+//   port: 5432,
+// });
 
+// client.connect();
+// client.query('SELECT NOW() as now')
+//   .then(res => console.log(res.rows[0]))
+//   .catch(e => console.error(e.stack));
+
+// console.log('HELLO');
 
 let clientPid;
 let win, serve;

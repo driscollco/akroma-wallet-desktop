@@ -3,6 +3,7 @@ import { AkromaTx } from '../models/akroma-tx';
 import { SettingsService } from './settings.service';
 import { TransactionRemoteService } from './transaction.remote.service';
 import { TransactionSyncService } from './transaction.sync.service';
+import { TransactionSyncSQLService } from './transaction.sync.SQL.service';
 
 /**
  * TransactionService is an abstraction on TransactionSyncService and TransactionRemoveService
@@ -20,6 +21,7 @@ export class TransactionService implements OnDestroy {
     private settingsService: SettingsService,
     private transactionSyncService: TransactionSyncService,
     private transactionRemoteService: TransactionRemoteService,
+    private transactionSyncSQLService: TransactionSyncSQLService,
   ) {
     this._intervals = [];
     this._intervals.push(
