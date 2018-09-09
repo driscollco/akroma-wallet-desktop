@@ -1,8 +1,6 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import PouchDB from 'pouchdb';
-
-import { Transaction } from '../models/transaction';
+import { AkromaTx } from '../models/akroma-tx';
 
 /**
  * TransactionRemoteService communicates with akroma explorer (currently akroma.io but will soon be light client to explorer.akroma.io network)
@@ -11,19 +9,26 @@ import { Transaction } from '../models/transaction';
 
 @Injectable()
 export class TransactionRemoteService {
-  private _db: PouchDB.Database<Transaction>;
-  private _pending: PouchDB.Database<Transaction>;
 
-  get db(): PouchDB.Database<Transaction> {
-    return this._db;
-  }
+  constructor(
+    private http: HttpClient,
+  ) { }
 
-  get pending(): PouchDB.Database<Transaction> {
-    return this._pending;
-  }
-
-  constructor() {
-    this._db = new PouchDB('http://akroma:akroma@127.0.0.1:5984/transactions');
-    this._pending = new PouchDB('http://akroma:akroma@127.0.0.1:5984/pending_transactions');
+  public async getTransactionsForAddress(address: string, page: number = 0): Promise<AkromaTx[]> {
+    const params = { params: new HttpParams().set('page', page.toString()) };
+    const tx = await this.http
+      .get<any>(`https://api.akroma.io/addresses/${address}/transactions`, params).toPromise();
+    const result: AkromaTx[] = [];
+    tx.transactions.forEach(element => {
+      result.push({
+        ...element,
+        addressfrom: element.from,
+        addressto: element.to,
+        ts: element.timestamp,
+      });
+    });
+    console.log(result);
+    console.log('got transactions from remote...');
+    return result;
   }
 }

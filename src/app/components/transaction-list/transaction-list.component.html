@@ -6,7 +6,7 @@
       <a class="filter-type" [ngClass]="{'selected': filter === 'all'}" (click)="setFilter('all')">All</a>
       <a class="filter-type" [ngClass]="{'selected': filter === 'sent'}" (click)="setFilter('sent')">Sent</a>
       <a class="filter-type" [ngClass]="{'selected': filter === 'received'}" (click)="setFilter('received')">Received</a>
-      <a class="filter-type" href="https://akroma.io/en/explorer/address/{{wallet?.address}}" target="blank" allowpopups>Explorer</a>
+      <a class="filter-type" href="https://akroma.io/en/explorer/address/{{address}}" target="blank" allowpopups>Explorer</a>
     </div>
     <table class="table table-striped table-dark table-akroma table-responsive-sm">
       <thead>
@@ -19,17 +19,17 @@
       <tbody>
         <tr *ngFor="let transaction of filteredTransactions | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
           <td>
-            <p>{{ transaction.timestamp | date:'MMM d, y' }}
-              <br> {{ transaction.timestamp | date:'h:mm:ss a z' }}
+            <p>{{ transaction.ts | date:'MMM d, y' }}
+              <br> {{ transaction.ts | date:'h:mm:ss a z' }}
             </p>
           </td>
           <td>
-            <span *ngIf="transaction.from.toUpperCase() === wallet.address.toUpperCase(); else fromAddress">{{ transaction.to }}</span>
+            <span *ngIf="transaction.addressfrom.toUpperCase() === address.toUpperCase(); else fromAddress">{{ transaction.addressto }}</span>
             <ng-template #fromAddress>
-              <span class="selectableText">{{ transaction.from }}</span>
+              <span class="selectableText">{{ transaction.addressfrom }}</span>
             </ng-template>
           </td>
-          <td> {{ transaction.value | showEther }} AKA</td>
+          <td> {{ transaction.value }} AKA</td>
         </tr>
       </tbody>
     </table>

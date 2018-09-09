@@ -8,7 +8,7 @@ import { distinctUntilChanged, mergeMap } from 'rxjs/operators';
 import { ISubscription } from 'rxjs/Subscription';
 import { BlockSync } from '../../models/block-sync';
 import { AkromaClientService, statusConstants } from '../../providers/akroma-client.service';
-import { TransactionSyncSQLService } from '../../providers/transaction.sync.SQL.service';
+import { TransactionSyncService } from '../../providers/transaction.sync.service';
 import { Web3Service } from '../../providers/web3.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class SplashComponent implements OnDestroy, OnInit {
     private router: Router,
     private clientService: AkromaClientService,
     private web3Service: Web3Service,
-    private transactionSyncSQLService: TransactionSyncSQLService,
+    private transactionSyncSQLService: TransactionSyncService,
   ) {
     this.intervals = [];
   }

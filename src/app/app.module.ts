@@ -20,13 +20,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FrameActionComponent } from './components/frame-action/frame-action.component';
-import { MastheadComponent } from './components/masthead/masthead.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { SendTransactionComponent } from './components/send-transaction/send-transaction.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { TransactionListComponent } from './components/transaction-list/transaction-list.component';
-import { WalletActionsComponent } from './components/wallet-actions/wallet-actions.component';
-import { WalletComponent } from './components/wallet/wallet.component';
 import { CreateWalletComponent } from './pages/create-wallet/create-wallet.component';
 import { FromKeystoreComponent } from './pages/import/from-keystore/from-keystore.component';
 // Pages
@@ -44,7 +41,7 @@ import { TransactionRemoteService } from './providers/transaction.remote.service
 import { TransactionService } from './providers/transaction.service';
 import { WalletService } from './providers/wallet.service';
 import { Web3Service } from './providers/web3.service';
-import { TransactionSyncSQLService } from './providers/transaction.sync.SQL.service';
+import { TransactionSyncService } from './providers/transaction.sync.service';
 
 
 
@@ -62,10 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SendTransactionComponent,
     SplashComponent,
     TransactionListComponent,
-    WalletComponent,
-    WalletActionsComponent,
     WalletListComponent,
-    MastheadComponent,
     FooterComponent,
     ShowEtherPipe,
     FromKeystoreComponent,
@@ -102,10 +96,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ElectronService,
     Web3Service,
     TransactionService,
+    TransactionSyncService,
     TransactionRemoteService,
     SettingsService,
     WalletService,
-    TransactionSyncSQLService,
   ],
   bootstrap: [AppComponent],
 })

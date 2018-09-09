@@ -4,7 +4,8 @@ import { AppConfig } from './app.config';
 import { AkromaClientService } from './providers/akroma-client.service';
 import { ElectronService } from './providers/electron.service';
 import { LoggerService } from './providers/logger.service';
-import { TransactionSyncSQLService } from './providers/transaction.sync.SQL.service';
+import { SettingsService } from './providers/settings.service';
+import { TransactionSyncService } from './providers/transaction.sync.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,8 @@ export class AppComponent {
     public electronService: ElectronService,
     // tslint:disable-next-line
     private translate: TranslateService,
-    private syncSQLService: TransactionSyncSQLService,
+    private settingsService: SettingsService,
+    private syncSQLService: TransactionSyncService,
     private akromaClientService: AkromaClientService) {
 
     translate.setDefaultLang('en');
@@ -37,7 +39,15 @@ export class AppComponent {
         this.akromaClientService.downloadClient(success => {
           if (success) {
             this.akromaClientService.startClient(c => {
-              this.syncSQLService.startSync();
+              this.settingsService.getSettings()
+                .then(settings => {
+                  if (settings.transactionSource === 'local') {
+                    console.log('using local source for transactions.');
+                    this.syncSQLService.startSync();
+                  } else {
+                    console.log('using remote source for transactions.');
+                  }
+                });
             });
           }
         });

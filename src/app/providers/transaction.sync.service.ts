@@ -11,7 +11,7 @@ const pg = (<any>window).require('pg');
  */
 
 @Injectable()
-export class TransactionSyncSQLService implements OnDestroy {
+export class TransactionSyncService implements OnDestroy {
     private _intervals: NodeJS.Timer[];
     // transaction syncing
     lastBlockNumberSynced: number;
@@ -69,9 +69,19 @@ export class TransactionSyncSQLService implements OnDestroy {
             && this.web3Service.blockNumber >= 1500000;
     }
 
-    async getTransactionsForAddress(address: string): Promise<AkromaTx[]> {
-        console.log(`getting transactions from local cache for ${address}`);
-        return null;
+    public async getTransactionsForAddress(address: string): Promise<AkromaTx[]> {
+        const text = `SELECT hash, blockhash, addressfrom, gas, gasprice, input, nonce, ts, addressto, transactionindex, value, blocknumber
+                            FROM aka.transactions
+                            WHERE addressfrom = $1
+                            OR addressto = $1;`;
+        const values = [address];
+        try {
+            const res = await this._client.query(text, values);
+            console.log(res.rows);
+            return res.rows;
+        } catch (err) {
+            console.log(err.stack);
+        }
     }
 
     private async executeSync() {

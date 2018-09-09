@@ -11,13 +11,10 @@
         <li class="list-inline-item">
           Height: {{ this.web3Service.blockNumber || 0 }}
         </li>
-          <li class="list-inline-item">
+        <li class="list-inline-item" *ngIf="settings && settings?.transactionSource === 'local'">
           Percent: {{ this.transactionService.percentComplete.toFixed(2) || 0 }}
         </li>
-          <!-- <li class="list-inline-item">
-          Status: {{ this.importService.status }}
-        </li> -->
-        <li class="list-inline-item" *ngIf='settings'>
+        <li class="list-inline-item" *ngIf="settings">
           Transaction Sync: {{ settings?.transactionSource }}
         </li>
       </ul>

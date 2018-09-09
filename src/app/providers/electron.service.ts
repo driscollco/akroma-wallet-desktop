@@ -38,15 +38,6 @@ export class ElectronService {
       this.path = window.require('path');
       this.process = window.require('process');
       this.net = window.require('net');
-    //   this.client = window.require('pg');
-    //   const d = this.remote.require('dgram');
-    //   const c = new Client({
-    //     user: 'akroma',
-    //     host: 'localhost',
-    //     database: 'akroma',
-    //     password: 'akroma',
-    //     port: 5432,
-    // });
     }
   }
 

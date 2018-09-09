@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { AkromaTx } from '../models/akroma-tx';
 import { SettingsService } from './settings.service';
 import { TransactionRemoteService } from './transaction.remote.service';
-import { TransactionSyncSQLService } from './transaction.sync.SQL.service';
+import { TransactionSyncService } from './transaction.sync.service';
 import { Web3Service } from './web3.service';
 
 /**
@@ -20,7 +20,7 @@ export class TransactionService implements OnDestroy {
   constructor(
     private settingsService: SettingsService,
     private transactionRemoteService: TransactionRemoteService,
-    private transactionSyncSQLService: TransactionSyncSQLService,
+    private transactionSyncService: TransactionSyncService,
     private web3Service: Web3Service,
   ) {
     this._intervals = [];
@@ -31,7 +31,7 @@ export class TransactionService implements OnDestroy {
       }, 2000));
     this._intervals.push(
       setInterval(() => {
-        this.lastBlockNumberSynced = this.transactionSyncSQLService.lastBlockNumberSynced;
+        this.lastBlockNumberSynced = this.transactionSyncService.lastBlockNumberSynced;
       }, 2000));
   }
 
@@ -48,59 +48,21 @@ export class TransactionService implements OnDestroy {
     if (this._remote) {
       return true;
     }
-    return this.transactionSyncSQLService.displayTransactions;
+    return this.transactionSyncService.displayTransactions;
   }
 
+
+  /**
+   * Gets transactions for address
+   * @param address
+   * @returns transactions for address
+   * TODO: Normalize the value/display of the value in AKA.
+   */
   public async getTransactionsForAddress(address: string): Promise<AkromaTx[]> {
     if (this._remote) {
-      return await this.getRemoteTransactionsForAddress(address);
+      return await this.transactionRemoteService.getTransactionsForAddress(address);
     }
     console.log(`TransactionService: getting LOCAL for: ${address}`);
-    return await this.getLocalTransactionsForAddress(address);
+    return await this.transactionSyncService.getTransactionsForAddress(address);
   }
-
-  public async getRemoteTransactionsForAddress(address: string): Promise<AkromaTx[]> {
-    // get transactions from remote api.
-    console.log(`TransactionService: getting REMOTE for: ${address}`);
-    return null;
-  }
-
-  public async getLocalTransactionsForAddress(address: string): Promise<AkromaTx[]> {
-    // get transactions from remote api.
-    return await this.transactionSyncSQLService.getTransactionsForAddress(address);
-  }
-
-  // async getSingleTransactionByHash(txHash: string): Promise<Transaction> {
-  //   return this.eth.getTransactionReceipt(txHash);
-  // }
-
-  // async getTransactionsByAccount(myAccount: string, startBlockNumber: number, endBlockNumber: number): Promise<Transaction[]> {
-  //   const accountTransactions: Transaction[] = [];
-  //   if (endBlockNumber == null) {
-  //     endBlockNumber = await this.eth.getBlockNumber();
-  //   }
-  //   if (startBlockNumber == null) {
-  //     startBlockNumber = endBlockNumber - 1000;
-  //   }
-
-  //   if (startBlockNumber < 0) {
-  //     startBlockNumber = 0;
-  //   }
-
-  //   for (let i = startBlockNumber; i <= endBlockNumber; i++) {
-  //     const block = await this.eth.getBlock(i, true);
-  //     if (block != null && block.transactions != null) {
-  //       block.transactions.forEach((transaction: Transaction) => {
-  //         if (myAccount === '*' || myAccount === transaction.from || myAccount === transaction.to) {
-  //           accountTransactions.push({
-  //             ...transaction,
-  //             timestamp: 1000 * block.timestamp,
-  //             _id: transaction.hash,
-  //           });
-  //         }
-  //       });
-  //     }
-  //   }
-  //   return accountTransactions;
-  // }
 }

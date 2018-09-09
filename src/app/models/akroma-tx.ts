@@ -6,11 +6,11 @@ export interface AkromaTx extends PouchEntity {
     // blockHash: string | null;
     blockNumber: number;
     // transactionIndex: number;
-    from: string;
-    to: string | null;
+    addressfrom: string;
+    addressto: string | null;
     value: string;
     gas: number;
     gasPrice: string;
-    timestamp: number;
+    ts: number;
     input: string;
 }
