@@ -24,12 +24,22 @@
             </p>
           </td>
           <td>
-            <span *ngIf="transaction.addressfrom.toUpperCase() === address.toUpperCase(); else fromAddress">{{ transaction.addressto }}</span>
+            <span *ngIf="isFrom(transaction.addressfrom); else fromAddress">
+              {{ transaction.addressto }}
+            </span>
             <ng-template #fromAddress>
               <span class="selectableText">{{ transaction.addressfrom }}</span>
             </ng-template>
           </td>
-          <td> {{ transaction.value }} AKA</td>
+          <td>
+            <span *ngIf="isFrom(transaction.addressfrom); else toValue">
+                <span class="sent">-{{ transaction.value }} AKA</span>
+            </span>
+            <ng-template #toValue>
+                <span class="received">+{{ transaction.value }} AKA</span>
+            </ng-template>
+
+          </td>
         </tr>
       </tbody>
     </table>

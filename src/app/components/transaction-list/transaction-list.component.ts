@@ -31,7 +31,7 @@ export class TransactionListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (!!changes.transactions && changes.transactions.currentValue !== changes.transactions.previousValue) {
-      this.filteredTransactions = [ ...this.transactions ];
+      this.filteredTransactions = [...this.transactions];
       this.filteredTransactions.sort((a: AkromaTx, b: AkromaTx) => b.ts - a.ts);
     }
   }
@@ -44,7 +44,11 @@ export class TransactionListComponent implements OnInit, OnChanges {
     this.transactions = this.filteredTransactions; // save all transactions for later, so we can filter on them.
   }
 
-  setFilter(filterType: string) {
+  public isFrom(address: string): boolean {
+    return this.address.toUpperCase() === address.toUpperCase();
+  }
+
+  public setFilter(filterType: string) {
     switch (filterType) {
       case 'sent':
         this.filter = filterType;

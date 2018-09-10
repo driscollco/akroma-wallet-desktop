@@ -54,6 +54,14 @@
     padding: 4px 8px;
 }
 
+.sent {
+    color: #CF0000;
+}
+
+.received {
+    color: green;
+}
+
 .toAddress, .fromAddress {
     font-weight: 400;
     width: 100%;
