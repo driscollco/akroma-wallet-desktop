@@ -1,8 +1,8 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Client } from 'pg';
-import { Block } from 'web3/types';
 import { AkromaTx } from '../models/akroma-tx';
 import { Web3Service } from './web3.service';
+import { Block } from 'web3';
 
 const pg = (<any>window).require('pg');
 /**
@@ -154,6 +154,12 @@ export class TransactionSyncService implements OnDestroy {
         await this.getBlock(nextBlockNumber);
     }
 
+
+    /**
+     * Writes block
+     * @param block
+     * @returns boolean
+     */
     private async writeBlock(block: Block): Promise<boolean> {
         // console.info('SyncSQLService: saving block %s', block.number);
 
@@ -179,6 +185,11 @@ export class TransactionSyncService implements OnDestroy {
         }
     }
 
+    /**
+     * Writes block transactions
+     * @param block
+     * @returns boolean
+     */
     private async writeBlockTransactions(block: Block): Promise<boolean> {
         const text = `INSERT INTO aka.transactions(
                             hash, blockhash, addressfrom, gas, gasprice, input, nonce, ts, addressto, transactionindex, value, blocknumber)

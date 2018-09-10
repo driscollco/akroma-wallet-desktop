@@ -1,0 +1,141 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+
+PATH: 
+  C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Docker Toolbox;C:\OpenSSL;C:\Program Files\HyperG;C:\ProgramData\chocolatey\bin;C:\tools\go\bin;C:\Program Files (x86)\Yarn\bin;C:\Program Files\nodejs\;C:\Program Files\Microsoft VS Code\bin;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Docker Toolbox;C:\OpenSSL;C:\Program Files\HyperG;C:\ProgramData\chocolatey\bin;C:\tools\go\bin;C:\Program Files (x86)\Yarn\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\nodejs\;C:\Program Files\Microsoft VS Code\bin;C:\tools\mingw64\bin;C:\Users\detroitpro\go\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy;C:\Users\detroitpro\AppData\Local\Yarn\bin;C:\Users\detroitpro\AppData\Local\Keybase\;C:\Users\detroitpro\AppData\Roaming\npm;C:\Users\detroitpro\.windows-build-tools\python27;C:\Users\detroitpro\.dotnet\tools;C:\Users\detroitpro\AppData\Local\Microsoft\WindowsApps;
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  8.11.2
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "akroma",
+    "version": "0.0.5",
+    "description": "Akroma Desktop Wallet",
+    "homepage": "https://github.com/akroma-project/akroma-wallet-desktop",
+    "author": {
+      "name": "Ian DesJardins",
+      "email": "ian.desjardins@akroma.io"
+    },
+    "keywords": [
+      "angular",
+      "angular 5",
+      "electron",
+      "typescript",
+      "sass"
+    ],
+    "main": "main.js",
+    "private": true,
+    "scripts": {
+      "unit": "mocha --require ts-node/register test/**/*.ts",
+      "postinstall": "npx electron-builder install-app-deps",
+      "ng": "ng",
+      "start": "node hooks/environments/set_profile.js && npm-run-all -p ng:serve electron:serve",
+      "build": "node hooks/environments/set_profile.js && ng build && npm run electron:tsc",
+      "build:prod": "node hooks/environments/set_profile.js && ng build --prod && npm run electron:tsc",
+      "ng:serve": "ng serve",
+      "electron:tsc": "tsc main.ts",
+      "electron:serve": "wait-on http-get://localhost:4200/ && npm run electron:tsc && electron . --serve",
+      "electron:local": "npm run build:prod && electron .",
+      "electron:linux": "npm run build:prod && npx electron-builder build --linux",
+      "electron:windows": "npm run build:prod && npx electron-builder build --windows",
+      "electron:mac": "npm run build:prod && npx electron-builder build --mac",
+      "test": "karma start ./karma.conf.js",
+      "pree2e:build": "webdriver-manager update --gecko false && npm run ng serve",
+      "pree2e:protractor": "wait-on http-get://localhost:4200/ && protractor ./protractor.conf.js",
+      "e2e": "npm-run-all -p -r pree2e:build pree2e:protractor"
+    },
+    "dependencies": {
+      "@types/pg": "^7.4.10",
+      "@types/pouchdb-core": "^6.4.2",
+      "@types/pouchdb-upsert": "^2.2.4",
+      "bignumber.js": "^7.2.1",
+      "crypto-browserify": "^3.12.0",
+      "dns": "^0.2.2",
+      "fs-extra": "^5.0.0",
+      "install": "^0.11.0",
+      "ng2-dragula": "^2.0.2",
+      "ng2-search-filter": "^0.4.7",
+      "ngx-bootstrap": "^2.0.5",
+      "ngx-pagination": "^3.1.1",
+      "ngx-qrcode2": "0.0.9",
+      "node-pre-gyp": "^0.10.0",
+      "npm": "^6.0.1",
+      "pg": "^7.4.3",
+      "pouchdb": "^6.4.3",
+      "pouchdb-adapter-node-websql": "^6.4.3",
+      "pouchdb-browser": "^6.4.3",
+      "pouchdb-find": "6.4.3",
+      "pouchdb-upsert": "^2.2.0",
+      "request": "^2.85.0",
+      "web3": "^1.0.0-beta.35",
+      "websocket": "^1.0.26",
+      "websql": "^0.4.4"
+    },
+    "devDependencies": {
+      "@angular/cli": "1.7.4",
+      "@angular/common": "5.2.9",
+      "@angular/compiler": "5.2.9",
+      "@angular/compiler-cli": "5.2.9",
+      "@angular/core": "5.2.9",
+      "@angular/forms": "5.2.9",
+      "@angular/http": "5.2.9",
+      "@angular/language-service": "5.2.9",
+      "@angular/platform-browser": "5.2.9",
+      "@angular/platform-browser-dynamic": "5.2.9",
+      "@angular/router": "5.2.9",
+      "@ngx-translate/core": "9.1.1",
+      "@ngx-translate/http-loader": "2.0.1",
+      "@types/chai": "^4.1.4",
+      "@types/core-js": "0.9.36",
+      "@types/jasmine": "2.8.6",
+      "@types/jasminewd2": "2.0.3",
+      "@types/node": "7.0.7",
+      "@types/pouchdb": "^6.3.2",
+      "@types/pouchdb-browser": "^6.1.2",
+      "chai": "^4.1.2",
+      "codelyzer": "4.2.1",
+      "core-js": "2.5.5",
+      "cross-env": "5.1.4",
+      "dotenv": "5.0.1",
+      "electron": "1.8.4",
+      "electron-builder": "20.8.1",
+      "electron-reload": "^1.2.2",
+      "jasmine-core": "2.99.1",
+      "jasmine-spec-reporter": "4.2.1",
+      "karma": "2.0.0",
+      "karma-chrome-launcher": "2.2.0",
+      "karma-coverage-istanbul-reporter": "1.4.2",
+      "karma-jasmine": "1.1.1",
+      "karma-jasmine-html-reporter": "0.2.2",
+      "npm-run-all": "4.1.2",
+      "npx": "10.0.1",
+      "protractor": "5.3.1",
+      "replace": "0.3.0",
+      "rxjs": "5.5.8",
+      "ts-node": "4.1.0",
+      "tslint": "5.9.1",
+      "typescript": "^2.6.2",
+      "wait-on": "2.1.0",
+      "webdriver-manager": "12.0.6",
+      "zone.js": "0.8.26"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: connect ETIMEDOUT 192.30.253.112:443
+      at Object._errnoException (util.js:992:11)
+      at _exceptionWithHostPort (util.js:1014:20)
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1186:14)

@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Transaction } from '../../models/transaction';
 import { Wallet } from '../../models/wallet';
 import { LoggerService } from '../../providers/logger.service';
 import { Web3Service } from '../../providers/web3.service';
@@ -14,9 +13,7 @@ export class WalletDetailPageComponent implements OnDestroy, OnInit {
   destroyed: boolean;
   endBlockNumber: number;
   lastBlockNumberSynced: number;
-  transactions: Transaction[];
   transactionSyncInterval: any;
-  pendingTransactions: Transaction[];
   syncing: boolean;
   wallet: Wallet;
   address: string;
