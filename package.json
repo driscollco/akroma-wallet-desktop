@@ -87,7 +87,7 @@
     "cross-env": "5.1.4",
     "dotenv": "5.0.1",
     "electron": "1.8.4",
-    "electron-builder": "20.8.1",
+    "electron-builder": "20.20.4",
     "electron-reload": "^1.2.2",
     "npm-run-all": "4.1.2",
     "npx": "10.0.1",
