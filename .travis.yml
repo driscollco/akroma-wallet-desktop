@@ -2,17 +2,15 @@ matrix:
   include:
     - os: osx
       osx_image: xcode9.4
+      env:
+        - ELECTRON_CACHE=$HOME/.cache/electron
+        - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
     - os: linux
       services: docker
       language: generic
 
 language: node_js
 node_js: "8"
-
-env:
-  global:
-    - ELECTRON_CACHE=$HOME/.cache/electron
-    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
 
 cache:
   yarn: true
