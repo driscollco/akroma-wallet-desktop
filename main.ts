@@ -1,8 +1,22 @@
-import { app, BrowserWindow, ipcMain, screen } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 import { AppConfig } from './src/app/app.config';
 
+// const client = new Client({
+//   user: 'akroma',
+//   host: 'localhost',
+//   database: 'akroma',
+//   password: 'akroma',
+//   port: 5432,
+// });
+
+// client.connect();
+// client.query('SELECT NOW() as now')
+//   .then(res => console.log(res.rows[0]))
+//   .catch(e => console.error(e.stack));
+
+// console.log('HELLO');
 
 let clientPid;
 let win, serve;
@@ -12,15 +26,10 @@ serve = args.some(val => val === '--serve');
 try {
   require('dotenv').config();
 } catch {
-  console.log('asar');
+  console.error('unable to load config');
 }
 
 function createWindow() {
-
-  const electronScreen = screen;
-  const size = electronScreen.getPrimaryDisplay().workAreaSize;
-
-  // Create the browser window.
   win = new BrowserWindow({
     x: 0,
     y: 0,
@@ -32,8 +41,6 @@ function createWindow() {
     titleBarStyle: 'hiddenInset',
   });
   win.setMenu(null);
-
-
 
   ipcMain.on('console', (evt, msg) => {
     win.webContents.openDevTools();
@@ -50,27 +57,9 @@ function createWindow() {
     console.log(`maximize`);
   });
 
-
-
-
-
-  // Menu.setApplicationMenu(Menu.buildFromTemplate([
-  //   {
-  //     label: 'Edit',
-  //     submenu: [
-  //       { role: 'undo' },
-  //       { role: 'redo' },
-  //       { type: 'separator' },
-  //       { role: 'cut' },
-  //       { role: 'copy' },
-  //       { role: 'paste' },
-  //     ],
-  //   },
-  // ]));
-
   if (serve) {
     require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/node_modules/electron`)
+      electron: require(`${__dirname}/node_modules/electron`),
     });
     win.loadURL('http://localhost:4200');
   } else {
@@ -94,7 +83,7 @@ function createWindow() {
   });
 
   // Listen on event, sent when angular is officially listening
-  // see splash-page.component.ts
+  // see splash.component.ts
   ipcMain.on('client:start', (event, arg) => {
     if (!clientPid) {
       clientPid = arg;

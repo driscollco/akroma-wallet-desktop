@@ -1,4 +1,3 @@
-<!-- <app-masthead></app-masthead> -->
 <div class="container-fluid">
   <div class="row">
     <div class="col">
@@ -19,9 +18,6 @@
       <app-page-title [title]="'WALLETS'"></app-page-title>
     </div>
   </div>
-  <!-- <div class="row pt-3 pb-3">
-    
-  </div> -->
   <ng-container *ngIf="wallets">
     <table class="table table-striped table-dark table-akroma table-responsive-sm ">
       <thead>
@@ -30,7 +26,7 @@
           <th scope="col">Address</th>
           <th scope="col">Balance</th>
           <th scope="col">Actions</th>
-          <th scope="col">Recieve</th>
+          <th scope="col">Receive</th>
         </tr>
       </thead>
       <tbody>
@@ -86,148 +82,6 @@
   </div>
 </div>
 
-<!-- 
-
-<div class="row" *ngIf="wallets">
-  <div class="col">
-    <div class="row" *ngFor="let wallet of wallets">
-      <div class="col">
-        <div class="wallet-row">
-          <div class="wallet-square">
-            <div class="wallet-icon">
-              <img src="./assets/images/icons/icon-wallet.svg" alt="wallet">
-            </div>
-          </div>
-          <div class="wallet-detail">
-            <a [routerLink]="['/wallet', wallet.address]" style="text-decoration: none">
-              <div class="wallet-name">
-                {{ wallet.name }}
-              </div>
-              <div class="wallet-address">
-                {{ wallet._id || wallet.address }}
-              </div></a>
-          </div>
-          <div class="wallet-right-control">
-            <button id="wallet-context" #pop="bs-popover" [popover]="walletContextButton" [popoverContext]="{ wallet: wallet }" placement="left" [outsideClick]="true">
-              <div class="wallet-ellipsis">
-                <div class="wallet-ellipsis-icon">
-                  <img src="./assets/images/icons/icon-ellipsis.svg" alt="options">
-                </div>
-              </div>
-            </button>
-            <div class="wallet-qr-small">
-              <div class="wallet-qr-icon">
-                <a (click)="showQrCode(wallet, qrReceiveModal)" style="text-decoration: none; cursor: pointer">
-                  <img src="./assets/images/icons/icon-qr-white.svg" alt="qr-code">
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!--   
-  <div class="row">
-    <div class="col">
-      <div class="wallet-values-actions">
-        <div class="total-wallets-value">
-          {{ allWalletsBalance }} AKA
-          <img *ngIf="allWalletsBalanceLoading" src="./assets/images/akroma-loading.png" alt="loading wallets balance"/>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="wallet-actions">
-        <a class="action">
-          <img src="./assets/images/icons/icon-sent.svg" alt="Send">
-          Send
-        </a>
-        <a class="action">
-          <img src="./assets/images/icons/icon-received.svg" alt="Receive">
-          Receive
-        </a>
-        <a class="action" [routerLink]="['/import']">
-          <img src="assets/images/icons/icon-wallet.svg" alt="Wallets">
-          Manage
-        </a>
-        <a class="action" [routerLink]="['/settings']">
-          <img class="" src="./assets/images/icons/icon-settings.svg" alt="">
-          Settings
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div class="wallet-sorting-operations">
-        <div class="new-wallet">
-          <a (click)="openModal(createWalletModal)">
-              <img src="./assets/images/icons/icon-new-wallet.svg" alt="new-wallet"> New Wallet
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row" *ngIf="wallets">
-    <div class="col">
-      <div class="row" *ngFor="let wallet of wallets">
-        <div class="col">
-          <div class="wallet-row">
-            <div class="wallet-square">
-              <div class="wallet-icon">
-                <img src="./assets/images/icons/icon-wallet.svg" alt="wallet">
-              </div>
-            </div>
-            <div class="wallet-detail">
-              <a [routerLink]="['/wallet', wallet.address]" style="text-decoration: none">
-              <div class="wallet-name">
-                {{ wallet.name }}
-              </div>
-              <div class="wallet-address">
-                {{ wallet._id || wallet.address }}
-              </div></a>
-            </div>
-            <div class="wallet-right-control">
-              <button id="wallet-context" #pop="bs-popover" [popover]="walletContextButton" [popoverContext]="{ wallet: wallet }" placement="left" [outsideClick]="true">
-                <div class="wallet-ellipsis">
-                  <div class="wallet-ellipsis-icon">
-                    <img src="./assets/images/icons/icon-ellipsis.svg" alt="options">
-                  </div>
-                </div>
-              </button>
-              <div class="wallet-qr-small">
-                <div class="wallet-qr-icon">
-                  <a (click)="showQrCode(wallet, qrReceiveModal)" style="text-decoration: none; cursor: pointer">
-                    <img src="./assets/images/icons/icon-qr-white.svg" alt="qr-code">
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <ng-template #qrReceiveModal>
-              <div class="modal-header">
-                <span class="qr-wallet-name">{{wallet.name }}</span>
-                <span class="qr-wallet-address">{{wallet.address}}</span>
-                <div class="modal-dialog modal-sm">
-                  <div class="modal-body">
-                    <ngx-qrcode 
-                    [qrc-value] = "modalRef.content.wallet.address"
-                    qrc-class = "aclass"
-                    qrc-errorCorrectionLevel = "L">
-                  </ngx-qrcode>
-                </div>
-              </div>
-              </div>
-            </ng-template>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
 <!-- template for create wallet modal -->
 <ng-template #createWalletModal>
   <div class="modal-header">
@@ -281,21 +135,21 @@
 <ng-template #walletContextButton let-wallet="wallet">
   <div class="row">
     <div class="col">
-      <a (click)="openRenameWalletModal(wallet, renameWalletModal)" style="text-decoration: none; cursor: pointer;">
+      <a (click)="openRenameWalletModal(wallet, renameWalletModal)" style="text-decoration: none; cursor: pointer;color:black;">
         Rename
       </a>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <a (click)="backupWalletReminder(wallet, deleteWalletConfirmModal)" style="text-decoration: none; cursor: pointer;">
+      <a (click)="backupWalletReminder(wallet, deleteWalletConfirmModal)" style="text-decoration: none; cursor: pointer;color:black;">
         Delete
       </a>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <a (click)="copyAddress(wallet)" style="text-decoration: none; cursor: pointer;">
+      <a (click)="copyAddress(wallet)" style="text-decoration: none; cursor: pointer;color:black;">
         Copy Address
       </a>
     </div>

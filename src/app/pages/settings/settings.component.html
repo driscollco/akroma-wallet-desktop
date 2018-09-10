@@ -44,6 +44,19 @@
               </td>
             </tr>
             <tr>
+                <td>TRANSACTION SOURCE</td>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="transactionSource" id="local-transaction-source" formControlName="transactionSource" value="local" disabled>
+                    <label class="form-check-label" for="local-transaction-source">Local</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="transactionSource" id="remote-transaction-source" formControlName="transactionSource" value="remote" checked>
+                    <label class="form-check-label" for="remote-transaction-source">Remote</label>
+                  </div>
+                </td>
+              </tr>
+            <tr>
               <td></td>
               <td>
                 <span class="float-right">

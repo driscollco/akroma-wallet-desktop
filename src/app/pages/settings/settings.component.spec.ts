@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingsPageComponent } from './settings-page.component';
+import { SettingsPageComponent } from './settings.component';
 
 describe('SettingsPageComponent', () => {
   let component: SettingsPageComponent;

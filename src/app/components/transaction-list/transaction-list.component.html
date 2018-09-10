@@ -1,52 +1,65 @@
 <div class="transaction-list">
-  <div class="filters">
-    <a class="filter-type" [ngClass]="{'selected': filter === 'all'}" (click)="setFilter('all')">All</a>
-    <a class="filter-type" [ngClass]="{'selected': filter === 'sent'}" (click)="setFilter('sent')">Sent</a>
-    <a class="filter-type" [ngClass]="{'selected': filter === 'received'}" (click)="setFilter('received')">Received</a>
-    <a class="filter-type"  href="https://akroma.io/en/explorer/address/{{wallet?.address}}" target="blank" allowpopups>Open in Akroma.io Explorer</a>
-  </div>
 
-  <ng-container *ngIf="lastBlockNumberSynced + 10 >= endBlockNumber; else loading">
-    <div *ngFor="let transaction of filteredTransactions | paginate: { itemsPerPage: 5, currentPage: p }; let i = index" class="transactions">
-      <div class="transaction">
-        <div class="value selectableText">
-          {{ transaction.value | showEther }}
-          <span class="unit-badge">AKA</span>
-          <div *ngIf="transaction.blockHash === ''">Pending</div>
-        </div>
-        <div class="timestamp">
-          {{ transaction.timestamp | date:'long' }}
-        </div>
-      </div>
-      <div *ngIf="transaction.from.toUpperCase() === wallet.address.toUpperCase(); else fromAddress" class="address">
-        <div class="to">To</div>
-        <div class="toAddress selectableText">{{ transaction.to }}</div>
-      </div>
-      <ng-template #fromAddress>
-        <div class="address">
-          <div class="from">From</div>
-          <div class="fromAddress selectableText">{{ transaction.from }}</div>
-        </div>
-      </ng-template>
+
+  <ng-container *ngIf="this.transactionsService.displayTransactions; else loading">
+    <div class="filters">
+      <a class="filter-type" [ngClass]="{'selected': filter === 'all'}" (click)="setFilter('all')">All</a>
+      <a class="filter-type" [ngClass]="{'selected': filter === 'sent'}" (click)="setFilter('sent')">Sent</a>
+      <a class="filter-type" [ngClass]="{'selected': filter === 'received'}" (click)="setFilter('received')">Received</a>
+      <a class="filter-type" href="https://akroma.io/en/explorer/address/{{address}}" target="blank" allowpopups>Explorer</a>
     </div>
+    <table class="table table-striped table-dark table-akroma table-responsive-sm">
+      <thead>
+        <tr>
+          <th class="w-25" i18n>Date</th>
+          <th i18n>To/From</th>
+          <th i18n>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of filteredTransactions | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+          <td>
+            <p>{{ transaction.ts | date:'MMM d, y' }}
+              <br> {{ transaction.ts | date:'h:mm:ss a z' }}
+            </p>
+          </td>
+          <td>
+            <span *ngIf="isFrom(transaction.addressfrom); else fromAddress">
+              {{ transaction.addressto }}
+            </span>
+            <ng-template #fromAddress>
+              <span class="selectableText">{{ transaction.addressfrom }}</span>
+            </ng-template>
+          </td>
+          <td>
+            <span *ngIf="isFrom(transaction.addressfrom); else toValue">
+                <span class="sent">-{{ transaction.value }} AKA</span>
+            </span>
+            <ng-template #toValue>
+                <span class="received">+{{ transaction.value }} AKA</span>
+            </ng-template>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <ng-container *ngIf="filteredTransactions?.length > 0">
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </ng-container>
   </ng-container>
 </div>
-
 <!-- loading animation -->
 <ng-template #loading>
   <div id="loading">
     <img id="loading-img" src="./assets/images/akroma-loading.png" alt="loading">
-    <p>Transaction Sync in Progress...</p>
+    <p>Transaction sync in progress...</p>
+    <!-- <h3 class="title">{{ this.transactionsService.lastBlockNumberSynced }} of {{ this.transactionsService.blockNumber }} </h3> -->
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col">
       <div class="syncing-bar progress bar-background">
-          <div class="progress-bar bar-white" role="progressbar" [ngStyle]="{'width': (lastBlockNumberSynced / endBlockNumber * 100) + '%'}"
-            [attr.aria-valuenow]="lastBlockNumberSynced / endBlockNumber * 100" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bar-white" role="progressbar" [ngStyle]="{'width': (this.transactionsService.percentComplete) + '%'}" [attr.aria-valuenow]="this.importService.percentComplete" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
-  </div>
+  </div> -->
 </ng-template>

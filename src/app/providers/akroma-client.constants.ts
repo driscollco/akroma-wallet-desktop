@@ -62,6 +62,6 @@ export const clientConstants = {
     },
     'connection': {
         'default': 'http://localhost:8545',
-        'remote': 'https://rpc.akroma.io',
+        'remote': 'https://remote.akroma.io',
     },
 };

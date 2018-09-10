@@ -1,14 +1,14 @@
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
-import { ElectronService } from '../../../providers/electron.service';
-import { SettingsPersistenceService } from '../../../providers/settings-persistence.service';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Web3Service } from '../../../providers/web3.service';
-import { SystemSettings } from '../../../models/system-settings';
-import { Subscription } from 'rxjs/Subscription';
+import { concat, filter } from 'lodash';
 import { DragulaService } from 'ng2-dragula';
 import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
+import { SystemSettings } from '../../../models/system-settings';
+import { ElectronService } from '../../../providers/electron.service';
+import { SettingsService } from '../../../providers/settings.service';
+import { Web3Service } from '../../../providers/web3.service';
 
-import { concat, filter, sortBy } from 'lodash'
 
 export interface KeystoreData {
   fileName?: string;
@@ -38,7 +38,6 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
 
   keystoreFolder: KeystoreData[] = [];
   importFolder: KeystoreData[] = [];
-
   @HostListener('document:keydown.escape', ['$event'])
   escapeFromSettingsPage(event: KeyboardEvent) {
     setTimeout(() => {
@@ -51,7 +50,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
     public dragulaService: DragulaService,
     private router: Router,
     private web3: Web3Service,
-    private settingsService: SettingsPersistenceService,
+    private settingsService: SettingsService,
     public electronService: ElectronService,
 
   ) {
@@ -72,7 +71,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
 
         return true
       },
-    removeOnSpill: true,
+      removeOnSpill: true,
       copyItem: (item) => { return item },
 
       accepts: (target, source) => { return target.className !== source.className },
@@ -90,22 +89,14 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
       }
     })
 
-  }//constructor
+  }
+  //constructor
 
 
 
   async ngOnInit() {
 
-    try {
-      console.warn(`system path`)
-      this.settings = await this.settingsService.db.get('system');
-      this.getPaths();
-
-    } catch {
-      console.warn(`default path`)
-      this.settings = await this.settingsService.defaultSettings();
-      this.getPaths();
-    }
+    this.settings = await this.settingsService.getSettings();
 
     this.backupToDocuments(this.documentsAkromaBackupDirName, this.akromaDeletedWalletsDirName, this.akromaDataKeystoreDirName, this.desktopAkromaDirName)
 
@@ -150,9 +141,9 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
   private async lookForKeystore(folder: KeystoreData[], FolderDirName: string) {
 
     const fileNameList: any[] = await this.electronService.fs.readdir(FolderDirName);
-    let len
+    let len;
     if (FolderDirName === this.documentsAkromaBackupDirName) {
-      len = fileNameList.length
+      len = fileNameList.length;
     }
 
     fileNameList
@@ -199,7 +190,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
         if (folder1[i] === folder2[i]) {
           var x: any = document.getElementsByClassName(o.id);
           var i;
-          for (i = 0;i < x.length;i++) {
+          for (i = 0; i < x.length; i++) {
             x[i].classList.add(`can-not-move`)
           }
         }
@@ -236,17 +227,17 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
     this.desktopAkromaDirName = `${this.electronService.os.homedir}${this.sep}Desktop${this.sep}AKA${this.sep}`;
     this.documentsAkromaBackupDirName = `${this.electronService.os.homedir}${this.sep}Documents${this.sep}Akroma-UTC-JSON-Backup${this.sep}`
     this.electronService.fs.ensureDir(this.documentsAkromaBackupDirName)
-    .then(() => {
-      console.log('success!')
-    }) 
+      .then(() => {
+        console.log('success!')
+      })
 
     this.electronService.fs.ensureDir(this.desktopAkromaDirName)
-    .then(() => {
-      console.log('success!')
-    }) 
+      .then(() => {
+        console.log('success!')
+      })
   }
-  
-  
+
+
 
   private async backupToDocuments(documentsAkromaBackupDirName, akromaDeletedWalletsDirName, akromaDataKeystoreDirName, desktopAkromaDirName) {
     await this.electronService.fs.copySync(akromaDeletedWalletsDirName, documentsAkromaBackupDirName)

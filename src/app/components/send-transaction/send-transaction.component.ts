@@ -1,6 +1,6 @@
 import {
   Component, Input, ChangeDetectionStrategy, OnChanges,
-  SimpleChanges, TemplateRef, ViewChild, ChangeDetectorRef, Output, EventEmitter, HostListener,
+  SimpleChanges, TemplateRef, ViewChild, ChangeDetectorRef, Output, EventEmitter, HostListener, OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
@@ -12,14 +12,16 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { Wallet } from '../../models/wallet';
 import { Web3Service } from '../../providers/web3.service';
+import { LoggerService } from '../../providers/logger.service';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-send-transaction',
   templateUrl: './send-transaction.component.html',
   styleUrls: ['./send-transaction.component.scss'],
 })
-export class SendTransactionComponent implements OnChanges {
+export class SendTransactionComponent implements OnChanges, OnInit {
+
   amountSelected: boolean;
   sendForm: FormGroup;
   modalRef: BsModalRef;
@@ -35,13 +37,24 @@ export class SendTransactionComponent implements OnChanges {
     this.router.navigate(['/wallets']);
   }
   constructor(private cd: ChangeDetectorRef,
-              private fb: FormBuilder,
-              private modalService: BsModalService,
-              private web3: Web3Service,
-              private router: Router,
-            ) {
+    private fb: FormBuilder,
+    private modalService: BsModalService,
+    private web3: Web3Service,
+    private router: Router,
+    private logger: LoggerService,
+  ) {
     this.transactionSent = new EventEmitter<any>();
     this.gasPrice$ = Observable.fromPromise(this.web3.eth.getGasPrice());
+  }
+
+  ngOnInit(): void {
+    this.sendForm = this.fb.group({
+      to: '',
+      from: [this.wallet.address],
+      value: [0, Validators.min(0)],
+      data: ['', this.hexValidator],
+      gas: 21000,
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -66,8 +79,8 @@ export class SendTransactionComponent implements OnChanges {
   }
 
   hexValidator(formcontrol: AbstractControl) {
-      const a = parseInt(formcontrol.value, 16);
-      return (a.toString(16) === formcontrol.value) ? null : { hex: { valid: false } };
+    const a = parseInt(formcontrol.value, 16);
+    return (a.toString(16) === formcontrol.value) ? null : { hex: { valid: false } };
   }
 
   openModal(template: TemplateRef<any>) {

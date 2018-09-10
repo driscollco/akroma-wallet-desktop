@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col">
+      <app-page-title [title]="'WALLET'"></app-page-title>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-md-5 col-sm-12">
+      <app-send-transaction *ngIf="wallet" [wallet]="wallet" (transactionSent)="onTransactionSent($event)"></app-send-transaction>
+    </div>
+    <div class="col col-md-7 col-sm-12">
+      <app-transaction-list [address]="address"></app-transaction-list>
+    </div>
+  </div>
+</div>

@@ -54,6 +54,14 @@
     padding: 4px 8px;
 }
 
+.sent {
+    color: #CF0000;
+}
+
+.received {
+    color: green;
+}
+
 .toAddress, .fromAddress {
     font-weight: 400;
     width: 100%;
@@ -95,7 +103,7 @@
     margin-left: auto;
     margin-right: auto;
     opacity: 0.9;
-    width: 240px;
+    width: 120px;
 }
 
 div.bar-background {

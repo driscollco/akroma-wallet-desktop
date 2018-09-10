@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from './app.config';
 import { AkromaClientService } from './providers/akroma-client.service';
-import { AkromaLoggerService } from './providers/akroma-logger.service';
 import { ElectronService } from './providers/electron.service';
+import { LoggerService } from './providers/logger.service';
+import { SettingsService } from './providers/settings.service';
+import { TransactionSyncService } from './providers/transaction.sync.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +14,12 @@ import { ElectronService } from './providers/electron.service';
 })
 export class AppComponent {
   constructor(
-    private logger: AkromaLoggerService,
+    private logger: LoggerService,
     public electronService: ElectronService,
     // tslint:disable-next-line
     private translate: TranslateService,
+    private settingsService: SettingsService,
+    private syncSQLService: TransactionSyncService,
     private akromaClientService: AkromaClientService) {
 
     translate.setDefaultLang('en');
@@ -34,7 +38,17 @@ export class AppComponent {
         logger.info('[locale]: ' + electronService.remote.app.getLocale());
         this.akromaClientService.downloadClient(success => {
           if (success) {
-            this.akromaClientService.startClient();
+            this.akromaClientService.startClient(c => {
+              this.settingsService.getSettings()
+                .then(settings => {
+                  if (settings.transactionSource === 'local') {
+                    console.log('using local source for transactions.');
+                    this.syncSQLService.startSync();
+                  } else {
+                    console.log('using remote source for transactions.');
+                  }
+                });
+            });
           }
         });
       }),

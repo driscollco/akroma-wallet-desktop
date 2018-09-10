@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WalletActionsComponent } from './wallet-actions.component';
+import { SplashComponent } from './splash.component';
 
-describe('WalletActionsComponent', () => {
-  let component: WalletActionsComponent;
-  let fixture: ComponentFixture<WalletActionsComponent>;
+describe('SplashComponent', () => {
+  let component: SplashComponent;
+  let fixture: ComponentFixture<SplashComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WalletActionsComponent ],
+      declarations: [ SplashComponent ],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WalletActionsComponent);
+    fixture = TestBed.createComponent(SplashComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
