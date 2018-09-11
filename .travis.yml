@@ -22,8 +22,8 @@ cache:
     - $HOME/.cache/electron-builder
 
 script:
-  - yarn install
-  - yarn build:prod
+  - npm install
+  - npm run build:prod
   - |
     if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
       docker run --rm \
