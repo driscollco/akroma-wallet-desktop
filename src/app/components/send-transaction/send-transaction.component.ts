@@ -1,21 +1,18 @@
 import {
-  Component, Input, ChangeDetectionStrategy, OnChanges,
+  Component, Input, OnChanges,
   SimpleChanges, TemplateRef, ViewChild, ChangeDetectorRef, Output, EventEmitter, HostListener, OnInit,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
-import 'rxjs/add/observable/fromPromise';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { Wallet } from '../../models/wallet';
 import { Web3Service } from '../../providers/web3.service';
-import { LoggerService } from '../../providers/logger.service';
 
 @Component({
-  // changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-send-transaction',
   templateUrl: './send-transaction.component.html',
   styleUrls: ['./send-transaction.component.scss'],
@@ -41,10 +38,9 @@ export class SendTransactionComponent implements OnChanges, OnInit {
     private modalService: BsModalService,
     private web3: Web3Service,
     private router: Router,
-    private logger: LoggerService,
   ) {
     this.transactionSent = new EventEmitter<any>();
-    this.gasPrice$ = Observable.from(this.web3.eth.getGasPrice());
+    this.gasPrice$ = from(this.web3.eth.getGasPrice());
   }
 
   public ngOnInit(): void {
