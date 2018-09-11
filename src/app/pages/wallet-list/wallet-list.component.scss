@@ -213,3 +213,32 @@
     text-align: center;
     margin-left: -1em;
 }
+ 
+.wallet-remove:hover{
+    text-align: center; 
+    width: 100%;
+    height: 0;
+    color: white;
+    opacity: 1;
+    font-size: 1em;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-flex-line-pack: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+}
+
+.wallet-remove{
+    text-align: center;
+    width: 100%;
+    height: 0;
+    color: white;
+    opacity: 0.1;
+    font-size: 1em;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-flex-line-pack: center;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+
+}

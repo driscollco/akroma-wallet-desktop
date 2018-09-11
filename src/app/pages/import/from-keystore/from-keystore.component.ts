@@ -9,9 +9,8 @@ import { ElectronService } from '../../../providers/electron.service';
 import { SettingsService } from '../../../providers/settings.service';
 import { Web3Service } from '../../../providers/web3.service';
 
-
 export interface KeystoreData {
-  fileName?: string;
+  filename?: string;
   address?: string;
   balance?: number;
   push?: any;
@@ -61,8 +60,8 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
       copy: () => {
         this.subs.add(this.dragulaService.dropModel(`folder`)
           .subscribe(({ source, target, item }) => {
-            const src = source.className + item.fileName
-            const dest = target.className + item.fileName
+            const src = source.className + item.filename
+            const dest = target.className + item.filename
             item.id = `can-not-move`
             if (target.className === this.akromaDataKeystoreDirName) {
               this.copy(src, dest)
@@ -97,8 +96,8 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
   async ngOnInit() {
 
     this.settings = await this.settingsService.getSettings();
-
-    this.backupToDocuments(this.documentsAkromaBackupDirName, this.akromaDeletedWalletsDirName, this.akromaDataKeystoreDirName, this.desktopAkromaDirName)
+    this.getPaths() 
+    this.backupToDocuments(this.documentsAkromaBackupDirName, this.akromaDeletedWalletsDirName, this.akromaDataKeystoreDirName)
 
     setTimeout(() => {
       this.lookForKeystore(this.keystoreFolder, this.akromaDataKeystoreDirName)
@@ -140,21 +139,21 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
 
   private async lookForKeystore(folder: KeystoreData[], FolderDirName: string) {
 
-    const fileNameList: any[] = await this.electronService.fs.readdir(FolderDirName);
+    const filenameList: any[] = await this.electronService.fs.readdir(FolderDirName);
     let len;
     if (FolderDirName === this.documentsAkromaBackupDirName) {
-      len = fileNameList.length;
+      len = filenameList.length;
     }
 
-    fileNameList
-      .map(fileName => {
+    filenameList
+      .map(filename => {
         this.electronService.fs
-          .readFile(FolderDirName + fileName, 'utf8', (err, data) => {
+          .readFile(FolderDirName + filename, 'utf8', (err, data) => {
             if (err) {
               throw err;
             }
 
-            const valid: Boolean = this.validateJSON(data, fileName, FolderDirName);
+            const valid: Boolean = this.validateJSON(data, filename, FolderDirName);
             if (valid) {
               const Data: KeystoreData = JSON.parse(data);
               const address = `0x` + Data.address;
@@ -168,7 +167,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
                   id: id,
                   address: address,
                   balance: balance,
-                  fileName: fileName,
+                  filename: filename,
 
                 })
             }
@@ -194,6 +193,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
             x[i].classList.add(`can-not-move`)
           }
         }
+
         return folder1[i] === folder2[i]
       }
       )
@@ -211,12 +211,12 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
     }
   }
 
-  private validateJSON(body: string, fileName: string, dirName: string) {
+  private validateJSON(body: string, filename: string, dirName: string) {
     try {
       const data = JSON.parse(body);
       return data;
     } catch (e) {
-      console.error(dirName + fileName, 'is not a keystore');
+      console.error(dirName + filename, 'is not a keystore');
       return null;
     }
   }
@@ -224,25 +224,54 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
   private getPaths() {
     this.akromaDeletedWalletsDirName = `${this.settings.clientPath}${this.sep}Auto-Backup-of-Deleted-Wallets${this.sep}`;
     this.akromaDataKeystoreDirName = `${this.settings.clientPath}${this.sep}data${this.sep}keystore${this.sep}`;
-    this.desktopAkromaDirName = `${this.electronService.os.homedir}${this.sep}Desktop${this.sep}AKA${this.sep}`;
+    // this.desktopAkromaDirName = `${this.electronService.os.homedir}${this.sep}Desktop${this.sep}AKA${this.sep}`;
     this.documentsAkromaBackupDirName = `${this.electronService.os.homedir}${this.sep}Documents${this.sep}Akroma-UTC-JSON-Backup${this.sep}`
     this.electronService.fs.ensureDir(this.documentsAkromaBackupDirName)
       .then(() => {
-        console.log('success!')
+        console.log('Documents/Akroma-UTC-JSON-Backup/ :: success!')
       })
 
-    this.electronService.fs.ensureDir(this.desktopAkromaDirName)
-      .then(() => {
-        console.log('success!')
-      })
+  //   this.electronService.fs.ensureDir(this.desktopAkromaDirName)
+  //     .then(() => {
+  //       console.log('success!')
+  //     })
   }
 
 
 
-  private async backupToDocuments(documentsAkromaBackupDirName, akromaDeletedWalletsDirName, akromaDataKeystoreDirName, desktopAkromaDirName) {
+  private async backupToDocuments(documentsAkromaBackupDirName, akromaDeletedWalletsDirName, akromaDataKeystoreDirName) {
     await this.electronService.fs.copySync(akromaDeletedWalletsDirName, documentsAkromaBackupDirName)
     await this.electronService.fs.copySync(akromaDataKeystoreDirName, documentsAkromaBackupDirName)
-    await this.electronService.fs.copySync(desktopAkromaDirName, documentsAkromaBackupDirName)
+    // await this.electronService.fs.copySync(desktopAkromaDirName, documentsAkromaBackupDirName)
+  }
+
+
+  async deleteWallet(wallet, i): Promise<void> {
+    
+    const sep = this.electronService.path.sep;
+    const systemSettings = await this.settingsService.getSettings();
+
+    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
+    const backupDir = `${systemSettings.clientPath}${sep}Auto-Backup-of-Deleted-Wallets${sep}`;
+
+
+    if (!this.electronService.fs.existsSync(backupDir)) {
+      this.electronService.fs.mkdirSync(backupDir);
+    }
+
+    this.keystoreFolder.splice(i, 1)
+    this.electronService.fs.move(keystoreFileDir + wallet.filename, backupDir + wallet.filename, { overwrite: true }, err => {
+
+      if (err) return console.error(err)
+
+    })
+    setTimeout(() => { 
+      this.keystoreFolder=[];
+      this.importFolder=[]
+      this.lookForKeystore(this.keystoreFolder, this.akromaDataKeystoreDirName)
+      this.lookForKeystore(this.importFolder, this.documentsAkromaBackupDirName)
+    }, 50); // backup should complete before this
+
   }
 
   ngOnDestroy() {

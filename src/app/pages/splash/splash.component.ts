@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { distinctUntilChanged, mergeMap } from 'rxjs/operators';
 import { ISubscription } from 'rxjs/Subscription';
@@ -22,7 +22,6 @@ export class SplashComponent implements OnDestroy, OnInit {
   isListening: boolean;
   lastSynced: BlockSync;
   peerCount: number;
-  wallets: any;
   intervals: NodeJS.Timer[];
   clientStatusSubscription: ISubscription;
 
@@ -55,28 +54,30 @@ export class SplashComponent implements OnDestroy, OnInit {
       setInterval(async () => {
         const blockchainSynced = this.transactionSyncSQLService.blockchainSynced;
         if (blockchainSynced) {
-          const wallets = await this.web3Service.eth.personal.getAccounts();
-          await this.navigate(wallets);
+            const wallets = await this.web3Service.eth.personal.getAccounts();
+          this.navigate(wallets);
         }
       }, 1000));
   }
 
   async navigate(wallets) {
     if (wallets[0]) {
-      console.warn(`found wallet data!`);
+      console.warn(`found wallet data! :: splash page`);
       this.router.navigate(['/wallets']);
     } else {
       console.warn(`No wallets ! Go Create or try importing!`);
       this.router.navigate(['/create']);
     }
   }
-
+ 
   /**
    * remove timers when navigating away from page.
    */
   ngOnDestroy() {
-    console.log('clear timers');
-    this.intervals.forEach(timer => clearInterval(timer));
-    this.intervals = [];
+    setTimeout(() => {
+      console.log('clear timers');
+      this.intervals.forEach(timer => clearInterval(timer));
+      this.intervals = [];
+    }, 1000);
   }
 }

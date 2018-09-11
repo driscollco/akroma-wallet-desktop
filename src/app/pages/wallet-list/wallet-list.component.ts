@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -13,7 +13,7 @@ import { WalletService } from '../../providers/wallet.service';
 import { Web3Service } from '../../providers/web3.service';
 import { Subscription } from 'rxjs';
 import { SystemSettings } from '../../models/system-settings';
-
+import { FileActionService } from '../../providers/file-action.service';
 const electron = window.require('electron');
 
 @Component({
@@ -21,7 +21,7 @@ const electron = window.require('electron');
   templateUrl: './wallet-list.component.html',
   styleUrls: ['./wallet-list.component.scss'],
 })
-export class WalletListComponent implements OnInit {
+export class WalletListComponent implements OnInit ,OnDestroy {
   allWalletsBalance: string;
   allWalletsBalanceLoading: boolean;
   editWalletForm: FormGroup;
@@ -31,8 +31,12 @@ export class WalletListComponent implements OnInit {
   wallets: Wallet[];
   private settings: SystemSettings;
   private settingsSub: Subscription;
+  public keystoreFileList: any[] = [];
+  public keystoreFileDir: string;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    public file: FileActionService,
+    private formBuilder: FormBuilder,
     private modalService: BsModalService,
     private web3: Web3Service,
     private walletService: WalletService,
@@ -48,10 +52,21 @@ export class WalletListComponent implements OnInit {
   }
 
   async ngOnInit() {
+    
     await this.fetchAndHandleWallets();
   }
 
+  ngOnDestroy(){
+    this.wallets=[]
+  }
+
   private async fetchAndHandleWallets() {
+
+    const sep = this.electronService.path.sep;
+    const systemSettings = await this.settingsService.getSettings();
+    this.keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
+    this.keystoreFileList = this.electronService.fs.readdirSync(this.keystoreFileDir);
+
     const allDocs = await this.walletService.db.allDocs({ include_docs: true });
     this.wallets = allDocs.rows.map(x => x.doc);
 
@@ -73,7 +88,9 @@ export class WalletListComponent implements OnInit {
       .filter(x => !this.wallets.map(y => y.address).includes(x))
       .filter(x => !previouslyDeletedWallets.map(y => y.id).includes(x));
     await this.handleUnstoredWallets(unstoredWallets);
-    await this.getWalletBalances(this.wallets.map(x => x.address));
+    await this.getWalletBalances(this.wallets);
+    await this.addFilenamesToWallet(this.wallets, this.keystoreFileList, this.keystoreFileDir)
+
   }
 
   private async fetchDeletedWalletsForRestore(addresses: string[]): Promise<any> {
@@ -142,78 +159,69 @@ export class WalletListComponent implements OnInit {
     if (result.ok) {
       await this.fetchAndHandleWallets();
     }
-    this.walletForm.reset();
+    this.walletForm.reset(); 
   }
 
   openRenameWalletModal(wallet: Wallet, modalRef: TemplateRef<any>) {
     this.editWalletForm = this.formBuilder.group(wallet);
     this.openModal(modalRef);
-  }
+  } 
 
-  async deleteWallet(wallet: Wallet): Promise<void> {
+  async deleteWallet(wallet: Wallet, i): Promise<void> {
+    this.modalRef.hide();
     const sep = this.electronService.path.sep;
-    const keystoreFileDir = `${this.settings.clientPath}${sep}data${sep}keystore${sep}`;
-    const keystoreFileList = this.electronService.fs.readdirSync(keystoreFileDir);
-    const backupDir = `${this.settings.clientPath}${sep}Auto-Backup-of-Deleted-Wallets${sep}`;
+    const systemSettings = await this.settingsService.getSettings();
 
+    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
+    const backupDir = `${systemSettings.clientPath}${sep}Auto-Backup-of-Deleted-Wallets${sep}`;
+
+ 
     if (!this.electronService.fs.existsSync(backupDir)) {
       this.electronService.fs.mkdirSync(backupDir);
     }
 
-    keystoreFileList.map((file, i) => {
-      this.electronService.fs.readJson(keystoreFileDir + file, (err, packageObj) => {
-        if (err) { console.error(err); }
-        if (wallet.address.replace('0x', '').toLowerCase() === packageObj.address) {
-          console.log(keystoreFileDir + file, backupDir + file);
-          this.electronService.fs.move(keystoreFileDir + file, backupDir + file, { overwrite: true }, error => {
-            this.modalRef.hide();
-            if (error) { return console.error(error); }
-            this.logger.info(`wallet moved from ${keystoreFileDir}${file}`);
-            this.logger.info(`wallet moved to ${backupDir}${file}`);
-            console.log('success!');
-          });
-        }
-      });
-    }).map((x, i) => { // quick fix before a better system is in place
-      this.refreshWalletDataAfterDelete(wallet);
-    });
-  }
+    this.wallets.splice(i, 1)
+    this.electronService.fs.move(keystoreFileDir + wallet.filename, backupDir + wallet.filename, { overwrite: true }, err => {
 
-  private async refreshWalletDataAfterDelete(wallet: Wallet) {
-    try {
-      const result = await this.walletService.db.remove(wallet._id, wallet._rev);
-      if (result.ok) {
-        this.wallets = this.wallets.filter(x => x._id !== wallet._id);
-        await this.getWalletBalances(this.wallets.map(x => x.address));
+      if (err) return console.error(err)
+
+      this.logger.info(`wallet moved from ${keystoreFileDir}${wallet.filename}`);
+      this.logger.info(`wallet moved to ${backupDir}${wallet.filename}`);
+      const result = this.walletService.db.remove(wallet._id, wallet._rev);
+      if (result) {
+        this.getWalletBalances(this.wallets);
       }
-    } catch {
-      this.wallets = this.wallets.filter(x => x._id !== wallet._id);
-      await this.getWalletBalances(this.wallets.map(x => x.address));
-      // this.logger.debug(`Wallet ${wallet.address} not removed from database ` +
-      //   `because it did not exist, keystore file has not been deleted.`);
-    }
+      console.log('success! :: wallet removed!')
+       
+    })
+
   }
 
 
+ 
 
-  async getWalletBalances(addresses: string[]): Promise<void> {
-    this.allWalletsBalance = '0';
-    if (addresses.length === 0) {
+
+  async getWalletBalances(wallets: Wallet[]): Promise<void> {
+    this.allWalletsBalance = '0'; 
+    if (wallets.length === 0) {
       this.allWalletsBalanceLoading = false;
-      return;
+      return; 
     }
 
-    for (let i = 0; i < addresses.length; i++) {
-      const weiBalance = await this.web3.eth.getBalance(addresses[i]);
-      const ethBalance = await this.web3.utils.fromWei(weiBalance, 'ether');
-      this.allWalletsBalance = (parseFloat(ethBalance) + parseFloat(this.allWalletsBalance)).toFixed(6);
-      this.allWalletsBalanceLoading = false;
-    }
+  wallets.map(async (x,i)=>{  
+
+    const weiBalance = await this.web3.eth.getBalance(x.address);
+    const ethBalance = await this.web3.utils.fromWei(weiBalance, 'ether');
+    wallets[i].balance=await ethBalance;
+    this.allWalletsBalance = (parseFloat(ethBalance) + parseFloat(this.allWalletsBalance)).toFixed(6);
+    this.allWalletsBalanceLoading = false;
+  })
+    
   }
 
   backupWalletReminder(wallet: Wallet, template: TemplateRef<any>) {
-    this.openModal(template);
-    this.modalRef.content = { wallet };
+    this.openModal(template); 
+    this.modalRef.content = {wallet}
   }
 
   copyAddress(wallet: Wallet) {
@@ -223,9 +231,9 @@ export class WalletListComponent implements OnInit {
 
   async backupWallet(wallet: Wallet): Promise<void> {
     const sep = this.electronService.path.sep;
-    const keystoreFileDir = `${this.settings.clientPath}${sep}data${sep}keystore${sep}`;
+    const systemSettings = await this.settingsService.getSettings();
+    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
     const keystoreFileList = await this.electronService.fs.readdirSync(keystoreFileDir);
-    // manual backup of renamed keystore needs fix
     const keystoreFile = keystoreFileList.find(x => x.toLowerCase().includes(wallet.address.replace('0x', '').toLowerCase()));
     if (keystoreFile) {
       electron.shell.showItemInFolder(`${keystoreFileDir}${sep}${keystoreFile}`);
@@ -236,4 +244,52 @@ export class WalletListComponent implements OnInit {
     this.openModal(template);
     this.modalRef.content = { wallet };
   }
+
+  async importFile(res) {
+    const sep = this.electronService.path.sep;
+    const systemSettings = await this.settingsService.getSettings();
+    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
+    const file = res[0].path;
+    const filename = res[0].name;
+
+    this.file.copy(file, keystoreFileDir + filename)
+    setTimeout(async () => {
+      this.wallets = []
+
+      await this.fetchAndHandleWallets()
+    }, 500); 
+
+  }
+
+  addFilenamesToWallet(wallets, keystoreFileList, keystoreFileDir) {
+
+    keystoreFileList
+     .map( (file,i) => {
+       this.electronService.fs.readJson(keystoreFileDir + file, (err, packageObj) => {
+       wallets.map( (placeholder, i) => {
+           if (wallets[i].address.replace('0x', '').toLowerCase() === packageObj.address) {
+              wallets[i].filename=file
+           }
+         })
+       })
+     })
+ }
+
+ async selectFile(res) {
+  const sep = this.electronService.path.sep;
+  const systemSettings = await this.settingsService.getSettings();
+  const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
+  const file = res[0].path;
+  const fileName = res[0].name;
+
+  this.file.copy(file, keystoreFileDir + fileName)
+  setTimeout(async () => {
+    this.wallets = []
+
+    await this.fetchAndHandleWallets()
+  }, 500); 
+
+}
+
+
 }

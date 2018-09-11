@@ -8,8 +8,18 @@
           </a>
         </li>
         <li class="nav-item">
+
+          <a class="nav-link" onclick="document.getElementById('file').click();">
+
+            <img src="./assets/images/icons/icon-wallet.svg" alt="Import">
+            <input class="browseButton" type="file" id="file" style="display:none;" (change)="selectFile($event.target.files)">
+            Import
+          </a>
+
+        </li>
+        <li class="nav-item">
           <a class="nav-link" [routerLink]="['/import']">
-            <img src="./assets/images/icons/icon-wallet.svg" alt="Import"> Import
+            <img src="./assets/images/icons/icon-wallet.svg" alt="Import"> Backups
           </a>
         </li>
       </ul>
@@ -30,22 +40,69 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let wallet of wallets">
+        <tr *ngFor="let wallet of wallets; let i = index">
           <th scope="row">
             <a [routerLink]="['/wallet', wallet.address]">
-              {{ wallet.name }}
+              {{ wallet.name}}
             </a>
           </th>
-          <td class="selectableText">{{ wallet._id || wallet.address }}</td>
-          <td>{{ wallet.balance }}</td>
+          <td class="selectableText">{{ wallet.address || wallet.id || wallet.filename}}</td>
+          <td style="text-align: center;"> {{ wallet.balance | number:'1.2-2' }}
+          </td>
           <td>
-            <button id="wallet-context" #pop="bs-popover" [popover]="walletContextButton" [popoverContext]="{ wallet: wallet }" placement="left" [outsideClick]="true">
+            <button id="wallet-context" #pop="bs-popover" [popover]="walletContextButton" [popoverContext]="{ wallet: wallet }"
+              placement="left" [outsideClick]="true">
               <div class="wallet-ellipsis">
                 <div class="wallet-ellipsis-icon">
                   <img src="./assets/images/icons/icon-ellipsis.svg" alt="options">
                 </div>
               </div>
             </button>
+      
+
+<!-- template for delete wallet context menu button -->
+<ng-template #walletContextButton>
+    <div class="row">
+      <div class="col">
+        <a (click)="openRenameWalletModal(wallet, renameWalletModal)" style="text-decoration: none; cursor: pointer;color:black;">
+          Rename
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <a (click)="backupWalletReminder(wallet, deleteWalletConfirmModal)" style="text-decoration: none; cursor: pointer;color:black;">
+          Delete
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <a (click)="copyAddress(wallet)" style="text-decoration: none; cursor: pointer;color:black;">
+          Copy Address
+        </a>
+      </div>
+    </div>
+  </ng-template>
+  
+  <!-- delete wallet confirm modal -->
+  <ng-template #deleteWalletConfirmModal>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Backup Wallet Reminder</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>
+        It is recommended that you backup your wallet before deleting, would you like to do this?
+      </p>
+      <button type="button" class="btn btn-primary" (click)="backupWallet(modalRef.content.wallet,i)">Backup</button>
+      <button type="button" class="btn btn-danger" (click)="deleteWallet(modalRef.content.wallet,i)">Delete</button>
+    </div>
+  </ng-template>
+
+
           </td>
           <td>
             <div class="wallet-qr-small">
@@ -61,7 +118,8 @@
                 <span class="qr-wallet-address">{{wallet.address}}</span>
                 <div class="modal-dialog modal-sm">
                   <div class="modal-body">
-                    <ngx-qrcode [qrc-value]="modalRef.content.wallet.address" qrc-class="aclass" qrc-errorCorrectionLevel="L">
+                    <ngx-qrcode [qrc-value]="modalRef.content.wallet.address" qrc-class="aclass"
+                      qrc-errorCorrectionLevel="L">
                     </ngx-qrcode>
                   </div>
                 </div>
@@ -94,8 +152,10 @@
     <form [formGroup]="walletForm" (ngSubmit)="createWallet()">
       <div class="form-group">
         <label for="wallet-name">Wallet Name</label>
-        <input type="text" formControlName="name" class="form-control" id="wallet-name" aria-describedby="nameHelp" placeholder="Enter Wallet Name">
-        <small id="nameHelp" class="form-text text-muted">Wallet name will serve as an alias or a way to identify it. Example: 'Primary Wallet'</small>
+        <input type="text" formControlName="name" class="form-control" id="wallet-name" aria-describedby="nameHelp"
+          placeholder="Enter Wallet Name">
+        <small id="nameHelp" class="form-text text-muted">Wallet name will serve as an alias or a way to identify it.
+          Example: 'Primary Wallet'</small>
       </div>
       <div class="form-group">
         <label for="passphrase">Passphrase</label>
@@ -103,8 +163,10 @@
       </div>
       <div class="form-group">
         <label for="confirm-passphrase">Confirm Passphrase</label>
-        <input type="password" formControlName="confirmPassphrase" class="form-control" id="confirm-passphrase" placeholder="Confirm Passphrase">
-        <small id="passphraseWarning" *ngIf="walletForm.hasError('passphraseMatch')" class="form-text text-danger">Passphrase and confirmation must both match.</small>
+        <input type="password" formControlName="confirmPassphrase" class="form-control" id="confirm-passphrase"
+          placeholder="Confirm Passphrase">
+        <small id="passphraseWarning" *ngIf="walletForm.hasError('passphraseMatch')" class="form-text text-danger">Passphrase
+          and confirmation must both match.</small>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="walletForm.pristine || walletForm.invalid">Create</button>
     </form>
@@ -123,8 +185,10 @@
     <form [formGroup]="editWalletForm" (ngSubmit)="renameWallet()">
       <div class="form-group">
         <label for="wallet-name">Wallet Name</label>
-        <input type="text" formControlName="name" class="form-control" id="wallet-name" aria-describedby="nameHelp" placeholder="Enter Wallet Name">
-        <small id="nameHelp" class="form-text text-muted">Wallet name will serve as an alias or a way to identify it. Example: 'Primary Wallet'</small>
+        <input type="text" formControlName="name" class="form-control" id="wallet-name" aria-describedby="nameHelp"
+          placeholder="Enter Wallet Name">
+        <small id="nameHelp" class="form-text text-muted">Wallet name will serve as an alias or a way to identify it.
+          Example: 'Primary Wallet'</small>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="editWalletForm.pristine || editWalletForm.invalid">Save</button>
     </form>
@@ -132,29 +196,7 @@
 </ng-template>
 
 <!-- template for delete wallet context menu button -->
-<ng-template #walletContextButton let-wallet="wallet">
-  <div class="row">
-    <div class="col">
-      <a (click)="openRenameWalletModal(wallet, renameWalletModal)" style="text-decoration: none; cursor: pointer;color:black;">
-        Rename
-      </a>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <a (click)="backupWalletReminder(wallet, deleteWalletConfirmModal)" style="text-decoration: none; cursor: pointer;color:black;">
-        Delete
-      </a>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <a (click)="copyAddress(wallet)" style="text-decoration: none; cursor: pointer;color:black;">
-        Copy Address
-      </a>
-    </div>
-  </div>
-</ng-template>
+
 
 <!-- delete wallet confirm modal -->
 <ng-template #deleteWalletConfirmModal let-wallet="wallet">

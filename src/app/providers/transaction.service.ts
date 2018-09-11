@@ -41,7 +41,9 @@ export class TransactionService implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this._intervals.forEach(timer => clearInterval(timer));
+    setTimeout(() => {
+      this._intervals.forEach(timer => clearInterval(timer));
+    }, 1000);
   }
 
   public get displayTransactions(): boolean {

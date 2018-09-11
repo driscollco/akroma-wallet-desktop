@@ -33,10 +33,10 @@ function createWindow() {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: 800,
+    width: 1378,
     height: 800,
-    minWidth: 800,
-    minHeight: 800,
+    minWidth: 1378,
+    minHeight: 750,
     backgroundColor: '#cb2027',
     titleBarStyle: 'hiddenInset',
   });

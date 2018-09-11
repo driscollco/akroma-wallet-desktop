@@ -42,7 +42,7 @@ import { TransactionService } from './providers/transaction.service';
 import { WalletService } from './providers/wallet.service';
 import { Web3Service } from './providers/web3.service';
 import { TransactionSyncService } from './providers/transaction.sync.service';
-
+import { FileActionService } from './providers/file-action.service'
 
 
 // AoT requires an exported function for factories
@@ -100,6 +100,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     TransactionRemoteService,
     SettingsService,
     WalletService,
+    FileActionService
   ],
   bootstrap: [AppComponent],
 })

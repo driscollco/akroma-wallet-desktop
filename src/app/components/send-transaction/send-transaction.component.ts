@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
-
-import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromPromise';
+import { Observable } from 'rxjs';
 
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -44,7 +44,7 @@ export class SendTransactionComponent implements OnChanges, OnInit {
     private logger: LoggerService,
   ) {
     this.transactionSent = new EventEmitter<any>();
-    this.gasPrice$ = Observable.fromPromise(this.web3.eth.getGasPrice());
+    this.gasPrice$ = Observable.from(this.web3.eth.getGasPrice());
   }
 
   ngOnInit(): void {
@@ -65,6 +65,10 @@ export class SendTransactionComponent implements OnChanges, OnInit {
     if (!!changes.wallet && !!changes.wallet.currentValue && changes.wallet.previousValue === undefined) {
       this.buildStockForm();
     }
+  }
+
+  async onTransactionSent() {
+    console.log(`sent placeholder`)
   }
 
   buildStockForm() {
