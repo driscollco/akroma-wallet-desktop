@@ -2,7 +2,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { concat, filter } from 'lodash';
 import { DragulaService } from 'ng2-dragula';
-import { Observable } from 'rxjs';
+import { from } from 'rxjs';
 import { Subscription } from 'rxjs/Subscription';
 import { SystemSettings } from '../../../models/system-settings';
 import { ElectronService } from '../../../providers/electron.service';
@@ -76,7 +76,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
       accepts: (target, source) => target.className !== source.className,
 
       moves: (el) => {
-        Observable.from(this.elMoveState)
+        from(this.elMoveState)
           .subscribe(x => {
             this.moveController(el, this.elMoveState, this.keystoreFolder, this.importFolder);
           })
