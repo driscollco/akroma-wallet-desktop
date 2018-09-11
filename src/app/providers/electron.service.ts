@@ -14,18 +14,18 @@ import * as process from 'process';
 @Injectable()
 export class ElectronService {
 
-  ipcRenderer: typeof ipcRenderer;
-  webFrame: typeof webFrame;
-  remote: typeof remote;
-  childProcess: typeof childProcess;
-  fs: typeof fs;
-  os: typeof os;
-  crypto: typeof crypto;
-  path: typeof path;
-  process: typeof process;
-  net: typeof net;
+  public ipcRenderer: typeof ipcRenderer;
+  public webFrame: typeof webFrame;
+  public remote: typeof remote;
+  public childProcess: typeof childProcess;
+  public fs: typeof fs;
+  public os: typeof os;
+  public crypto: typeof crypto;
+  public path: typeof path;
+  public process: typeof process;
+  public net: typeof net;
 
-  constructor() {
+  public constructor() {
     // Conditional imports
     if (this.isElectron()) {
       this.ipcRenderer = window.require('electron').ipcRenderer;
@@ -41,7 +41,7 @@ export class ElectronService {
     }
   }
 
-  isElectron = () => {
+  public isElectron = () => {
     return window && window.process && window.process.type;
   }
 }

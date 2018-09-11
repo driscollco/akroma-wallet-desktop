@@ -29,6 +29,6 @@ describe('AppComponent', () => {
 
 // tslint:disable-next-line
 class TranslateServiceStub {
-  setDefaultLang(lang: string): void {
+  public setDefaultLang(lang: string): void {
   }
 }

@@ -25,26 +25,26 @@ export interface KeystoreData {
 })
 export class FromKeystoreComponent implements OnInit, OnDestroy {
 
-  subs = new Subscription();
-  elMoveState = [false]
-  settings: SystemSettings;
-  sep: string;
+  public subs = new Subscription();
+  public elMoveState = [false];
+  public settings: SystemSettings;
+  public sep: string;
 
-  akromaDataKeystoreDirName: string;
-  desktopAkromaDirName: string;
-  akromaDeletedWalletsDirName: string;
-  documentsAkromaBackupDirName: string;
+  public akromaDataKeystoreDirName: string;
+  public desktopAkromaDirName: string;
+  public akromaDeletedWalletsDirName: string;
+  public documentsAkromaBackupDirName: string;
 
-  keystoreFolder: KeystoreData[] = [];
-  importFolder: KeystoreData[] = [];
+  public keystoreFolder: KeystoreData[] = [];
+  public importFolder: KeystoreData[] = [];
   @HostListener('document:keydown.escape', ['$event'])
-  escapeFromSettingsPage(event: KeyboardEvent) {
+  public escapeFromSettingsPage(event: KeyboardEvent) {
     setTimeout(() => {
-      this.whereToGo(this.keystoreFolder, this.router)
+      this.whereToGo(this.keystoreFolder, this.router);
     }, 200);
   }
 
-  constructor(
+  public constructor(
 
     public dragulaService: DragulaService,
     private router: Router,
@@ -60,65 +60,65 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
       copy: () => {
         this.subs.add(this.dragulaService.dropModel(`folder`)
           .subscribe(({ source, target, item }) => {
-            const src = source.className + item.filename
-            const dest = target.className + item.filename
-            item.id = `can-not-move`
+            const src = source.className + item.filename;
+            const dest = target.className + item.filename;
+            item.id = `can-not-move`;
             if (target.className === this.akromaDataKeystoreDirName) {
-              this.copy(src, dest)
+              this.copy(src, dest);
             }
-          }))
+          }));
 
-        return true
+        return true;
       },
       removeOnSpill: true,
-      copyItem: (item) => { return item },
+      copyItem: (item) => item,
 
-      accepts: (target, source) => { return target.className !== source.className },
+      accepts: (target, source) => target.className !== source.className,
 
       moves: (el) => {
         Observable.from(this.elMoveState)
           .subscribe(x => {
-            this.moveController(el, this.elMoveState, this.keystoreFolder, this.importFolder)
+            this.moveController(el, this.elMoveState, this.keystoreFolder, this.importFolder);
           })
-          .unsubscribe()
+          .unsubscribe();
 
-        console.log(`elMoveState`, this.elMoveState[0])
+        console.log(`elMoveState`, this.elMoveState[0]);
 
-        return this.elMoveState[0]
-      }
-    })
+        return this.elMoveState[0];
+      },
+    });
 
   }
-  //constructor
+  // constructor
 
 
 
-  async ngOnInit() {
+  public async ngOnInit() {
 
     this.settings = await this.settingsService.getSettings();
-    this.getPaths() 
-    this.backupToDocuments(this.documentsAkromaBackupDirName, this.akromaDeletedWalletsDirName, this.akromaDataKeystoreDirName)
+    this.getPaths();
+    this.backupToDocuments(this.documentsAkromaBackupDirName, this.akromaDeletedWalletsDirName, this.akromaDataKeystoreDirName);
 
     setTimeout(() => {
-      this.lookForKeystore(this.keystoreFolder, this.akromaDataKeystoreDirName)
-      this.lookForKeystore(this.importFolder, this.documentsAkromaBackupDirName)
+      this.lookForKeystore(this.keystoreFolder, this.akromaDataKeystoreDirName);
+      this.lookForKeystore(this.importFolder, this.documentsAkromaBackupDirName);
     }, 50); // backup should complete before this
 
   }
 
 
   private moveController(element, elMoveState, keystoreFolder, importFolder) {
-    const count = []
+    const count = [];
     const one = concat(importFolder, keystoreFolder);
     const uniq = filter(one, (o) => {
-      if (o.id === element.id) { count.push(o) }
+      if (o.id === element.id) { count.push(o); }
       if (count[1] === undefined) {
-        elMoveState[0] = true
+        elMoveState[0] = true;
       } else {
-        elMoveState[0] = false
+        elMoveState[0] = false;
       }
-      return o.id === element.id
-    })
+      return o.id === element.id;
+    });
   }
 
 
@@ -130,11 +130,11 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
         if (err) {
           console.error('access error in copy()', err);
         } else {
-          console.log(`copySync`)
+          console.log(`copySync`);
           this.electronService.fs.copySync(src, dest);
         }
       });
-    } else { console.log('copy: will not overwrite self') }
+    } else { console.log('copy: will not overwrite self'); }
   }
 
   private async lookForKeystore(folder: KeystoreData[], FolderDirName: string) {
@@ -160,7 +160,7 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
               const id = `wallet-id-` + address;
               const balance = this.web3.eth.getBalance(address)
                 .then(wei => {
-                  return this.web3.utils.fromWei(wei, 'ether')
+                  return this.web3.utils.fromWei(wei, 'ether');
                 });
               folder
                 .push({
@@ -169,17 +169,17 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
                   balance: balance,
                   filename: filename,
 
-                })
+                });
             }
           });
       }).map(x => {
 
         if (len) {
           setTimeout(() => {
-            this.compareFolders(this.importFolder, this.keystoreFolder)
+            this.compareFolders(this.importFolder, this.keystoreFolder);
           }, 100);
         }
-      })
+      });
   }
 
   private compareFolders(folder1, folder2) {
@@ -187,26 +187,26 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
       const combined = concat(folder1, folder2);
       const uniq = filter(combined, (o, i) => {
         if (folder1[i] === folder2[i]) {
-          var x: any = document.getElementsByClassName(o.id);
-          var i;
-          for (i = 0; i < x.length; i++) {
-            x[i].classList.add(`can-not-move`)
+          const x: any = document.getElementsByClassName(o.id);
+          let j;
+          for (j = 0; j < x.length; j++) {
+            x[j].classList.add(`can-not-move`);
           }
         }
 
-        return folder1[i] === folder2[i]
-      }
-      )
+        return folder1[i] === folder2[i];
+      },
+      );
     }
   }
 
-  async whereToGo(wallets, router) {
+  public async whereToGo(wallets, router) {
 
     if (wallets[0]) {
-      console.warn(`found wallet data!`)
+      console.warn(`found wallet data!`);
       router.navigate(['/this.wallets']);
     } else {
-      console.warn(`No wallets ! Go Create!`)
+      console.warn(`No wallets ! Go Create!`);
       router.navigate(['/create']);
     }
   }
@@ -225,11 +225,11 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
     this.akromaDeletedWalletsDirName = `${this.settings.clientPath}${this.sep}Auto-Backup-of-Deleted-Wallets${this.sep}`;
     this.akromaDataKeystoreDirName = `${this.settings.clientPath}${this.sep}data${this.sep}keystore${this.sep}`;
     // this.desktopAkromaDirName = `${this.electronService.os.homedir}${this.sep}Desktop${this.sep}AKA${this.sep}`;
-    this.documentsAkromaBackupDirName = `${this.electronService.os.homedir}${this.sep}Documents${this.sep}Akroma-UTC-JSON-Backup${this.sep}`
+    this.documentsAkromaBackupDirName = `${this.electronService.os.homedir}${this.sep}Documents${this.sep}Akroma-UTC-JSON-Backup${this.sep}`;
     this.electronService.fs.ensureDir(this.documentsAkromaBackupDirName)
       .then(() => {
-        console.log('Documents/Akroma-UTC-JSON-Backup/ :: success!')
-      })
+        console.log('Documents/Akroma-UTC-JSON-Backup/ :: success!');
+      });
 
   //   this.electronService.fs.ensureDir(this.desktopAkromaDirName)
   //     .then(() => {
@@ -240,14 +240,14 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
 
 
   private async backupToDocuments(documentsAkromaBackupDirName, akromaDeletedWalletsDirName, akromaDataKeystoreDirName) {
-    await this.electronService.fs.copySync(akromaDeletedWalletsDirName, documentsAkromaBackupDirName)
-    await this.electronService.fs.copySync(akromaDataKeystoreDirName, documentsAkromaBackupDirName)
+    await this.electronService.fs.copySync(akromaDeletedWalletsDirName, documentsAkromaBackupDirName);
+    await this.electronService.fs.copySync(akromaDataKeystoreDirName, documentsAkromaBackupDirName);
     // await this.electronService.fs.copySync(desktopAkromaDirName, documentsAkromaBackupDirName)
   }
 
 
-  async deleteWallet(wallet, i): Promise<void> {
-    
+  public async deleteWallet(wallet, i): Promise<void> {
+
     const sep = this.electronService.path.sep;
     const systemSettings = await this.settingsService.getSettings();
 
@@ -259,25 +259,25 @@ export class FromKeystoreComponent implements OnInit, OnDestroy {
       this.electronService.fs.mkdirSync(backupDir);
     }
 
-    this.keystoreFolder.splice(i, 1)
+    this.keystoreFolder.splice(i, 1);
     this.electronService.fs.move(keystoreFileDir + wallet.filename, backupDir + wallet.filename, { overwrite: true }, err => {
 
-      if (err) return console.error(err)
+      if (err) { return console.error(err); }
 
-    })
-    setTimeout(() => { 
-      this.keystoreFolder=[];
-      this.importFolder=[]
-      this.lookForKeystore(this.keystoreFolder, this.akromaDataKeystoreDirName)
-      this.lookForKeystore(this.importFolder, this.documentsAkromaBackupDirName)
+    });
+    setTimeout(() => {
+      this.keystoreFolder = [];
+      this.importFolder = [];
+      this.lookForKeystore(this.keystoreFolder, this.akromaDataKeystoreDirName);
+      this.lookForKeystore(this.importFolder, this.documentsAkromaBackupDirName);
     }, 50); // backup should complete before this
 
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     this.subs.unsubscribe();
     this.dragulaService.destroy(`folder`);
 
   }
 
-}//end
+}// end

@@ -10,7 +10,7 @@ import { AkromaTx } from '../models/akroma-tx';
 @Injectable()
 export class TransactionRemoteService {
 
-  constructor(
+  public constructor(
     private http: HttpClient,
   ) { }
 

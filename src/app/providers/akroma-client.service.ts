@@ -29,14 +29,14 @@ export class AkromaClientService {
   private settingsSub: Subscription;
   private _process: ChildProcess;
   private settings: SystemSettings;
-  get clientProcess(): ChildProcess {
+  public get clientProcess(): ChildProcess {
     return this._process;
   }
-  get status(): string {
+  public get status(): string {
     return this._status;
   }
 
-  constructor(
+  public constructor(
     private logger: LoggerService,
     private es: ElectronService,
     private settingsService: SettingsService,
@@ -45,7 +45,7 @@ export class AkromaClientService {
   }
 
   // This is called first. Then download is called (as the callback)
-  async initialize(callback: Function) {
+  public async initialize(callback: Function) {
     this.client = clientConstants.clients.akroma.platforms[this.es.os.platform()][this.es.os.arch()];
     this.settings = await this.settingsService.getSettings();
     this.logger.info('[settings]: ' + JSON.stringify(this.settings));
@@ -59,7 +59,7 @@ export class AkromaClientService {
   }
 
   // Called as called back from initialize, then startClient is called (as the callback)
-  downloadClient(callback?: Function): void {
+  public downloadClient(callback?: Function): void {
     if (this.akromaClientExists()) {
       callback(true);
     }
@@ -92,7 +92,7 @@ export class AkromaClientService {
     });
   }
 
-  startClient(callback?: Function) {
+  public startClient(callback?: Function) {
     this.web3.eth.net.isListening()
       .then(x => {
         this._status = statusConstants.RUNNING;
@@ -151,7 +151,7 @@ export class AkromaClientService {
     // }
   }
 
-  stopClient() {
+  public stopClient() {
     // tslint:disable-next-line:no-console
     this.logger.debug('[Stopping Akroma client...]');
     this._process.kill();

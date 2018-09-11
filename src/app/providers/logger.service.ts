@@ -5,16 +5,16 @@ import { SettingsService } from './settings.service';
 
 @Injectable()
 export class LoggerService {
-    logPath: string;
-    noop() { }
+    public logPath: string;
+    public noop() { }
 
-    constructor(
+    public constructor(
         private electronService: ElectronService,
         private settingsService: SettingsService,
     ) {
     }
 
-    async init(callback: Function): Promise<void> {
+    public async init(callback: Function): Promise<void> {
         console.log('logger init...');
         const settings = await this.settingsService.getSettings();
         console.log(settings);
@@ -45,33 +45,33 @@ export class LoggerService {
 
     }
 
-    debug(message: string) {
+    public debug(message: string) {
         // tslint:disable-next-line:no-console
         const formatted = this.format(message, new Date(), 'debug');
         this.electronService.fs.appendFile(this.logPath, formatted, () => this.noop);
         console.log(formatted);
     }
 
-    info(message: string) {
+    public info(message: string) {
         const formatted = this.format(message, new Date(), 'info');
         this.electronService.fs.appendFile(this.logPath, formatted, () => this.noop);
         // tslint:disable-next-line:no-console
         console.info(formatted);
     }
 
-    warn(message: string) {
+    public warn(message: string) {
         const formatted = this.format(message, new Date(), 'warn');
         this.electronService.fs.appendFile(this.logPath, formatted, () => this.noop);
         console.warn(formatted);
     }
 
-    error(message: string) {
+    public error(message: string) {
         const formatted = this.format(message, new Date(), 'error');
         this.electronService.fs.appendFile(this.logPath, formatted, () => this.noop);
         console.error(formatted);
     }
 
-    format(message: string, date: Date, level: string) {
+    public format(message: string, date: Date, level: string) {
         return '[{y}-{m}-{d} {h}:{i}:{s}.{ms}] [{level}] {text}\r\n'
             .replace('{level}', level)
             .replace('{text}', message)
@@ -85,12 +85,12 @@ export class LoggerService {
             .replace('{z}', this.formatTimeZone(date.getTimezoneOffset()));
     }
 
-    pad(number, zeros = 2) {
+    public pad(number, zeros = 2) {
         zeros = zeros || 2;
         return (new Array(zeros + 1).join('0') + number).substr(-zeros, zeros);
     }
 
-    formatTimeZone(minutesOffset) {
+    public formatTimeZone(minutesOffset) {
         const m = Math.abs(minutesOffset);
         return (minutesOffset >= 0 ? '-' : '+') +
             this.pad(Math.floor(m / 60)) + ':' +

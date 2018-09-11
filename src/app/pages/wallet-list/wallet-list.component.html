@@ -43,10 +43,10 @@
         <tr *ngFor="let wallet of wallets; let i = index">
           <th scope="row">
             <a [routerLink]="['/wallet', wallet.address]">
-              {{ wallet.name}}
+              {{ wallet.name }}
             </a>
           </th>
-          <td class="selectableText">{{ wallet.address || wallet.id || wallet.filename}}</td>
+          <td class="selectableText">{{ wallet.address || wallet.id || wallet.filename }}</td>
           <td style="text-align: center;"> {{ wallet.balance | number:'1.2-2' }}
           </td>
           <td>
@@ -114,8 +114,8 @@
             </div>
             <ng-template #qrReceiveModal>
               <div class="modal-header">
-                <span class="qr-wallet-name">{{wallet.name }}</span>
-                <span class="qr-wallet-address">{{wallet.address}}</span>
+                <span class="qr-wallet-name">{{ wallet.name }}</span>
+                <span class="qr-wallet-address">{{ wallet.address }}</span>
                 <div class="modal-dialog modal-sm">
                   <div class="modal-body">
                     <ngx-qrcode [qrc-value]="modalRef.content.wallet.address" qrc-class="aclass"

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CreateWalletComponent } from './create-wallet.component';
+
 
 describe('CreateWalletComponent', () => {
   let component: CreateWalletComponent;
@@ -8,7 +8,7 @@ describe('CreateWalletComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateWalletComponent ]
+      declarations: [ CreateWalletComponent ],
     })
     .compileComponents();
   }));

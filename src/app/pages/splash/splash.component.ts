@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
-import { Observable } from 'rxjs';
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { distinctUntilChanged, mergeMap } from 'rxjs/operators';
 import { ISubscription } from 'rxjs/Subscription';
@@ -17,15 +17,15 @@ import { Web3Service } from '../../providers/web3.service';
   styleUrls: ['./splash.component.scss'],
 })
 export class SplashComponent implements OnDestroy, OnInit {
-  lastPercentageSynced: number;
-  isSyncing: boolean | BlockSync;
-  isListening: boolean;
-  lastSynced: BlockSync;
-  peerCount: number;
-  intervals: NodeJS.Timer[];
-  clientStatusSubscription: ISubscription;
+  public lastPercentageSynced: number;
+  public isSyncing: boolean | BlockSync;
+  public isListening: boolean;
+  public lastSynced: BlockSync;
+  public peerCount: number;
+  public intervals: NodeJS.Timer[];
+  public clientStatusSubscription: ISubscription;
 
-  constructor(
+  public constructor(
     private router: Router,
     private clientService: AkromaClientService,
     private web3Service: Web3Service,
@@ -34,7 +34,7 @@ export class SplashComponent implements OnDestroy, OnInit {
     this.intervals = [];
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.clientStatusSubscription = IntervalObservable.create(1000)
       .pipe(mergeMap(() => Observable.of(this.clientService.status)))
       .pipe(distinctUntilChanged())
@@ -60,7 +60,7 @@ export class SplashComponent implements OnDestroy, OnInit {
       }, 1000));
   }
 
-  async navigate(wallets) {
+  public async navigate(wallets) {
     if (wallets[0]) {
       console.warn(`found wallet data! :: splash page`);
       this.router.navigate(['/wallets']);
@@ -69,11 +69,11 @@ export class SplashComponent implements OnDestroy, OnInit {
       this.router.navigate(['/create']);
     }
   }
- 
+
   /**
    * remove timers when navigating away from page.
    */
-  ngOnDestroy() {
+  public ngOnDestroy() {
     setTimeout(() => {
       console.log('clear timers');
       this.intervals.forEach(timer => clearInterval(timer));

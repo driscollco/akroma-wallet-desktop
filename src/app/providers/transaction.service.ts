@@ -17,7 +17,7 @@ export class TransactionService implements OnDestroy {
   public lastBlockNumberSynced: number;
   private _intervals: NodeJS.Timer[];
   private _remote: boolean;
-  constructor(
+  public constructor(
     private settingsService: SettingsService,
     private transactionRemoteService: TransactionRemoteService,
     private transactionSyncService: TransactionSyncService,
@@ -40,7 +40,7 @@ export class TransactionService implements OnDestroy {
     return p;
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     setTimeout(() => {
       this._intervals.forEach(timer => clearInterval(timer));
     }, 1000);

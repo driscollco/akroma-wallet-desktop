@@ -7,13 +7,13 @@ import { ElectronService } from './electron.service';
 @Injectable()
 export class SettingsService {
   private _db: PouchDB.Database<SystemSettings>;
-  constructor(
+  public constructor(
     private es: ElectronService,
   ) {
     this._db = new PouchDB('settings');
   }
 
-  async getSettings(): Promise<SystemSettings> {
+  public async getSettings(): Promise<SystemSettings> {
     try {
       return await this._db.get('system');
     } catch (error) {
@@ -30,7 +30,7 @@ export class SettingsService {
     }
   }
 
-  async saveSettings(toUpdate: SystemSettings): Promise<boolean> {
+  public async saveSettings(toUpdate: SystemSettings): Promise<boolean> {
     try {
       const current = await this._db.get('system');
       current.applicationPath = toUpdate.applicationPath;
