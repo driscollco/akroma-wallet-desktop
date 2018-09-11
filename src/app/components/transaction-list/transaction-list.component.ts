@@ -9,34 +9,34 @@ import { TransactionService } from '../../providers/transaction.service';
   styleUrls: ['./transaction-list.component.scss'],
 })
 export class TransactionListComponent implements OnInit, OnChanges {
-  @Input() address: string;
+  @Input() public address: string;
 
-  transactions: AkromaTx[];
-  filteredTransactions: AkromaTx[];
-  filter: string;
-  timestamp: string = new Date().toLocaleDateString();
-  page: number;
+  public transactions: AkromaTx[];
+  public filteredTransactions: AkromaTx[];
+  public filter: string;
+  public timestamp: string = new Date().toLocaleDateString();
+  public page: number;
 
-  endBlockNumber: number;
-  lastBlockNumberSynced: number;
-  syncing: boolean;
-  tx: AkromaTx[];
+  public endBlockNumber: number;
+  public lastBlockNumberSynced: number;
+  public syncing: boolean;
+  public tx: AkromaTx[];
 
-  constructor(
+  public constructor(
     public transactionsService: TransactionService,
   ) {
     this.page = 1;
     this.filter = 'all';
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  public ngOnChanges(changes: SimpleChanges) {
     if (!!changes.transactions && changes.transactions.currentValue !== changes.transactions.previousValue) {
       this.filteredTransactions = [...this.transactions];
       this.filteredTransactions.sort((a: AkromaTx, b: AkromaTx) => b.ts - a.ts);
     }
   }
 
-  async ngOnInit() {
+  public async ngOnInit() {
     this.syncing = this.transactionsService.displayTransactions;
     this.lastBlockNumberSynced = this.transactionsService.lastBlockNumberSynced;
     this.endBlockNumber = 0; // this.transactionsService.blockNumber;

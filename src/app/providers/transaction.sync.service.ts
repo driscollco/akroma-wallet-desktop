@@ -14,14 +14,14 @@ const pg = (<any>window).require('pg');
 export class TransactionSyncService implements OnDestroy {
     private _intervals: NodeJS.Timer[];
     // transaction syncing
-    lastBlockNumberSynced: number;
-    running: boolean;
-    isPaused: boolean;
-    index: number;
-    status = 'starting....';
+    public lastBlockNumberSynced: number;
+    public running: boolean;
+    public isPaused: boolean;
+    public index: number;
+    public status = 'starting....';
     private BATCH_SIZE = 1000;
-    _client: Client;
-    constructor(
+    public _client: Client;
+    public constructor(
         private web3Service: Web3Service,
     ) {
         this._intervals = [];
@@ -216,7 +216,7 @@ export class TransactionSyncService implements OnDestroy {
         return true;
     }
 
-    ngOnDestroy() {
+    public ngOnDestroy() {
         this._intervals.forEach(timer => clearInterval(timer));
     }
 }

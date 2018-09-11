@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FromKeystoreComponent } from './from-keystore.component';
+
 
 describe('FromKeystoreComponent', () => {
   let component: FromKeystoreComponent;
@@ -8,7 +8,7 @@ describe('FromKeystoreComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FromKeystoreComponent ]
+      declarations: [ FromKeystoreComponent ],
     })
     .compileComponents();
   }));

@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -7,13 +7,11 @@ import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
 import { Wallet } from '../../models/wallet';
 import { ElectronService } from '../../providers/electron.service';
+import { FileActionService } from '../../providers/file-action.service';
 import { LoggerService } from '../../providers/logger.service';
 import { SettingsService } from '../../providers/settings.service';
 import { WalletService } from '../../providers/wallet.service';
 import { Web3Service } from '../../providers/web3.service';
-import { Subscription } from 'rxjs';
-import { SystemSettings } from '../../models/system-settings';
-import { FileActionService } from '../../providers/file-action.service';
 const electron = window.require('electron');
 
 @Component({
@@ -21,20 +19,18 @@ const electron = window.require('electron');
   templateUrl: './wallet-list.component.html',
   styleUrls: ['./wallet-list.component.scss'],
 })
-export class WalletListComponent implements OnInit ,OnDestroy {
-  allWalletsBalance: string;
-  allWalletsBalanceLoading: boolean;
-  editWalletForm: FormGroup;
-  modalRef: BsModalRef;
-  @ViewChild('pop') pop: PopoverDirective;
-  walletForm: FormGroup;
-  wallets: Wallet[];
-  private settings: SystemSettings;
-  private settingsSub: Subscription;
+export class WalletListComponent implements OnInit , OnDestroy {
+  public allWalletsBalance: string;
+  public allWalletsBalanceLoading: boolean;
+  public editWalletForm: FormGroup;
+  public modalRef: BsModalRef;
+  @ViewChild('pop') public pop: PopoverDirective;
+  public walletForm: FormGroup;
+  public wallets: Wallet[];
   public keystoreFileList: any[] = [];
   public keystoreFileDir: string;
 
-  constructor(
+  public constructor(
     public file: FileActionService,
     private formBuilder: FormBuilder,
     private modalService: BsModalService,
@@ -51,13 +47,12 @@ export class WalletListComponent implements OnInit ,OnDestroy {
     this.allWalletsBalanceLoading = true;
   }
 
-  async ngOnInit() {
-    
+  public async ngOnInit() {
     await this.fetchAndHandleWallets();
   }
 
-  ngOnDestroy(){
-    this.wallets=[]
+  public ngOnDestroy() {
+    this.wallets = [];
   }
 
   private async fetchAndHandleWallets() {
@@ -89,7 +84,7 @@ export class WalletListComponent implements OnInit ,OnDestroy {
       .filter(x => !previouslyDeletedWallets.map(y => y.id).includes(x));
     await this.handleUnstoredWallets(unstoredWallets);
     await this.getWalletBalances(this.wallets);
-    await this.addFilenamesToWallet(this.wallets, this.keystoreFileList, this.keystoreFileDir)
+    await this.addFilenamesToWallet(this.wallets, this.keystoreFileList, this.keystoreFileDir);
 
   }
 
@@ -131,16 +126,16 @@ export class WalletListComponent implements OnInit ,OnDestroy {
     await this.walletService.db.bulkDocs(wallets);
   }
 
-  openModal(template: TemplateRef<any>) {
+  public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
-  passphraseMatchValidator(g: FormGroup): { [key: string]: boolean } {
+  public passphraseMatchValidator(g: FormGroup): { [key: string]: boolean } {
     return g.get('passphrase').value === g.get('confirmPassphrase').value
       ? null : { passphraseMatch: true };
   }
 
-  async createWallet(walletForm: FormGroup = this.walletForm): Promise<void> {
+  public async createWallet(walletForm: FormGroup = this.walletForm): Promise<void> {
     this.modalRef.hide();
     const newWalletAddress = await this.web3.eth.personal.newAccount(walletForm.get('passphrase').value);
     const newWalletObject: Wallet = {
@@ -153,21 +148,21 @@ export class WalletListComponent implements OnInit ,OnDestroy {
     this.walletForm.reset();
   }
 
-  async renameWallet(walletForm: FormGroup = this.editWalletForm): Promise<void> {
+  public async renameWallet(walletForm: FormGroup = this.editWalletForm): Promise<void> {
     this.modalRef.hide();
     const result = await this.walletService.db.put(walletForm.value);
     if (result.ok) {
       await this.fetchAndHandleWallets();
     }
-    this.walletForm.reset(); 
+    this.walletForm.reset();
   }
 
-  openRenameWalletModal(wallet: Wallet, modalRef: TemplateRef<any>) {
+  public openRenameWalletModal(wallet: Wallet, modalRef: TemplateRef<any>) {
     this.editWalletForm = this.formBuilder.group(wallet);
     this.openModal(modalRef);
-  } 
+  }
 
-  async deleteWallet(wallet: Wallet, i): Promise<void> {
+  public async deleteWallet(wallet: Wallet, i): Promise<void> {
     this.modalRef.hide();
     const sep = this.electronService.path.sep;
     const systemSettings = await this.settingsService.getSettings();
@@ -175,61 +170,54 @@ export class WalletListComponent implements OnInit ,OnDestroy {
     const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
     const backupDir = `${systemSettings.clientPath}${sep}Auto-Backup-of-Deleted-Wallets${sep}`;
 
- 
+
     if (!this.electronService.fs.existsSync(backupDir)) {
       this.electronService.fs.mkdirSync(backupDir);
     }
 
-    this.wallets.splice(i, 1)
+    this.wallets.splice(i, 1);
     this.electronService.fs.move(keystoreFileDir + wallet.filename, backupDir + wallet.filename, { overwrite: true }, err => {
-
-      if (err) return console.error(err)
-
+      if (err) {
+        return console.error(err);
+      }
       this.logger.info(`wallet moved from ${keystoreFileDir}${wallet.filename}`);
       this.logger.info(`wallet moved to ${backupDir}${wallet.filename}`);
       const result = this.walletService.db.remove(wallet._id, wallet._rev);
       if (result) {
         this.getWalletBalances(this.wallets);
       }
-      console.log('success! :: wallet removed!')
-       
-    })
-
+      console.log('success! :: wallet removed!');
+    });
   }
 
-
- 
-
-
-  async getWalletBalances(wallets: Wallet[]): Promise<void> {
-    this.allWalletsBalance = '0'; 
+  public async getWalletBalances(wallets: Wallet[]): Promise<void> {
+    this.allWalletsBalance = '0';
     if (wallets.length === 0) {
       this.allWalletsBalanceLoading = false;
-      return; 
+      return;
     }
 
-  wallets.map(async (x,i)=>{  
-
+  wallets.map(async (x, i) => {
     const weiBalance = await this.web3.eth.getBalance(x.address);
     const ethBalance = await this.web3.utils.fromWei(weiBalance, 'ether');
-    wallets[i].balance=await ethBalance;
+    wallets[i].balance = await ethBalance;
     this.allWalletsBalance = (parseFloat(ethBalance) + parseFloat(this.allWalletsBalance)).toFixed(6);
     this.allWalletsBalanceLoading = false;
-  })
-    
+  });
+
   }
 
-  backupWalletReminder(wallet: Wallet, template: TemplateRef<any>) {
-    this.openModal(template); 
-    this.modalRef.content = {wallet}
+  public backupWalletReminder(wallet: Wallet, template: TemplateRef<any>) {
+    this.openModal(template);
+    this.modalRef.content = {wallet};
   }
 
-  copyAddress(wallet: Wallet) {
+  public copyAddress(wallet: Wallet) {
     electron.clipboard.writeText(wallet.address);
     this.pop.hide();
   }
 
-  async backupWallet(wallet: Wallet): Promise<void> {
+  public async backupWallet(wallet: Wallet): Promise<void> {
     const sep = this.electronService.path.sep;
     const systemSettings = await this.settingsService.getSettings();
     const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
@@ -240,56 +228,51 @@ export class WalletListComponent implements OnInit ,OnDestroy {
     }
   }
 
-  showQrCode(wallet: Wallet, template: TemplateRef<any>) {
+  public showQrCode(wallet: Wallet, template: TemplateRef<any>) {
     this.openModal(template);
     this.modalRef.content = { wallet };
   }
 
-  async importFile(res) {
+  public async importFile(res) {
     const sep = this.electronService.path.sep;
     const systemSettings = await this.settingsService.getSettings();
     const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
     const file = res[0].path;
     const filename = res[0].name;
 
-    this.file.copy(file, keystoreFileDir + filename)
+    this.file.copy(file, keystoreFileDir + filename);
     setTimeout(async () => {
-      this.wallets = []
-
-      await this.fetchAndHandleWallets()
-    }, 500); 
+      this.wallets = [];
+      await this.fetchAndHandleWallets();
+    }, 500);
 
   }
 
-  addFilenamesToWallet(wallets, keystoreFileList, keystoreFileDir) {
-
+  public addFilenamesToWallet(wallets, keystoreFileList, keystoreFileDir) {
     keystoreFileList
-     .map( (file,i) => {
+     .map( (file, i) => {
        this.electronService.fs.readJson(keystoreFileDir + file, (err, packageObj) => {
-       wallets.map( (placeholder, i) => {
-           if (wallets[i].address.replace('0x', '').toLowerCase() === packageObj.address) {
-              wallets[i].filename=file
+       wallets.map( (placeholder, w) => {
+           if (wallets[w].address.replace('0x', '').toLowerCase() === packageObj.address) {
+              wallets[w].filename = file;
            }
-         })
-       })
-     })
+         });
+       });
+     });
  }
 
- async selectFile(res) {
-  const sep = this.electronService.path.sep;
-  const systemSettings = await this.settingsService.getSettings();
-  const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
-  const file = res[0].path;
-  const fileName = res[0].name;
+  public async selectFile(res) {
+    const sep = this.electronService.path.sep;
+    const systemSettings = await this.settingsService.getSettings();
+    const keystoreFileDir = `${systemSettings.clientPath}${sep}data${sep}keystore${sep}`;
+    const file = res[0].path;
+    const fileName = res[0].name;
 
-  this.file.copy(file, keystoreFileDir + fileName)
-  setTimeout(async () => {
-    this.wallets = []
+    this.file.copy(file, keystoreFileDir + fileName);
+    setTimeout(async () => {
+      this.wallets = [];
 
-    await this.fetchAndHandleWallets()
-  }, 500); 
-
-}
-
-
+      await this.fetchAndHandleWallets();
+    }, 500);
+  }
 }

@@ -13,12 +13,12 @@ const Web3 = require('web3');
 @Injectable()
 export class Web3Service extends (Web3 as { new(): any; }) {
     // blockchain syncing
-    blockNumber: number;
-    connected: boolean;
-    syncing: boolean;
-    peerCount: number;
-    intervals: NodeJS.Timer[];
-    constructor(private settingsService: SettingsService,
+    public blockNumber: number;
+    public connected: boolean;
+    public syncing: boolean;
+    public peerCount: number;
+    public intervals: NodeJS.Timer[];
+    public constructor(private settingsService: SettingsService,
         private electronService: ElectronService) {
         super();
         // TODO: define way to allow for remote providers (internalize account creation)
@@ -48,7 +48,7 @@ export class Web3Service extends (Web3 as { new(): any; }) {
         return akaBalance;
     }
 
-    connectIpc() {
+    public connectIpc() {
         // TODO: should this be a subscription?
         this.settingsService.getSettings().then(s => {
             this.setProvider(this.providers.IpcProvider(`${s.clientPath}/data/geth.ipc`, this.electronService.net));

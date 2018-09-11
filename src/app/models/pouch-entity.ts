@@ -1,5 +1,5 @@
 export class PouchEntity {
-    _id?: string;
-    _rev?: string;
-    _deleted?: boolean;
+    public _id?: string;
+    public _rev?: string;
+    public _deleted?: boolean;
 }

@@ -6,5 +6,5 @@ export interface Wallet extends PouchEntity {
     balance?: number;
     minedBlocks?: number;
     transactions?: number;
-    filename?:string;
+    filename?: string;
 }

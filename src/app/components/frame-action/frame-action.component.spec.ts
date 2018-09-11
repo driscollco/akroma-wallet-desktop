@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FrameActionComponent } from './frame-action.component';
+
 
 describe('FrameActionComponent', () => {
   let component: FrameActionComponent;
@@ -8,7 +8,7 @@ describe('FrameActionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrameActionComponent ]
+      declarations: [ FrameActionComponent ],
     })
     .compileComponents();
   }));

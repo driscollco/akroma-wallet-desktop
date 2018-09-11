@@ -17,6 +17,8 @@
   "main": "main.js",
   "private": true,
   "scripts": {
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "lint-fix": "tslint --fix -c tslint.json 'src/**/*.ts'",
     "unit": "mocha --require ts-node/register test/**/*.ts",
     "postinstall": "npx electron-builder install-app-deps",
     "ng": "ng",

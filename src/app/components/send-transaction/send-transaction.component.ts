@@ -22,21 +22,21 @@ import { LoggerService } from '../../providers/logger.service';
 })
 export class SendTransactionComponent implements OnChanges, OnInit {
 
-  amountSelected: boolean;
-  sendForm: FormGroup;
-  modalRef: BsModalRef;
-  gasPrice$: Observable<number>;
-  passphrase: string;
-  @ViewChild('sendTransactionPassphrase') passphraseModal: TemplateRef<any>;
-  @Input() wallet: Wallet;
-  @Output() transactionSent: EventEmitter<any>;
+  public amountSelected: boolean;
+  public sendForm: FormGroup;
+  public modalRef: BsModalRef;
+  public gasPrice$: Observable<number>;
+  public passphrase: string;
+  @ViewChild('sendTransactionPassphrase') public passphraseModal: TemplateRef<any>;
+  @Input() public wallet: Wallet;
+  @Output() public transactionSent: EventEmitter<any>;
   public escapeKey;
   @HostListener('document:keydown.escape', ['$event'])
-  escapeFromSettingsPage(event: KeyboardEvent) {
+  public escapeFromSettingsPage(event: KeyboardEvent) {
     this.escapeKey = event.key;
     this.router.navigate(['/wallets']);
   }
-  constructor(private cd: ChangeDetectorRef,
+  public constructor(private cd: ChangeDetectorRef,
     private fb: FormBuilder,
     private modalService: BsModalService,
     private web3: Web3Service,
@@ -47,7 +47,7 @@ export class SendTransactionComponent implements OnChanges, OnInit {
     this.gasPrice$ = Observable.from(this.web3.eth.getGasPrice());
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.sendForm = this.fb.group({
       to: '',
       from: [this.wallet.address],
@@ -57,7 +57,7 @@ export class SendTransactionComponent implements OnChanges, OnInit {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes.wallet.isFirstChange()) {
       return;
     }
@@ -67,11 +67,11 @@ export class SendTransactionComponent implements OnChanges, OnInit {
     }
   }
 
-  async onTransactionSent() {
-    console.log(`sent placeholder`)
+  public async onTransactionSent() {
+    console.log(`sent placeholder`);
   }
 
-  buildStockForm() {
+  public buildStockForm() {
     this.sendForm = this.fb.group({
       to: '',
       from: this.wallet.address,
@@ -82,16 +82,16 @@ export class SendTransactionComponent implements OnChanges, OnInit {
     this.cd.markForCheck();
   }
 
-  hexValidator(formcontrol: AbstractControl) {
+  public hexValidator(formcontrol: AbstractControl) {
     const a = parseInt(formcontrol.value, 16);
     return (a.toString(16) === formcontrol.value) ? null : { hex: { valid: false } };
   }
 
-  openModal(template: TemplateRef<any>) {
+  public openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
-  async sendTransaction() {
+  public async sendTransaction() {
     // TODO: Need to install bignumber library for keeping decimal accuracy
     try {
       const tx = {

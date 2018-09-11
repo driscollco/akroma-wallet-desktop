@@ -6,11 +6,11 @@ import { Wallet } from '../models/wallet';
 export class WalletService {
   private _db: PouchDB.Database<Wallet>;
 
-  get db(): PouchDB.Database<Wallet> {
+  public get db(): PouchDB.Database<Wallet> {
     return this._db;
   }
 
-  constructor() {
+  public constructor() {
     this._db = new PouchDB('wallets');
   }
 }

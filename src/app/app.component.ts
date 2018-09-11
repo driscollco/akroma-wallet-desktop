@@ -13,7 +13,7 @@ import { TransactionSyncService } from './providers/transaction.sync.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(
+  public constructor(
     private logger: LoggerService,
     public electronService: ElectronService,
     // tslint:disable-next-line

@@ -12,10 +12,10 @@ import { SettingsService } from '../../providers/settings.service';
 export class SettingsPageComponent implements OnInit {
   @ViewChild('directoryInput')
   private directoryInput: ElementRef;
-  systemSettingsForm: FormGroup;
-  settings: SystemSettings;
+  public systemSettingsForm: FormGroup;
+  public settings: SystemSettings;
 
-  constructor(
+  public constructor(
     private settingsService: SettingsService,
     private fb: FormBuilder,
     private router: Router) {
@@ -28,7 +28,7 @@ export class SettingsPageComponent implements OnInit {
     });
   }
 
-  async ngOnInit() {
+  public async ngOnInit() {
     this.settings = await this.settingsService.getSettings();
     this.systemSettingsForm = this.fb.group({
       clientPath: [this.settings.clientPath],
@@ -39,7 +39,7 @@ export class SettingsPageComponent implements OnInit {
     });
   }
 
-  onDirectoryPathChange(event: any) {
+  public onDirectoryPathChange(event: any) {
     const files = event.srcElement.files;
     if (files.length > 0) {
       this.systemSettingsForm.get('clientPath').setValue(files['0'].path);
@@ -47,7 +47,7 @@ export class SettingsPageComponent implements OnInit {
     }
   }
 
-  async onSubmit() {
+  public async onSubmit() {
     const success = await this.settingsService.saveSettings(this.systemSettingsForm.value);
     if (success) {
       this.onRevert();
@@ -57,7 +57,7 @@ export class SettingsPageComponent implements OnInit {
   /**
    * Reloads settings form with settings from database.
    */
-  async onRevert() {
+  public async onRevert() {
     const systemSettings = await this.settingsService.getSettings();
     this.systemSettingsForm = this.fb.group(systemSettings);
     this.directoryInput.nativeElement.value = '';

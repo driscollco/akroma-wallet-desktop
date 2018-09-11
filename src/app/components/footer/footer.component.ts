@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
   public settings: SystemSettings;
   public web3: Web3Service;
 
-  constructor(
+  public constructor(
     private electronService: ElectronService,
     private settingsService: SettingsService,
     public web3Service: Web3Service,
@@ -22,16 +22,16 @@ export class FooterComponent implements OnInit {
   ) {
   }
 
-  async ngOnInit() {
+  public async ngOnInit() {
     this.settings = await this.settingsService.getSettings();
   }
 
-  viewLogs() {
+  public viewLogs() {
     // this.electronService.remote.shell.showItemInFolder(this._settings.applicationPath + this.electronService.path.sep + 'logs' + this.electronService.path.sep + 'akroma.log');
     console.log('logs.');
   }
 
-  console() {
+  public console() {
     console.log(`devTools`);
     this.electronService.ipcRenderer.send(`console`, `console`);
   }
