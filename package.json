@@ -1,6 +1,6 @@
 {
   "name": "akroma",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Akroma Desktop Wallet",
   "homepage": "https://github.com/akroma-project/akroma-wallet-desktop",
   "author": {
@@ -30,9 +30,9 @@
     "electron:serve": "wait-on http-get://localhost:4200/ && npm run electron:tsc && electron . --serve",
     "release": "npm run build:prod && electron-builder build",
     "release:all": "npm run build:prod && npx electron-builder build -mwl -p always",
-    "release:win": "cross-env NODE_ENV=production ENV=prod npm run build:prod && npx electron-builder build --win -p always",
-    "release:mac": "cross-env NODE_ENV=production ENV=prod npm run build:prod && npx electron-builder build --mac -p always",
-    "release:linux": "cross-env NODE_ENV=production ENV=prod npm run build:prod && npx electron-builder build --linux -p always",
+    "release:win": "npm run build:prod && npx electron-builder build --win -p always",
+    "release:mac": "npm run build:prod && npx electron-builder build --mac -p always",
+    "release:linux": "npm run build:prod && npx electron-builder build --linux -p always",
     "test": "karma start ./karma.conf.js",
     "pree2e:build": "webdriver-manager update --gecko false && npm run ng serve",
     "pree2e:protractor": "wait-on http-get://localhost:4200/ && protractor ./protractor.conf.js",
