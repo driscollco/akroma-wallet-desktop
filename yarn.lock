@@ -7772,9 +7772,9 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs-compat@^6.3.2:
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/rxjs-compat/-/rxjs-compat-6.3.2.tgz#2386ade05e693480fdf96f56042a629aef6c5ea5"
+rxjs-compat@6.0.0-tactical-rc.1:
+  version "6.0.0-tactical-rc.1"
+  resolved "http://registry.npmjs.org/rxjs-compat/-/rxjs-compat-6.0.0-tactical-rc.1.tgz#cff95c3fa6be6e6454df1c4dbd8bfb3a87d3c0a7"
 
 rxjs@6.3.2:
   version "6.3.2"
